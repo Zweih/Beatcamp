@@ -2,6 +2,10 @@
   "name": "blandcamp",
   "private": true,
   "main": "webpack.config.js",
+  "engines": {
+    "node": "8.4.0",
+    "npm": "6.1.0"
+  },
   "scripts": {
     "webpack": "webpack --mode=development --watch",
     "postinstall": "webpack"
