@@ -1,5 +1,5 @@
 {
-  "name": "blandcamp",
+  "name": "beatcamp",
   "private": true,
   "main": "webpack.config.js",
   "engines": {

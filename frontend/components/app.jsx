@@ -1,11 +1,18 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Provider } from "react-redux";
+import {
+  Route,
+  Redirect,
+  Switch,
+  Link,
+  HashRouter
+} from "react-router-dom";
 
 const App = () => (
   <div>
-    <h1>BLANDCAMP</h1>
-      <Switch>
-      </Switch>
+    <h1>BEATCAMP</h1>
+    <Switch>
+    </Switch>
   </div>
 );
 
