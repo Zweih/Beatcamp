@@ -8,6 +8,7 @@ import {
   HashRouter
 } from "react-router-dom";
 
+
 const App = () => (
   <div>
     <h1>BEATCAMP</h1>
@@ -15,5 +16,6 @@ const App = () => (
     </Switch>
   </div>
 );
+
 
 export default App;
