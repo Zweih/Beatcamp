@@ -5,4 +5,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   
+  def password=(password)
+    # TODO:
+  end
 end
