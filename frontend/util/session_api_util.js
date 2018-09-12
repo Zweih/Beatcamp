@@ -1,4 +1,4 @@
-// USER REQUESTS
+// User Requests
 
 export const signup = (user) => {
   return $.ajax({
@@ -34,7 +34,7 @@ export const updateUser = (user) => {
   });
 };
 
-// SESSION REQUESTS
+// Session Requests
 
 export const login = (user) => {
   return $.ajax({
