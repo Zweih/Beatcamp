@@ -17,10 +17,12 @@ import SignupFormContainer from "./session_form/signup_form_container";
 const App = () => (
   <div>
     <header>
-      <Link to="/" className="header-link">
-        <h1>BEATCAMP</h1>
+      <Link to="/" className="logo">
+        Beatcamp
       </Link>
-      <GreetingContainer />
+      <div className="header-right">
+        <GreetingContainer />
+      </div>
     </header>
 
     <Switch>

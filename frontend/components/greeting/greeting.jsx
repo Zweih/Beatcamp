@@ -4,9 +4,19 @@ import { Link } from "react-router-dom";
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav className="login-signup">
-      <Link to="/login">Login</Link>
-      &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
+      <ul>
+        <li>
+          <Link className="header-link" to="/login">
+            log in
+          </Link>
+        </li>
+        <li>
+          <Link className="header-link" to="/signup">
+            sign up
+          </Link>
+        </li>
+      </ul>
+      
     </nav>
   );
   const personalGreeting = () => (
@@ -14,9 +24,9 @@ const Greeting = ({ currentUser, logout }) => {
       <h2 className="header-name">
       Hi, {currentUser.username}!
       </h2>
-      <button className="header-button" onClick={logout}>
+      <p className="header-link" onClick={logout}>
       Log Out
-      </button>
+      </p>
     </hgroup>
   );
 
