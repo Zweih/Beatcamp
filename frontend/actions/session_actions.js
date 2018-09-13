@@ -4,6 +4,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER"
 export const RECEIVE_USER = "RECEIVE_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
+export const REMOVE_SESSION_ERRORS = "REMOVE_SESSION_ERRORS";
 export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
 
 // Normal Action Creators
@@ -32,6 +33,12 @@ const receiveErrors = (errors) => {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors,
+  };
+};
+
+const removeSessionErrors = () => {
+  return {
+    type: REMOVE_SESSION_ERRORS,
   };
 };
 
@@ -65,7 +72,7 @@ export const fetchUsers = () => {
     }
     );
   }
-}
+};
 
 export const fetchUser = (userId) => {
   return (dispatch) => {
@@ -75,7 +82,7 @@ export const fetchUser = (userId) => {
       return dispatch(receiveErrors(errors.responseJSON));
     });
   };
-}
+};
 
 //    Session Thunk Action Creators
 
@@ -110,4 +117,10 @@ export const demo = () => {
       return dispatch(receiveErrors(errors.responseJSON));
     });
   };
-}
+};
+
+export const clearSessionErrors = () => {
+  return (dispatch) => {
+    return dispatch(removeSessionErrors());
+  };
+};
