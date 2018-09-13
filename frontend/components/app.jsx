@@ -7,13 +7,12 @@ import {
   Link,
   HashRouter
 } from "react-router-dom";
-
+import GreetingContainer from "./greeting/greeting_container";
 
 const App = () => (
   <div>
     <h1>BEATCAMP</h1>
-    <Switch>
-    </Switch>
+    <GreetingContainer />
   </div>
 );
 
