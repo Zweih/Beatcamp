@@ -80,10 +80,10 @@ export const fetchUser = (userId) => {
 //    Session Thunk Action Creators
 
 export const login = (user) => {
-  return dispatch => {
+  return (dispatch) => {
     return SessionApiUtil.login(user).then( (user) => {
       return dispatch(receiveCurrentUser(user));
-    }, errors => {
+    }, (errors) => {
       return dispatch(receiveErrors(errors.responseJSON));
     });
   };
@@ -96,3 +96,18 @@ export const logout = () => {
     });
   };
 };
+
+export const demo = () => {
+  const demoUser = { 
+    username: "demoUser",
+    password: "password1234",
+  };
+
+  return (dispatch) => {
+    return SessionApiUtil.login(demoUser).then( (user) => {
+      return dispatch(receiveCurrentUser(user));
+    }, (errors) => {
+      return dispatch(receiveErrors(errors.responseJSON));
+    });
+  };
+}

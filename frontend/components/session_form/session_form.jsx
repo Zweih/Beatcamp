@@ -66,6 +66,7 @@ class SessionForm extends React.Component {
           <input type="submit" value={this.props.formType}/>
         </form>
         {this.props.navLink}
+        <button onClick={this.props.demo}>Demo User</button>
       </div>
     );
   }

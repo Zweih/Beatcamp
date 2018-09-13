@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import SessionForm from "./session_form";
-import { signup } from "../../actions/session_actions";
+import { signup, demo } from "../../actions/session_actions";
 
 const mapStateToProps = (state) => {
   const currentUser = state.entities.users[state.session.id];
@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     processForm: (user) => dispatch(signup(user)),
+    demo: () => dispatch(demo()),
   };
 };
 
