@@ -35,6 +35,7 @@ document.addEventListener( "DOMContentLoaded", () => {
   window.signup = SessionAPIUtil.signup;
   window.updateUser = SessionAPIUtil.updateUser;
   window.login = SessionAPIUtil.login;
+  window.logout = SessionAPIUtil.logout;
   // TESTING END
 
   ReactDOM.render(<Root store={store}/>, root);

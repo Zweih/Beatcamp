@@ -5,12 +5,12 @@ import SessionForm from "./session_form";
 import { signup } from "../../actions/session_actions";
 
 const mapStateToProps = (state) => {
-  const errors = state.errors;
   const currentUser = state.entities.users[state.session.id];
+  const errors = state.errors.session;
   const formType = "Sign Up";
-  const navLink = <Link to="/signin">Go to sign in page</Link>;
+  const navLink = <Link to="/login">Go to sign in page</Link>;
 
-  return { currentUser, formType, navLink, errors };
+  return { errors, formType, navLink, currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => {
