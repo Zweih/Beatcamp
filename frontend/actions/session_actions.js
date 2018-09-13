@@ -1,11 +1,19 @@
 import * as SessionApiUtil from "../util/session_api_util";
 
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER"
 export const RECEIVE_USER = "RECEIVE_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
 
 // Normal Action Creators
+
+const receiveCurrentUser = (user) => {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    user,
+  };
+};
 
 const receiveUser = (user) => {
   return {
@@ -34,13 +42,6 @@ const receiveAllUsers = (users) => {
   };
 };
 
-const receiveUser = (user) => {
-  return {
-    type: RECEIVE_USER,
-    users,
-  };
-};
-
 // Thunk Action Creators
 
 //    User Thunk Action Creators
@@ -48,7 +49,7 @@ const receiveUser = (user) => {
 export const signup = (user) => {
   return (dispatch) => {
     return SessionApiUtil.signup(user).then( (user) => {
-      return dispatch(receiveUser(user));
+      return dispatch(receiveCurrentUser(user));
     }, (errors) => {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -81,7 +82,7 @@ export const fetchUser = (userId) => {
 export const login = (user) => {
   return dispatch => {
     return SessionApiUtil.login(user).then( (user) => {
-      return dispatch(receiveUser(user));
+      return dispatch(receiveCurrentUser(user));
     }, errors => {
       return dispatch(receiveErrors(errors.responseJSON));
     });

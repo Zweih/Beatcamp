@@ -1,13 +1,14 @@
 import { combineReducers } from "redux";
+import entities from "./entities_reducer";
+import session from "./session_reducer";
+import errors from "./errors_reducer";
 
 // TODO: ADD COMBINEREDUCERS AND OTHER REDUCERS
 
-const RootReducer = function counter(state = 0, action) {
-  switch (action.type) {
-  case "INCREMENT": return state + 1;
-  case "DECREMENT": return state - 1;
-  default: return state;
-  }
-}
+const RootReducer = combineReducers({
+  entities,
+  session,
+  errors,
+});
 
 export default RootReducer;
