@@ -1,6 +1,5 @@
 import React from "react";
-import { withRouter, Redirect } from "react-router-dom";
-import merge from "lodash/merge";
+import { withRouter } from "react-router-dom";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -14,7 +13,8 @@ class SessionForm extends React.Component {
 
   handleSubmit(element) {
     element.preventDefault();
-    this.props.processForm(merge({}, this.state));
+    const user = Object.assign({}, this.state)
+    this.props.processForm(user);
   }
 
   update(field) {
@@ -23,11 +23,19 @@ class SessionForm extends React.Component {
     });
   }
 
-  render() {
-    if(this.props.currentUser) {
-       return <Redirect to="/"/>;
-    }
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
+  render() {
     return (
       <div className="session-form">
         <form onSubmit={this.handleSubmit}>

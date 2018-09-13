@@ -2,35 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Greeting = ({ currentUser, logout }) => {
-  const loggedOut = () => (
-    <nav className="logged-out">
-      <Link to="/login">
-        Login!
-      </Link>
+  const sessionLinks = () => (
+    <nav className="login-signup">
+      <Link to="/login">Login</Link>
       &nbsp;or&nbsp;
-      <Link to="/signup">
-        Sign up!
-      </Link>
+      <Link to="/signup">Sign up!</Link>
     </nav>
   );
-
-  const loggedIn = () => (
-    <div className="logged-in">
-      <h2 className="heading-user-name">
-        Hi, {currentUser.username}!
+  const personalGreeting = () => (
+    <hgroup className="header-group">
+      <h2 className="header-name">
+      Hi, {currentUser.username}!
       </h2>
-      <button
-        className="heading-button"
-        onClick={logout}
-      >
-        Log Out!
+      <button className="header-button" onClick={logout}>
+      Log Out
       </button>
-    </div>
+    </hgroup>
   );
 
-  return (
-    currentUser ? loggedIn() : loggedOut()
-  );
+  return currentUser ? personalGreeting() : sessionLinks();
 };
 
 export default Greeting;
