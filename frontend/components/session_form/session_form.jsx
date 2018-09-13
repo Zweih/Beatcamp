@@ -36,6 +36,10 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    if(this.props.currentUser) {
+     	return <Redirect to="/"/>;
+    }
+
     return (
       <div className="session-form">
         <form onSubmit={this.handleSubmit} className="session-form-box">
