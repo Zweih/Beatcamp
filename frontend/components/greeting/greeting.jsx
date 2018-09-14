@@ -6,13 +6,19 @@ const Greeting = ({ currentUser, logout }) => {
     <nav className="login-signup">
       <ul>
         <li>
-          <Link className="header-link" to="/login">
-            log in
+          <Link 
+          className="header-link"
+            to="/signup"
+          >
+            sign up
           </Link>
         </li>
         <li>
-          <Link className="header-link" to="/signup">
-            sign up
+          <Link
+            className="header-link last-header-link"
+            to="/login"
+          >
+            log in
           </Link>
         </li>
       </ul>
