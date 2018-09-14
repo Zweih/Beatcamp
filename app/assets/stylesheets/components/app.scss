@@ -1,11 +1,24 @@
+#header-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #bebebe;
+  display: flex;
+  direction: column;
+  justify-content: center;
+}
+
 header {
   display: flex;
   overflow: hidden;
   background-color: #FFFFFF;
-  padding: 0px 59px 0px 59px;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 22px;
+  width: 1106px;
 }
 
 .left-header, .right-header {
@@ -14,23 +27,25 @@ header {
 }
 
 .left-header {
+  width: 636px;
   justify-content: flex-start;
-}
-
-.right-header {
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-left: 20px;
-}
-
-.header-link:hover {
-  background-color: #ddd;
-  color: #161113;
-  text-decoration: underline;
 }
 
 .logo {
   background-color: transparent;
+}
+
+.header-text {
+  color: #408ea3;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.right-header {
+  width: 448px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 20px;
 }
 
 .search-form {
@@ -40,9 +55,13 @@ header {
 }
 
 .search-bar {
-  padding: 0px 30px 0px 10px;
-  width: 210px;
-  height: 25px;
+  width: 206px;
+  padding: 0px 0px 0px 10px;
+  margin-right: none;
+  height: 26px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(22,17,19,0.7);
   border: solid 1px #bebebe;
   border-right: none;
   border-radius: 3px 0px 0px 3px;
@@ -50,7 +69,7 @@ header {
 
 .search-submit-span {
   padding-top: 4px;
-  padding-right: 12px;
+  padding-right: 2px;
   border: solid 1px #bebebe;
   border-left: none;
   border-radius: 0px 3px 3px 0px;
@@ -67,18 +86,22 @@ header {
 }
 
 .login-signup {
-  // align-self: flex-end;
+  margin-top: 15px;
 }
 
 .header-link {
   background-color: transparent;
   color:#161113;
-  font-weight: 800;
-  font-size: 13px;
+  font-weight: 700;
+  font-size: 16px;
   padding: 0px 12px 0px 5px;
   text-align: center;
   text-decoration: none;
   border-right: 1px solid #e5e5e5;
+}
+
+.header-link:hover {
+  text-decoration: underline;
 }
 
 .last-header-link {
