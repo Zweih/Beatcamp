@@ -15,12 +15,10 @@ import LoginNav from "./nav/login_nav";
 
 const App = () => (
   <div>
-    <HashRouter>
-      <div>
-        <Route strict path="/" component={DefaultNav}/>
-        <AuthRoute exact path="/login" component={LoginNav}/>
-      </div>
-    </HashRouter>
+    <Switch>
+      <AuthRoute exact path="/login" component={LoginNav}/>
+      <Route path="/" component={DefaultNav}/>
+    </Switch>
   </div>
 );
 
