@@ -10,14 +10,17 @@ import {
 
 import { AuthRoute, ProtectedRoute } from "../util/route_util"; 
 
-import GreetingContainer from "./greeting/greeting_container";
-import LoginFormContainer from "./session_form/login_form_container";
-import SignupFormContainer from "./session_form/signup_form_container";
-import Main from "./main";
+import DefaultNav from "./nav/default_nav";
+import LoginNav from "./nav/login_nav";
 
 const App = () => (
   <div>
-    <Main />
+    <HashRouter>
+      <div>
+        <Route strict path="/" component={DefaultNav}/>
+        <AuthRoute exact path="/login" component={LoginNav}/>
+      </div>
+    </HashRouter>
   </div>
 );
 

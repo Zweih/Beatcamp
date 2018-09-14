@@ -1,6 +1,9 @@
 import { createStore, applyMiddleware } from "redux";
 import RootReducer from "../reducers/root_reducer";
 import thunk from "redux-thunk";
+import { compose } from 'redux';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const middlewares = [thunk];
 
@@ -11,7 +14,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const configureStore = (preloadedState = {}) => {
-  return createStore(RootReducer, preloadedState, applyMiddleware(thunk));
+  return createStore(RootReducer, preloadedState, composeEnhancers(applyMiddleware(thunk)));
 };
 
 export default configureStore;
