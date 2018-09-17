@@ -16,14 +16,16 @@ import SignupFormContainer from "../session_form/signup_form_container";
 
 const LoginNav = () => (
   <div>
-    <div id="header-wrapper">
-    <header className="main-header">
-      <div className="left-header">
-        <Link to="/" className="logo">
-          <img src="https://my.mixtape.moe/eohwhz.png"/>
-        </Link>
-      </div>
-    </header>
+    <div id="login-header-wrapper">
+      <header className="login-main-header">
+        <div className="login-left-header">
+          <Link to="/" className="logo">
+            <img src="https://my.mixtape.moe/eohwhz.png"/>
+          </Link>
+        </div>
+        <header className="login-right-header">
+        </header>
+      </header>
    </div>
 
    <LoginFormContainer />

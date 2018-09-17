@@ -7,10 +7,11 @@ import { login, demo, clearSessionErrors } from "../../actions/session_actions";
 const mapStateToProps = (state) => {
   const currentUser = state.entities.users[state.session.id];
   const errors = state.errors.session;
-  const formType = "Login";
+  const formType = "Log in";
+  const formClass = "login";
   const navLink = <Link to="/signup">Go to sign up page</Link>;
 
-  return { errors, formType, navLink, currentUser };
+  return { errors, formType, formClass, navLink, currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => {

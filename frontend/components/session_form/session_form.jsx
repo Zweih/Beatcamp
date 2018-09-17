@@ -41,32 +41,37 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="session-form">
+      <div className={`session-form, ${this.props.formClass}`}>
         <form onSubmit={this.handleSubmit} className="session-form-box">
-          <h3>{this.props.formType}</h3>
+          <h3 className={`${this.props.formClass}-title`}>{this.props.formType}</h3>
           {this.renderErrors()}
-          <label>
-            Username
+          <div className={`${this.props.formClass}-divider`}></div>
+          <div className={`${this.props.formClass}-item`}>
+            <label className={`${this.props.formClass}-label`}>
+              Username / email
+            </label>
             <input
               type="text"
               value={this.state.username}
               onChange={this.update("username")}
-              className="session-input"
+              className={`session-input, ${this.props.formClass}-input`}
             />
-          </label>
-          <label>
-            Password
+          </div>
+          <div className={`${this.props.formClass}-item`}>
+            <label className={`${this.props.formClass}-label`}>
+              Password
+            </label>
             <input
               type="password"
               value={this.state.password}
               onChange={this.update("password")}
-              className="session-input"
+              className={`session-input, ${this.props.formClass}-input`}
             />
-          </label>
+          </div>
           <input type="submit" value={this.props.formType}/>
+          {this.props.navLink}
+          <button onClick={this.props.demo}>Demo User</button>
         </form>
-        {this.props.navLink}
-        <button onClick={this.props.demo}>Demo User</button>
       </div>
     );
   }
