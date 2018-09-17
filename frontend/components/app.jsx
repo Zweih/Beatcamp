@@ -10,14 +10,14 @@ import {
 
 import { AuthRoute, ProtectedRoute } from "../util/route_util"; 
 
-import DefaultNav from "./nav/default_nav";
+import DefaultNavContainer from "./nav/default_nav_container";
 import LoginNav from "./nav/login_nav";
 
 const App = () => (
   <div>
     <Switch>
       <AuthRoute exact path="/login" component={LoginNav}/>
-      <Route path="/" component={DefaultNav}/>
+      <Route path="/" component={DefaultNavContainer}/>
     </Switch>
   </div>
 );

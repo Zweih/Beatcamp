@@ -10,7 +10,8 @@ import {
 
 import { AuthRoute, ProtectedRoute } from "../../util/route_util"; 
 
-import GreetingContainer from "../greeting/greeting_container";
+import RightGreetingContainer from "../greeting/greeting_container";
+import LeftGreetingContainer from "../greeting/left_greeting_container"; 
 import LoginFormContainer from "../session_form/login_form_container";
 import SignupFormContainer from "../session_form/signup_form_container";
 
@@ -28,9 +29,7 @@ class DefaultNav extends React.Component {
               <Link to="/" className="logo">
                 <img src="https://my.mixtape.moe/eohwhz.png"/>
               </Link>
-              <p className="header-text">
-                Discover amazing new music and directly support the artists who make it.
-              </p>
+              <LeftGreetingContainer />
             </div>
             <div className="right-header">
               <form className="search-form">
@@ -48,7 +47,7 @@ class DefaultNav extends React.Component {
                   </button>
                 </span>
               </form>
-              <GreetingContainer />
+              <RightGreetingContainer />
             </div>
           </header>
         </div>

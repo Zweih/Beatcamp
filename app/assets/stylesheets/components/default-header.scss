@@ -82,30 +82,62 @@
   padding: none;
 }
 
-.login-signup ul {
+.header-links, .login-signup ul {
   display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
 
 .login-signup {
   margin-top: 15px;
 }
 
+.header-links li {
+  border-right: 1px solid #e5e5e5;
+  padding: 0px 12px 0px 5px;
+}
+
+.left-greeting li {
+  border-right: 1px solid #e5e5e5;
+  padding: 0px 10px 0px 10px;
+}
+
+.left-greeting li {
+  background-color: transparent;
+  color:#161113;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+
 .header-link {
   background-color: transparent;
   color:#161113;
   font-weight: 700;
-  font-size: 16px;
-  padding: 0px 12px 0px 5px;
+  font-size: 14px;
   text-align: center;
   text-decoration: none;
-  border-right: 1px solid #e5e5e5;
 }
 
 .header-link:hover {
   text-decoration: underline;
 }
 
-.last-header-link {
+.header-links li:last-child {
   border-right: none;
   padding-right: 0;
+}
+
+.left-greeting .header-links li:first-child {
+  padding-left: 0;
+}
+
+.left-greeting .header-links li:first-child p:hover {
+  text-decoration: none;
+}
+
+.left-greeting .header-links li:first-child p {
+  font-weight: 400;
+  color: rgb(119, 119, 119);
 }

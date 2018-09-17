@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
   const navLink = <Link to="/login">Log in</Link>;
   const linkText = "Already";
 
-  return { errors, formType, signup, navLink, linkText, currentUser };
+  return { errors, formClass, formType, signup, navLink, linkText, currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => {
