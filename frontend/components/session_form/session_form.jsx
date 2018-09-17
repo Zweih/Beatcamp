@@ -68,7 +68,7 @@ class SessionForm extends React.Component {
               className={`session-input, ${this.props.formClass}-input`}
             />
           </div>
-          <div className="login-buttons">
+          <div className={`${this.props.formClass}-buttons`}>
             <input type="submit"
               value={this.props.formType}
               className={`${this.props.formClass}-button`}
