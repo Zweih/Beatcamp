@@ -47,5 +47,35 @@
   width: 300px;
   margin: 0;
   font-size: 16px;
+  font-weight: 400;
   transition: border 0.3s;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-button {
+  margin: 20px 0px 0px 0px;
+  display: inline-block;
+  width: 300px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 36px;
+  text-align: center;
+  color: #fff;
+  background-color: rgb(0,161,198);
+  border-radius: 0;
+  outline: none;
+  background: rgb(0,161,198);
+  border: none;
+}
+
+.login-other-link {
+  margin: 72px 0px 20px 0px;
+  font-size: 12px;
+  color: rgb(129, 130, 133);
+  font-weight: 400;
 }
