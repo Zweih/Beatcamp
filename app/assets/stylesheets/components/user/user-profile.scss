@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 975px;
+  width: 915px;
   height: 100%;
 }
 
@@ -12,8 +12,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 975px;
+  width: 915px;
   height: 100%;
+  padding: 35px 30px 80px 30px;
+  margin: 0px 465px 0px 465px;
 }
 
 .user-mid-col {
@@ -22,4 +24,9 @@
 
 .user-sidebar {
   width: 120px;
+}
+
+.user-avatar {
+  width: 120px;
+  height: 120px;
 }
