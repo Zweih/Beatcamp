@@ -9,12 +9,18 @@ class SessionForm extends React.Component {
       password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleSubmit(element) {
     element.preventDefault();
     const user = Object.assign({}, this.state)
     this.props.processForm(user);
+  }
+
+  handleDemo(element) {
+    element.preventDefault();
+    this.props.demo();
   }
 
   update(field) {
@@ -74,7 +80,7 @@ class SessionForm extends React.Component {
               className={`${this.props.formClass}-button`}
               />
             <button 
-              onClick={this.props.demo}
+              onClick={this.handleDemo}
               className={`${this.props.formClass}-button`}
             >
               Demo User
