@@ -15,11 +15,15 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    this.props.fetchUser(this.props.pageUserId);
+  }
   
   render() {
     return(
       <div>
-        <h1>{this.props.pageUser.username}</h1>
+        <h3>{this.props.pageUser.username}</h3>
       </div>
     );
   }

@@ -4,9 +4,15 @@ import { fetchUser } from "../../actions/session_actions";
 
 const mapStateToProps = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
-  const pageUser = state.entities.users[ownProps.match.params.userId];
 
-  return { currentUser, pageUser };
+  const defaultUser = {
+    username: "",
+  };
+
+  const pageUserId = ownProps.match.params.userId;
+  const pageUser = state.entities.users[pageUserId] || defaultUser;
+
+  return { currentUser, pageUser, pageUserId};
 };
 
 const mapDispatchToProps = (dispatch) => {

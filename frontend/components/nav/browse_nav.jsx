@@ -5,14 +5,31 @@ import {
   Redirect,
   Switch,
   Link,
+  withRouter,
   HashRouter
 } from "react-router-dom";
 
 import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 
+import LoginFormContainer from "../session_form/login_form_container";
+import SignupFormContainer from "../session_form/signup_form_container";
+
 class BrowseNav extends React.Component {
   constructor(props){
     super(props);
+  }
+
+  notLoggedIn() {
+    return (
+      <ul className="browse-right">
+        <li>
+          <Link to="/login">log in</Link>
+        </li>
+        <li>
+          <Link to="/signup">sign up</Link>
+        </li>
+      </ul>
+    );
   }
   
   render() {
@@ -44,7 +61,7 @@ class BrowseNav extends React.Component {
               </form>
             </ul>
             <ul className="browse-right">
-              
+
             </ul>
           </header>
         </div>
