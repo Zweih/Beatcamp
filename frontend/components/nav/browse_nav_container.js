@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import LeftGreeting from "./left_greeting";
+import BrowseNav from "./browse_nav";
 
 const mapStateToProps = (state) => {
   const currentUser = state.entities.users[state.session.id];
@@ -8,4 +8,4 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps
-)(LeftGreeting);
+)(BrowseNav);

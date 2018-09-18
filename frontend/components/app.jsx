@@ -12,13 +12,19 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
 import DefaultNavContainer from "./nav/default_nav_container";
 import LoginNav from "./nav/login_nav";
+import UserProfileContainer from "./user/user_profile_container";
 
 const App = () => (
   <div>
-    <Switch>
-      <AuthRoute exact path="/login" component={LoginNav}/>
-      <Route path="/" component={DefaultNavContainer}/>
-    </Switch>
+    <HashRouter>
+      <div>
+        <Switch>
+          <AuthRoute exact path="/login" component={LoginNav} />
+          <Route path="/" component={DefaultNavContainer} />
+        </Switch>
+        <Route path="/users/:userId" component={UserProfileContainer} />
+      </div>
+    </HashRouter>
   </div>
 );
 

@@ -26,9 +26,9 @@ const LoginNav = () => (
         <header className="login-right-header">
         </header>
       </header>
-   </div>
+    </div>
 
-   <LoginFormContainer />
+    <LoginFormContainer />
   </div>
 );
 
