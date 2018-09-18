@@ -18,7 +18,7 @@ const LeftGreeting = ({ currentUser }) => {
           className="header-link"
           to={`/users/${currentUser.id}`}
         >
-          Collection
+          collection
         </Link>
       </li>
     </ul>
