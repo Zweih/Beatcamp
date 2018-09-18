@@ -23,7 +23,10 @@ class UserProfile extends React.Component {
   render() {
     return(
       <div>
+        <h3>{this.props.pageUser.id}</h3>
         <h3>{this.props.pageUser.username}</h3>
+        <h3>{this.props.pageUser.bio}</h3>
+        <h3>{this.props.pageUser.location}</h3>
       </div>
     );
   }

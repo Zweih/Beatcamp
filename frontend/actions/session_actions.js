@@ -106,7 +106,7 @@ export const logout = () => {
 
 export const demo = () => {
   const demoUser = { 
-    username: "demoUser",
+    username: "sennacy",
     password: "password1234",
   };
 
