@@ -8,4 +8,6 @@
 User.delete_all
 Album.delete_all
 cat = User.create(username: "sennacy", password: "password1234", bio: "I am a cat", location: "New York")
+file = File.open('app/assets/images/sennacy.jpg')
+cat.avatar.attach(io: file, filename: 'sennacy.jpg')
 Album.create(title: "softness", description: "its good", user_id: cat.id)
