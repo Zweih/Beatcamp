@@ -23,46 +23,62 @@ class BrowseNav extends React.Component {
     return (
       <ul className="browse-right">
         <li>
-          <Link to="/login">log in</Link>
+          <Link to="/signup">sign up</Link>
         </li>
         <li>
-          <Link to="/signup">sign up</Link>
+          <Link to="/login">log in</Link>
         </li>
       </ul>
     );
+  }
+
+  loggedIn() {
+    return (
+      <ul className="browse-right">
+        <li>
+          <Link to={`/user/${this.props.currentUser.id}`}>
+            collection
+          </Link>
+        </li>
+      </ul>
+    )
   }
   
   render() {
     return (
       <div>
-        <div id="header-wrapper">
+        <div id="browse-wrapper">
           <header className="browse-header">
             <ul className="browse-left">
-              <Link to="/" className="logo">
-                <img src="https://my.mixtape.moe/eohwhz.png"/>
-              </Link>
-              <Link to="/discover">
-                discover
-              </Link>
-              <form className="search-form">
-                <input
-                  className="search-bar"
-                  type="text"
-                  placeholder="search Bandcamp"
-                />
-                <span className="search-submit-span">
-                  <button 
-                    className="search-submit"
-                    type="submit"
-                  >
-                    <i className="fas fa-search fa-lg"></i>
-                  </button>
-                </span>
-              </form>
+              <li>
+                <Link to="/" className="browse-logo">
+                  <img src="https://my.mixtape.moe/eohwhz.png"/>
+                </Link>
+              </li>
+              <li>
+                <Link to="/discover">
+                  discover
+                </Link>
+              </li>
+              <li>
+                <form className="search-form">
+                  <input
+                    className="search-bar"
+                    type="text"
+                    placeholder="search Bandcamp"
+                  />
+                  <span className="search-submit-span">
+                    <button 
+                      className="search-submit"
+                      type="submit"
+                    >
+                      <i className="fas fa-search fa-lg"></i>
+                    </button>
+                  </span>
+                </form>
+              </li>
             </ul>
-            <ul className="browse-right">
-
-            </ul>
+            {this.props.currentUser ? this.loggedIn() : this.notLoggedIn()}
           </header>
         </div>
       

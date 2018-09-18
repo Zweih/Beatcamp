@@ -19,6 +19,8 @@ class UserProfile extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.pageUserId);
   }
+
+  
   
   render() {
     return(
