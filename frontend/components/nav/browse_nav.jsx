@@ -36,7 +36,7 @@ class BrowseNav extends React.Component {
     return (
       <ul className="browse-right">
         <li>
-          <Link to={`/user/${this.props.currentUser.id}`}>
+          <Link to={`/users/${this.props.currentUser.id}`}>
             collection
           </Link>
         </li>
