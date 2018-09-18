@@ -65,7 +65,7 @@ class BrowseNav extends React.Component {
                   <input
                     className="search-bar"
                     type="text"
-                    placeholder="search Bandcamp"
+                    placeholder="search Beatcamp"
                   />
                   <span className="search-submit-span">
                     <button 
