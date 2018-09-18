@@ -1,8 +1,6 @@
 .user-profile {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   width: 915px;
   min-height: 88vh;
   padding: 35px 30px 80px 30px;
@@ -15,10 +13,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // align-items: flex-start;
   width: 915px;
-  // height: 100%;
-  // padding-top: 35px;
 }
 
 .user-mid-col {

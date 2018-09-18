@@ -12,6 +12,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
 import DefaultNavContainer from "./nav/default_nav_container";
 import LoginNav from "./nav/login_nav";
+import LoginFormContainer from "./session_form/login_form_container";
 import BrowseNavContainer from "./nav/browse_nav_container";
 import UserProfileContainer from "./user/user_profile_container";
 
@@ -26,7 +27,10 @@ const App = () => (
           <Route path="/" component={BrowseNavContainer} />
         </Switch>
         <section className="content-section">
-          <Route path="/users/:userId" component={UserProfileContainer} />
+          <Switch>
+            <Route path="/users/:userId" component={UserProfileContainer} />
+            <AuthRoute exact path="/login" component={LoginFormContainer} />
+          </Switch>
         </section>
       </div>
     </HashRouter>
