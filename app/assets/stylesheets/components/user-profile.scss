@@ -1,0 +1,26 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 975px;
+  height: 100%;
+}
+
+.user-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 975px;
+  height: 100%;
+}
+
+.user-mid-col {
+  width: 756px;
+}
+
+.user-sidebar {
+  width: 120px;
+
+}

@@ -25,7 +25,9 @@ const App = () => (
           <Route exact path="/signup" component={DefaultNavContainer} />
           <Route path="/" component={BrowseNavContainer} />
         </Switch>
-        <Route path="/users/:userId" component={UserProfileContainer} />
+        <section className="content-section">
+          <Route path="/users/:userId" component={UserProfileContainer} />
+        </section>
       </div>
     </HashRouter>
   </div>
