@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.delete_all
 Album.delete_all
-User.create(username: "sennacy", password: "password1234", bio: "I am a cat", location: "New York")
+cat = User.create(username: "sennacy", password: "password1234", bio: "I am a cat", location: "New York")
+Album.create(title: "softness", description: "its good", user_id: cat.id)
