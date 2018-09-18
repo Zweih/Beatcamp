@@ -30,14 +30,14 @@ class UserProfile extends React.Component {
 
           </div>
           <div className="user-sidebar">
-            <img
-              className="user-avatar"
-              src={this.props.pageUser.avatar_url}
-            />
-            <h3>{this.props.pageUser.username}</h3>
-            <h3>{this.props.pageUser.bio}</h3>
-            <h3>{this.props.pageUser.location}</h3>
-          </div>   
+            { this.props.pageUser.avatar_url ? <img className="user-avatar" src={this.props.pageUser.avatar_url}
+            /> : "" }
+            <p className="user-title-location">
+              <span className="user-title">{this.props.pageUser.username}</span>
+              <span className="user-location">{this.props.pageUser.location}</span>
+            </p>
+            <p className="user-bio">{this.props.pageUser.bio}</p>
+          </div>
         </div>
       </div>
     );

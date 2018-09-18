@@ -42,4 +42,8 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
+
+  def avatar_url
+    self.avatar.attached? ? self.avatar.service_url : nil
+  end
 end
