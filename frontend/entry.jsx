@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Root from "./components/root";
 import configureStore from "./store/store";
 import * as SessionAPIUtil from "./util/session_api_util.js"
+import * as AlbumAPIUtil from "./util/album_api_util";
 
 document.addEventListener( "DOMContentLoaded", () => {
   let preloadedState = null;
@@ -36,6 +37,7 @@ document.addEventListener( "DOMContentLoaded", () => {
   window.updateUser = SessionAPIUtil.updateUser;
   window.login = SessionAPIUtil.login;
   window.logout = SessionAPIUtil.logout;
+  window.fetchAlbums = AlbumAPIUtil.fetchAlbums;
   // TESTING END
 
   ReactDOM.render(<Root store={store}/>, root);
