@@ -10,17 +10,19 @@ export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
 
 // Normal Action Creators
 
-const receiveCurrentUser = (user) => {
+const receiveCurrentUser = (payload) => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user,
+    user: payload.user,
+    albums: payload.albums,
   };
 };
 
-const receiveUser = (user) => {
+const receiveUser = (payload) => {
   return {
     type: RECEIVE_USER,
-    user,
+    user: payload.user,
+    albums: payload.albums,
   };
 };
 
