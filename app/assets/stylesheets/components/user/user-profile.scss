@@ -1,7 +1,7 @@
 .user-profile {
   display: flex;
   flex-direction: column;
-  width: 915px;
+  width: 975px;
   min-height: 88vh;
   padding: 35px 30px 80px 30px;
   margin: 0px 465px 40px 465px;
@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 915px;
+  width: 975px;
 }
 
 .user-sidebar {
@@ -46,10 +46,14 @@
 }
 
 .user-mid-col {
-  width: 756px;
+  width: 788px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.user-album-item {
+.user-cover-thumb {
   width: 368px;
   height: 368px;
+  margin: 0 26px 30px 0;
 }

@@ -14,7 +14,7 @@ const UserAlbumItem = (props) => {
           to={`/users/${props.pageUserId}/albums/${props.album.id}`}
         >
           <img 
-            className="user-cover-thumb"
+            className={`user-cover-thumb ${props.className}`}
             src={props.album.cover_url}
           />
         </Link>

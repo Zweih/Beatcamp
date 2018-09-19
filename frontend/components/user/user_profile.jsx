@@ -32,11 +32,11 @@ class UserProfile extends React.Component {
     const albumItems = this.props.userAlbums.map( (album, idx) => {
       return (
         <UserAlbumItem
-        className="userAlbumItem"
-        key={idx}
-        album={album}
-        pageUserId={this.pageUserId}
-        />
+          className={`${idx % 2 === 0 ? "leftmost-album" : ""}`}
+          key={idx}
+          album={album}
+          pageUserId={this.props.pageUserId}
+          />
         );
       });
       

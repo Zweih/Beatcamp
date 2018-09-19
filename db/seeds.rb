@@ -19,3 +19,7 @@ cat_album.cover.attach(io: file, filename: 'softness.jpg')
 cat_album = Album.create(title: "attac", description: "he sharp", user_id: cat.id)
 file = File.open('app/assets/images/attac.jpg')
 cat_album.cover.attach(io: file, filename: 'attac.jpg')
+
+cat_album = Album.create(title: "homeresonance", description: "that one album", user_id: cat.id)
+file = File.open('app/assets/images/homeresonance.jpg')
+cat_album.cover.attach(io: file, filename: 'homeresonance.jpg')
