@@ -6,6 +6,7 @@ export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const REMOVE_SESSION_ERRORS = "REMOVE_SESSION_ERRORS";
 export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
+export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
 
 // Normal Action Creators
 
@@ -21,6 +22,13 @@ const receiveUser = (user) => {
     type: RECEIVE_USER,
     user,
   };
+};
+
+const receiveAlbum = (album) => {
+  return {
+    type: RECEIVE_ALBUM,
+    album
+  }
 };
 
 const logoutCurrentUser = () => {
@@ -69,9 +77,8 @@ export const fetchUsers = () => {
       return dispatch(receiveAllUsers(users));
     }, (errors) => {
       return dispatch(receiveErrors(errors.responseJSON));
+    });
     }
-    );
-  }
 };
 
 export const fetchUser = (userId) => {
