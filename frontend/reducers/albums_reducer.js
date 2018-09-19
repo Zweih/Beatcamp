@@ -16,6 +16,7 @@ const albumsReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
     case RECEIVE_USER:
       const albums = {};
+
       Object.values(action.albums).forEach( (album) => { 
         return albums[album.id] = album;
       });

@@ -15,3 +15,7 @@ cat.avatar.attach(io: file, filename: 'sennacy.jpg')
 cat_album = Album.create(title: "softness", description: "its good", user_id: cat.id)
 file = File.open('app/assets/images/softness.jpg')
 cat_album.cover.attach(io: file, filename: 'softness.jpg')
+
+cat_album = Album.create(title: "attac", description: "he sharp", user_id: cat.id)
+file = File.open('app/assets/images/attac.jpg')
+cat_album.cover.attach(io: file, filename: 'attac.jpg')
