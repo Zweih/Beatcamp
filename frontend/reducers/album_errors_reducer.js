@@ -2,7 +2,7 @@ import {
   RECEIVE_ALBUM_ERRORS,
   REMOVE_ALBUM_ERRORS,
   RECEIVE_ALBUM,
-  RECEIVE_ALBUMS, } from "../actions/album_actions";
+  RECEIVE_ALL_ALBUMS, } from "../actions/album_actions";
 
 const AlbumErrorsReducer = (state = [], action) => {
   Object.freeze(state);
@@ -11,7 +11,7 @@ const AlbumErrorsReducer = (state = [], action) => {
       return action.errors;
     case REMOVE_ALBUM_ERRORS:
     case RECEIVE_ALBUM:
-    case RECEIVE_ALBUMS:
+    case RECEIVE_ALL_ALBUMS:
       return [];
     default:
       return state;
