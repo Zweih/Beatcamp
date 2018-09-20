@@ -46,6 +46,10 @@
 }
 
 .user-mid-col {
+  display: flex;
+}
+
+.user-album-items {
   width: 788px;
   display: flex;
   flex-wrap: wrap;

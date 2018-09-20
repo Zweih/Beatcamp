@@ -4,22 +4,22 @@ import {
   Link
 } from "react-router-dom";
 
-const UserAlbumItem = (props) => {
+const UserAlbumItem = ({ albumKeys }) => {
   return (
     <div>
       {
-        props.album ?
+        albumKeys.album ?
           <Link
-            className={`album-item ${props.className}`}
-            key={props.album.id} 
-            to={`/users/${props.pageUserId}/albums/${props.album.id}`}
+            className={`album-item ${albumKeys.className}`}
+            key={albumKeys.album.id} 
+            to={`/users/${albumKeys.pageUserId}/albums/${albumKeys.album.id}`}
           >
             <img 
               className="album-item-cover"
-              src={props.album.cover_url}
+              src={albumKeys.album.cover_url}
             />
           <p className="album-item-label">
-            {props.album.title}
+            {albumKeys.album.title}
           </p>
         </Link>
         : ""

@@ -12,6 +12,8 @@ import {
 import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 import UserHeader from "./user_header";
 import UserAlbumItem from "./user_album_item";
+// import UserAlbumItemList from "./user_album_item_list";
+import UserAlbumDetailContainer from "./user_album_detail_container";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -31,21 +33,39 @@ class UserProfile extends React.Component {
   render() {
     const albumItems = this.props.userAlbums.map( (album, idx) => {
       return (
-        <UserAlbumItem
-          className={`${idx % 2 === 0 ? "leftmost-album" : ""}`}
-          key={idx}
-          album={album}
-          pageUserId={this.props.pageUserId}
-          />
-        );
-      });
+        {
+          className: idx % 2 === 0 ? "leftmost-album" : "",
+          key: idx,
+          album: album,
+          albums: this.props.userAlbums,
+          pageUserId: this.props.pageUserId,
+        }
+      );
+    });
       
     return(
       <div className="user-profile">
         <UserHeader pageUser={this.props.pageUser} />
         <div className="user-main">
           <div className="user-mid-col">
-            {albumItems}
+            <HashRouter>
+              <div className="user-album-items">
+                {albumItems.map((albumKeys, idx) => {
+                  return (
+                    <Route 
+                      key={idx}
+                      exact path={"/users/:userId"}
+                      render={props => (
+                        <UserAlbumItem
+                          {...props}
+                          albumKeys={albumKeys}
+                        />
+                    )}/>
+                  )
+                })}
+              </div>
+            </HashRouter>
+            {/* MAKE SWITCH WITH ALBUMID AS PARAM */}
           </div>
           <div className="user-sidebar">
             { this.props.pageUser.avatar_url ? <img className="user-avatar" src={this.props.pageUser.avatar_url}
