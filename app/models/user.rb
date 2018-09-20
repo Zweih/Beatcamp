@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class User < ApplicationRecord
   attr_reader :password
   
@@ -47,5 +49,12 @@ class User < ApplicationRecord
 
   def avatar_url
     self.avatar.attached? ? self.avatar.service_url : nil
+  end
+
+  def attach_avatar(url)
+    url = URI.parse(url)
+    file = open(url)
+    self.avatar.purge
+    self.avatar.attach(io: file, filename: "temp.#{file.content_type_parse.first.split("/").last}", content_type: file.content_type_parse.first)
   end
 end

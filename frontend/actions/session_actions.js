@@ -73,6 +73,16 @@ export const signup = (user) => {
   };
 };
 
+export const updateUser = (user) => {
+  return (dispatch) => {
+    return SessionApiUtil.updateUser(user).then( (user) => {
+      return dispatch(receiveUser(user));
+    }, (errors) => {
+      return dispatch(receiveErrors(errors.responseJSON));
+    });
+  };
+};
+
 export const fetchUsers = () => {
   return (dispatch) => {
     return SessionApiUtil.fetchUsers().then( (users) => {

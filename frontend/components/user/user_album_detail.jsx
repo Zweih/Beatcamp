@@ -33,6 +33,13 @@ class UserAlbumDetail extends React.Component {
               <p className="user-album-artist">
                 by <Link to="/">{this.props.userAlbum.user}</Link>
               </p>
+              { this.props.currentUser.id === this.props.pageUserId ?
+                <Link to={`/users/${this.props.currentUser.id}/albums/${this.props.userAlbum.id}/edit`}>
+                  <button>
+                    Edit Album
+                  </button>
+                </Link>
+              : ""}
               <div>
                 {/* {TODO: ALBUM PURCHASE / STREAM INFO
                      SONG PLAYER */}

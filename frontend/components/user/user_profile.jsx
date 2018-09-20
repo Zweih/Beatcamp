@@ -59,6 +59,13 @@ class UserProfile extends React.Component {
               <span className="user-title">{this.props.pageUser.username}</span>
               <span className="user-location">{this.props.pageUser.location}</span>
             </p>
+             { this.props.currentUser.id === this.props.pageUserId ?
+              <Link to={`/users/${this.props.currentUser.id}/edit`}>
+                <button>
+                  Edit Profile
+                </button>
+              </Link>
+            : ""}
             <p className="user-bio">
               {this.props.pageUser.bio}
             </p>
