@@ -15,8 +15,8 @@ const usersReducer = (state = {}, action) => {
       return merge({}, state, { [action.user.id]: action.user });
     case RECEIVE_ALL_USERS:
       return Object.assign({}, state.users, action.users)
-    case RECEIVE_ALBUM:
-      return merge({}, state, { [action.user.id]: action.user });
+    // case RECEIVE_ALBUM:
+    //   return merge({}, state, { [action.user.id]: action.user });
     default:
       return state;
   }

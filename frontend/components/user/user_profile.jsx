@@ -37,7 +37,7 @@ class UserProfile extends React.Component {
           <div className="user-mid-col">
             <Switch>
               <Route
-                exact exact path={"/users/:userId"}
+                exact path={`/users/${this.props.pageUserId}`}
                 render={props => (
                   <UserAlbumItemList
                     {...props}
@@ -46,8 +46,11 @@ class UserProfile extends React.Component {
                   />
                 )}
               />
+              <Route
+                path={`/users/${this.props.pageUserId}/albums/:albumId`}
+                component={UserAlbumDetailContainer}
+              />
             </Switch>
-            {/* MAKE SWITCH WITH ALBUMID AS PARAM */}
           </div>
           <div className="user-sidebar">
             { this.props.pageUser.avatar_url ? <img className="user-avatar" src={this.props.pageUser.avatar_url}
