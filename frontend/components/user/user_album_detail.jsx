@@ -31,7 +31,7 @@ class UserAlbumDetail extends React.Component {
                 {this.props.userAlbum.title}
               </h1>
               <p className="user-album-artist">
-                by <Link to="/">{this.props.userAlbum.user}</Link>
+                by <Link to={`/users/${this.props.pageUserId}`}>{this.props.userAlbum.user}</Link>
               </p>
               { this.props.currentUser.id === this.props.pageUserId ?
                 <Link to={`/users/${this.props.currentUser.id}/albums/${this.props.userAlbum.id}/edit`}>
@@ -49,12 +49,12 @@ class UserAlbumDetail extends React.Component {
               </p>
             </div>
             <div className="right-album-col">
-              <Link 
-                className="user-album-cover"
-                to={this.props.userAlbum.cover_url}
-              >
-                <img src={this.props.userAlbum.cover_url}/>
-              </Link>
+              <a href={this.props.userAlbum.cover_url}>
+                <img 
+                  className="user-album-cover"
+                  src={this.props.userAlbum.cover_url}
+                />
+              </a>
             </div>
 
             </div>

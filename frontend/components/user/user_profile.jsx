@@ -47,7 +47,7 @@ class UserProfile extends React.Component {
                 )}
               />
               <Route
-                path={`/users/${this.props.pageUserId}/albums/:albumId`}
+                path={`/users/:userId/albums/:albumId`}
                 component={UserAlbumDetailContainer}
               />
             </Switch>
