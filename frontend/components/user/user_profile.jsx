@@ -29,20 +29,8 @@ class UserProfile extends React.Component {
     }
   }
   
-  render() {
-    const albumItems = this.props.userAlbums.map( (album, idx) => {
-      return (
-        {
-          className: idx % 2 === 0 ? "leftmost-album" : "",
-          key: idx,
-          album: album,
-          albums: this.props.userAlbums,
-          pageUserId: this.props.pageUserId,
-        }
-      );
-    });
-      
-    return(
+  render() {      
+    return (
       <div className="user-profile">
         <UserHeader pageUser={this.props.pageUser} />
         <div className="user-main">
@@ -53,7 +41,8 @@ class UserProfile extends React.Component {
                 render={props => (
                   <UserAlbumItemList
                     {...props}
-                    albumItems={albumItems}
+                    userAlbums={this.props.userAlbums}
+                    pageUserId={this.props.pageUserId}
                   />
                 )}
               />
@@ -67,7 +56,9 @@ class UserProfile extends React.Component {
               <span className="user-title">{this.props.pageUser.username}</span>
               <span className="user-location">{this.props.pageUser.location}</span>
             </p>
-            <p className="user-bio">{this.props.pageUser.bio}</p>
+            <p className="user-bio">
+              {this.props.pageUser.bio}
+            </p>
           </div>
         </div>
       </div>
