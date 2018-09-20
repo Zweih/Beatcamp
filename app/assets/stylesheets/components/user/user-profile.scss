@@ -52,8 +52,26 @@
   justify-content: space-between;
 }
 
-.user-cover-thumb {
+.album-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-decoration: none;
+  margin: 0 26px 30px 0;
+}
+
+.album-item:hover {
+  text-decoration: underline;
+}
+
+.album-item-cover {
   width: 368px;
   height: 368px;
-  margin: 0 26px 30px 0;
+}
+
+.album-item-label {
+  color: #0687F5;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0.7em 0 0.3em 0;
 }

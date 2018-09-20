@@ -9,14 +9,18 @@ const UserAlbumItem = (props) => {
     <div>
       {
         props.album ?
-        <Link 
-          key={props.album.id} 
-          to={`/users/${props.pageUserId}/albums/${props.album.id}`}
-        >
-          <img 
-            className={`user-cover-thumb ${props.className}`}
-            src={props.album.cover_url}
-          />
+          <Link
+            className={`album-item ${props.className}`}
+            key={props.album.id} 
+            to={`/users/${props.pageUserId}/albums/${props.album.id}`}
+          >
+            <img 
+              className="album-item-cover"
+              src={props.album.cover_url}
+            />
+          <p className="album-item-label">
+            {props.album.title}
+          </p>
         </Link>
         : ""
       }
