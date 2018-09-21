@@ -1,0 +1,49 @@
+.user-album-detail {
+  display: flex;
+  width: 788px;
+  justify-content: space-between;
+}
+
+.user-album-title {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.user-album-desc {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 24px;
+}
+
+.user-album-artist {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0.7em 0 0.3em 0;
+}
+
+.user-album-artist-link {
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #0687F5;
+}
+
+.user-album-artist-link:hover {
+  text-decoration: underline;
+}
+
+.left-album-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-album-col {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.user-album-cover {
+  width: 350px;
+  height: 350px;
+}

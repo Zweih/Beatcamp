@@ -25,13 +25,13 @@ class UserAlbumDetail extends React.Component {
       <div>
         {
           this.props.userAlbum ?
-          <div className="UserAlbumDetail">
+          <div className="user-album-detail">
             <div className="left-album-col">
               <h1 className="user-album-title">
                 {this.props.userAlbum.title}
               </h1>
               <p className="user-album-artist">
-                by <Link to={`/users/${this.props.pageUserId}`}>{this.props.userAlbum.user}</Link>
+                by <Link className="user-album-artist-link" to={`/users/${this.props.pageUserId}`}>{this.props.userAlbum.user}</Link>
               </p>
               {/* { this.props.currentUser.id === this.props.pageUserId ?
                 <Link to={`/users/${this.props.currentUser.id}/albums/${this.props.userAlbum.id}/edit`}>

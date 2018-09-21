@@ -56,7 +56,6 @@ class UserProfileEdit extends React.Component {
             <input
               type="text"
               value={this.state.avatar_url}
-              placeholder={this.props.currentUser.avatar_url}
               onChange={this.update("avatar_url")}
               className={`session-input, ${this.props.formClass}-input`}
             />
@@ -73,7 +72,8 @@ class UserProfileEdit extends React.Component {
               className={`session-input, ${this.props.formClass}-input`}
             />
           </div>
-          <label className={`${this.props.formClass}-label`}>
+          <div className={`${this.props.formClass}-item`}>
+            <label className={`${this.props.formClass}-label`}>
               New location
             </label>
             <input
@@ -83,6 +83,7 @@ class UserProfileEdit extends React.Component {
               onChange={this.update("location")}
               className={`session-input, ${this.props.formClass}-input`}
             />
+          </div>
           <div className={`${this.props.formClass}-item`}>
             <label className={`${this.props.formClass}-label`}>
               Confirm password
