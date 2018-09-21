@@ -69,7 +69,7 @@ class UserProfileEdit extends React.Component {
               value={this.state.bio}
               placeholder={this.props.currentUser.bio}
               onChange={this.update("bio")}
-              className={`session-input user-edit-bio-input ${this.props.formClass}-input`}
+              className={`session-input ${this.props.formClass}-input`}
             />
           </div>
           <div className={`${this.props.formClass}-item`}>
