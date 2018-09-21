@@ -40,6 +40,11 @@ class BrowseNav extends React.Component {
             collection
           </Link>
         </li>
+        <li className="browse-logout">
+          <a onClick={this.props.logout}>
+            logout
+          </a>
+        </li>
       </ul>
     )
   }

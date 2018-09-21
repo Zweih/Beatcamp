@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { logout } from "../../actions/session_actions";
 import BrowseNav from "./browse_nav";
 
 const mapStateToProps = (state) => {
@@ -6,6 +7,13 @@ const mapStateToProps = (state) => {
   return { currentUser };
 };
 
+const mapDispatchToProps = (dipatch) => {
+  return {
+    logout: () => dispatch(logout()),
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(BrowseNav);
