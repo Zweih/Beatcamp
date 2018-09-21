@@ -16,8 +16,8 @@ const receiveAlbum = (album) => {
 
 const receiveAllAlbums = (albums) => {
   return {
-    type: RECEIVE_ALBUM,
-    album,
+    type: RECEIVE_ALL_ALBUMS,
+    albums,
   };
 };
 

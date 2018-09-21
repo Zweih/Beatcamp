@@ -11,8 +11,9 @@ const mapStateToProps = (state, ownProps) => {
   const pageUserId = parseInt(ownProps.match.params.userId);
   const pageUser = selectUser(state.entities, pageUserId);
   const userAlbums = selectUserAlbums(state.entities, pageUser);
+  const nextUserId = pageUserId + 1;
   
-  return { currentUser, pageUser, pageUserId, userAlbums };
+  return { currentUser, pageUser, pageUserId, nextUserId, userAlbums };
 };
 
 const mapDispatchToProps = (dispatch) => {

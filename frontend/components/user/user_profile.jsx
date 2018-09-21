@@ -59,16 +59,25 @@ class UserProfile extends React.Component {
               <span className="user-title">{this.props.pageUser.username}</span>
               <span className="user-location">{this.props.pageUser.location}</span>
             </p>
-             { this.props.currentUser.id === this.props.pageUserId ?
+            <p className="user-bio">
+              {this.props.pageUser.bio}
+            </p>
+             { this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ?
               <Link to={`/users/${this.props.currentUser.id}/edit`}>
-                <button>
+                <button className="user-button">
                   Edit Profile
                 </button>
               </Link>
             : ""}
-            <p className="user-bio">
-              {this.props.pageUser.bio}
-            </p>
+            {
+              this.props.pageUser.username ?
+                <Link to={`/users/${this.props.nextUserId}`}>
+                  <button className="user-button">
+                    Next User
+                  </button>
+                </Link>
+              : ""
+            }
           </div>
         </div>
       </div>
