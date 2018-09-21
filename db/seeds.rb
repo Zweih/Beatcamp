@@ -29,28 +29,32 @@ cat_album.cover.attach(io: file, filename: 'v7ycqdgxzan11.jpg')
 
 Faker::UniqueGenerator.clear
 
-words = [
+
+def get_words(num)
+  words = [
     Faker::HeyArnold.quote,
     Faker::GreekPhilosophers.quote,
     Faker::Dog.meme_phrase,
     Faker::WorldOfWarcraft.quote,
     Faker::Hacker.say_something_smart,
     Faker::HarryPotter.quote
-]
+  ]
 
-locations = [
-  Faker::LordOfTheRings.location,
-  Faker::Address.city,
-  Faker::HeyArnold.location
-]
+  words[num]
+end
 
-names = [
-  Faker::SiliconValley.company,
-  Faker::RockBand.name
-]
+def get_locations(num)
+  locations = [
+    Faker::LordOfTheRings.location,
+    Faker::Address.city,
+    Faker::HeyArnold.location
+  ]
+
+  locations[num]
+end
 
 100.times do |i|
-  cat = User.create(username: Faker::RockBand.unique.name, password: Faker::Internet.password(10, 20, true), bio: words[rand(0..5)], location: locations[rand(0..2)])
+  cat = User.create(username: Faker::RockBand.unique.name, password: Faker::Internet.password(10, 20, true), bio: get_words(rand(0..5)), location: get_locations(rand(0..2)))
   profileUrl = (i % 2) ? Faker::LoremFlickr.image("400x400", ['cat']) : Faker::LoremFlickr.image("400x400", ['dog'])
   url = URI.parse(profileUrl)
   file = open(url, :allow_redirections => :safe)
@@ -60,7 +64,7 @@ names = [
 
   rando.times do
     albumTitle = (rando % 2) ? Faker::Music.album : Faker::Book.title
-    cat_album = Album.create(title: albumTitle, description: words[rand(0..5)], user_id: cat.id)
+    cat_album = Album.create(title: albumTitle, description: get_words(rand(0..5)), user_id: cat.id)
     albumUrl = (rando % 2) ? Faker::LoremFlickr.image("400x400", ['music']) : Faker::LoremFlickr.image("400x400", ['band'])
     url = URI.parse(albumUrl)
     file = open(url, :allow_redirections => :safe)
