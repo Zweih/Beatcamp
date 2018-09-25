@@ -96,7 +96,8 @@ class UserProfileEdit extends React.Component {
             />
           </div>
           <div className={`${this.props.formClass}-buttons`}>
-            <input type="submit"
+            <input
+              type="submit"
               value={this.props.formType}
               className={`${this.props.formClass}-button`}
             />
