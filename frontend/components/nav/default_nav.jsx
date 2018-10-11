@@ -27,7 +27,7 @@ class DefaultNav extends React.Component {
           <header className="main-header">
             <div className="left-header">
               <Link to="/" className="logo">
-                <img src="https://my.mixtape.moe/eohwhz.png"/>
+                <img src="https://s3.amazonaws.com/beatcamp-pro/bc-logotype-color-64.png"/>
               </Link>
               <LeftGreetingContainer />
             </div>

@@ -30,9 +30,9 @@ const App = () => (
         </Switch>
         <section className="content-section">
           <Switch>
-            {/* {
+            {
               <Route exact path="/" component={HomepageContainer} />
-            } */}
+            }
             <Route exact path="/users/:userId/edit" component={UserProfileEditContainer} />
             {
               // <Route path="/users/:userId" component={UserProfileContainer} />

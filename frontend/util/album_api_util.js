@@ -13,7 +13,17 @@ export const fetchAlbums = () => {
     method: "GET",
     url: "api/albums",
   });
-} ;
+};
+
+export const fetchHomeAlbums = () => {
+  return $.ajax({
+    method: "GET",
+    url: "api/albums",
+    data: {
+      num: 10,
+    }
+  });
+};
 
 export const fetchAlbum = (albumId) => {
   return $.ajax({

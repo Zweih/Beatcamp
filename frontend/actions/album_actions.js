@@ -66,6 +66,16 @@ export const fetchAlbums = () => {
   }
 }
 
+export const fetchHomeAlbums = () => {
+  return (dispatch) => {
+  return AlbumApiUtil.fetchHomeAlbums().then( (albums) => {
+    return dispatch(receiveAllAlbums(albums));
+  }), (errors) => {
+    return dispatch(receiveAlbumErrors(errors.responseJSON));
+    }
+  }
+}
+
 export const clearAlbumErrors = () => {
   return (dispatch) => {
     return dispatch(removeAlbumErrors());

@@ -1,0 +1,88 @@
+.home-main {
+  height: 492.38px;
+  width: 100vw;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.home-large {
+  width: 971.61px;
+  border-right: 2px solid white;
+}
+
+.home-large img {
+  width: 971.61px;
+  height: 492.38px;
+}
+
+.home-large img:hover {
+  filter: brightness(130%);
+  -webkit-filter: brightness(130%);
+  -moz-filter: brightness(130%);
+  -o-filter: brightness(130%);
+  -ms-filter: brightness(130%);
+}
+
+.home-small {
+  width: 339px;
+}
+
+.home-small li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  height: 162.89px;
+  border-bottom: 2px solid white;
+}
+
+.home-small img {
+  height: 162.89px;
+  width: 339.38px;
+}
+
+.home-small img:hover {
+  filter: brightness(130%);
+  -webkit-filter: brightness(130%);
+  -moz-filter: brightness(130%);
+  -o-filter: brightness(130%);
+  -ms-filter: brightness(130%);
+}
+
+.featured-albums {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.home-album {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.home-album > a {
+  text-decoration: none;
+}
+
+.home-album-cover {
+  margin-bottom: 10px;
+}
+
+.home-album-cover > img {
+  width: 200px;
+  height: 200px;
+}
+
+.home-album-artist {
+  font-size: 12px;
+  color: gray;
+}
+
+.home-album-title {
+  font-size: 13px;
+}
+
+a:link, a:visited {
+    color: black;
+}

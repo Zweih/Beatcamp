@@ -12,7 +12,14 @@ class Api::AlbumsController < ApplicationController
   end
 
   def index
-    @albums = Album.all
+    num = params[:num].to_i
+    
+    if num
+      @albums = Album.first(num)
+    else 
+      @albums = Album.all
+    end
+
     render "api/albums/index"
   end
 

@@ -47,6 +47,7 @@
 
 .user-mid-col {
   display: flex;
+  height: 100%;
 }
 
 .user-album-items {
@@ -81,8 +82,35 @@
   margin: 0.7em 0 0.3em 0;
 }
 
+.user-sidebar .user-album-items {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  // margin: 0 0 1.25em;
+  justify-content: space-between;
+}
+
+.user-sidebar .album-item {
+  margin: 0 0 12px 0;
+  width: 120px;
+}
+
+.user-sidebar .album-item-cover {
+  width: 120px;
+  height: 120px;
+}
+
+.user-sidebar .album-item-label {
+  font-size: 12px;
+}
+
+.user-sidebar h3 {
+  margin: 0 0 1.25em;
+  font-size: 14px;
+}
+
 .user-button {
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0px 1.75em 0px;
   display: inline-block;
   width: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

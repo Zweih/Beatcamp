@@ -20,7 +20,7 @@ const LoginNav = () => (
       <header className="login-main-header">
         <div className="login-left-header">
           <Link to="/" className="logo">
-            <img src="https://my.mixtape.moe/eohwhz.png"/>
+            <img src="https://s3.amazonaws.com/beatcamp-pro/bc-logotype-color-64.png"/>
           </Link>
         </div>
         <header className="login-right-header">

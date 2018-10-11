@@ -52,7 +52,7 @@ class UserProfile extends React.Component {
               />
             </Switch>
           </div>
-          <div className="user-sidebar">
+          <section className="user-sidebar">
             { this.props.pageUser.avatar_url ? <img className="user-avatar" src={this.props.pageUser.avatar_url}
             /> : "" }
             <p className="user-title-location">
@@ -78,7 +78,12 @@ class UserProfile extends React.Component {
                 </Link>
               : ""
             }
-          </div>
+            <h3>discography</h3>
+              <UserAlbumItemList
+                userAlbums={this.props.userAlbums}
+                pageUserId={this.props.pageUserId}
+              />
+          </section>
         </div>
       </div>
     );

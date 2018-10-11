@@ -57,7 +57,7 @@ class BrowseNav extends React.Component {
             <ul className="browse-left">
               <li>
                 <Link to="/" className="browse-logo">
-                  <img src="https://my.mixtape.moe/eohwhz.png"/>
+                  <img src="https://s3.amazonaws.com/beatcamp-pro/bc-logotype-color-64.png"/>
                 </Link>
               </li>
               <li>

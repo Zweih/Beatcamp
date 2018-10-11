@@ -1,17 +1,17 @@
 import { connect } from "react-redux";
 import Homepage from "./homepage";
-import { fetchAlbums } from "../actions/album_actions";
+import { fetchHomeAlbums } from "../actions/album_actions";
 
 const mapStateToProps = (state) => {
   const currentUser = state.entities.users[state.session.id];
-  const allAlbums = state.entities.albums;
+  const homeAlbums = Object.values(state.entities.albums);
   
-  return { currentUser, allAlbums };
+  return { currentUser, homeAlbums };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAlbums: () => dispatch(fetchAlbums()),
+    fetchHomeAlbums: () => dispatch(fetchHomeAlbums()),
   };
 };
 

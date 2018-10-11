@@ -12,63 +12,42 @@ import {
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      keys: false,
-    };
   }
 
   componentDidMount() {
-    this.props.fetchAlbums();
-    this.setState({keys: this.getDailyAlbums()})
+    this.props.fetchHomeAlbums();
   }
 
-  getDailyAlbums() {
-    return Object.keys(this.props.allAlbums);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // TODO: NEW PURCHASES
-    this.setState({keys: this.getDailyAlbums()})
-  }
-  
   render() {
-    const keys = this.getDailyAlbums();
-
     return (
-      <div className="user-profile">
-        <div className="user-main">
-          <div className="bc-daily">
-            <h3 className="bc-daily-title">BEATCAMP DAILY</h3>
-            <div className="bc-d-top">
-              <div className="bc-d-first">
-                <img src={this.allAlbums ? this.allAlbums[keys[0]].cover_url : ""}/>
+      <div>
+        {this.props.homeAlbums.length > 5 ? 
+        <div className="home-main">
+          <div className="home-large"><Link to={`users/${this.props.homeAlbums[0].user_id}`}><img src="https://f4.bcbits.com/img/0014498149_0"/></Link></div>
+          <ul className="home-small">
+            <li><Link to={`users/${this.props.homeAlbums[8].user_id}`}><img src="https://f4.bcbits.com/img/0014498598_170.jpg"/></Link></li>
+            <li><Link to={`users/${this.props.homeAlbums[7].user_id}`}><img src="https://f4.bcbits.com/img/0014497570_170.jpg"/></Link></li>
+            <li><Link to={`users/${this.props.homeAlbums[9].user_id}`}><img src="https://f4.bcbits.com/img/0014504111_170.jpg"/></Link></li>
+          </ul>
+        </div> : "" }
+          <div className="featured-albums">
+            {this.props.homeAlbums.length > 5 ?
+            this.props.homeAlbums.slice(2, 7).map((album, idx) => {
+              return (
+              <div key={idx + "a"} className="home-album">
+                <Link 
+                  key={idx + "b"}
+                  to={`/users/${album.user_id}/albums/${album.id}`}
+                >
+                <li key={idx + "c"} className="home-album-cover">
+                <img key={idx + "d"} src={album.cover_url}/></li>
+                <li key={idx + "e"} className="home-album-artist">{album.artist}</li>
+                <li key={idx + "f"} className="home-album-title">{album.title}</li>
+                </Link>
               </div>
-              <div className="bc-d-item">
-                 
-              </div>
-              <div className="bc-d-item">
-                 
-              </div>
-            </div>
-            <div className="bc-d-bottom">
-              <div className="bc-d-item">
-                 
-              </div>
-              <div className="bc-d-item">
-                 
-              </div>
-              <div className="bc-d-item">
-                 
-              </div>
-              <div className="bc-d-item">
-                 
-              </div>
-              <div className="bc-d-item">
-                 
-              </div>
-            </div>
+              );
+            }) : ""}
           </div>
-        </div>
       </div>
     );
   }
