@@ -7,4 +7,4 @@ This is a Bandcamp inspired single-page web application for sharing music built 
 [ ] - inline seamless audio player \
 [ ] - user follows \
 [ ] - music purchasing \
-[ ] - dynamic instant search \
+[ ] - dynamic instant search
