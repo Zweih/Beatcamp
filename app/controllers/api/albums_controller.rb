@@ -4,7 +4,6 @@ class Api::AlbumsController < ApplicationController
     @album.description = ""
 
     if @album.save
-      login!(@album)
       render "api/albums/show"
     else
       render json: @album.errors.full_messages, status: 422

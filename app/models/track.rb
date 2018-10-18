@@ -5,7 +5,7 @@ class Track < ApplicationRecord
 
   belongs_to :album
 
-  def cover_url
+  def audio_url
     self.audio.attached? ? self.audio.service_url : nil
   end
 end

@@ -1,10 +1,8 @@
 class Api::TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
-    @track.description = ""
 
     if @track.save
-      login!(@track)
       render "api/tracks/show"
     else
       render json: @track.errors.full_messages, status: 422
