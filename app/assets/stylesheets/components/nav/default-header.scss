@@ -1,143 +1,162 @@
 #header-wrapper {
-  width: 100%;
-  height: 105px;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  top: 0;
-  left: 0;
-  border-bottom: 1px solid #bebebe;
-  display: flex;
-  direction: column;
-  justify-content: center;
+	width: 100%;
+	height: 105px;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	top: 0;
+	left: 0;
+	border-bottom: 1px solid #bebebe;
+	display: flex;
+	direction: column;
+	justify-content: center;
 }
 
 .main-header {
-  display: flex;
-  overflow: hidden;
-  background-color: #FFFFFF;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 22px;
-  width: 1106px;
+	display: flex;
+	overflow: hidden;
+	background-color: #FFFFFF;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-bottom: 22px;
+	width: 1106px;
 }
 
 .left-header, .right-header {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 .left-header {
-  width: 636px;
-  justify-content: flex-start;
+	width: 636px;
 }
 
 .logo {
-  background-color: transparent;
+	background-color: transparent;
 }
 
 .header-text {
-  color: #408ea3;
-  font-size: 16px;
-  font-weight: 400;
+	color: #408ea3;
+	font-size: 16px;
+	font-weight: 400;
 }
 
 .right-header {
-  width: 448px;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-left: 20px;
+	width: 448px;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-left: 20px;
 }
 
 .search-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
 .search-bar {
-  width: 206px;
-  padding: 0px 0px 0px 10px;
-  margin-right: none;
-  height: 26px;
-  font-size: 13px;
-  font-weight: 400;
-  color: rgba(22,17,19,0.7);
-  border: solid 1px #bebebe;
-  border-right: none;
-  border-radius: 3px 0px 0px 3px;
+	width: 206px;
+	padding: 0px 0px 0px 10px;
+	margin-right: none;
+	height: 26px;
+	font-size: 13px;
+	font-weight: 400;
+	color: rgba(22,17,19,0.7);
+	border: solid 1px #bebebe;
+	border-right: none;
+	border-radius: 3px 0px 0px 3px;
 }
 
 .search-submit-span {
-  padding-top: 4px;
-  padding-right: 2px;
-  border: solid 1px #bebebe;
-  border-left: none;
-  border-radius: 0px 3px 3px 0px;
+	padding-top: 4px;
+	padding-right: 2px;
+	border: solid 1px #bebebe;
+	border-left: none;
+	border-radius: 0px 3px 3px 0px;
 }
 
 .search-submit {
-  background: transparent;
-  border: none;
-  padding: 3px 3px 3px 3px;
+	background: transparent;
+	border: none;
+	padding: 3px 3px 3px 3px;
 }
 
 .header-links, .login-signup ul {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .login-signup {
-  margin-top: 15px;
+	margin-top: 15px;
 }
 
 .header-links li {
-  border-right: 1px solid #e5e5e5;
-  padding: 0px 12px 0px 5px;
+	border-right: 1px solid #e5e5e5;
+	padding: 0px 12px 0px 5px;
 }
 
 .left-greeting li {
-  border-right: 1px solid #e5e5e5;
-  padding: 0px 10px 0px 10px;
+	border-right: 1px solid #e5e5e5;
+	padding: 0px 10px 0px 10px;
 }
 
 .left-greeting li {
-  background-color: transparent;
-  color:#161113;
-  font-weight: 700;
-  font-size: 14px;
-  text-align: center;
-  text-decoration: none;
+	background-color: transparent;
+	color:#161113;
+	font-weight: 700;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.header-links {
+	align-items: center;
+	height: 25px;
+}
+
+.header-links li {
+	display: flex;
+	align-items: center;
+}
+
+.header-links li img{
+	width: 25px;
+	height: 25px;
 }
 
 .header-link {
-  background-color: transparent;
-  color:#161113;
-  font-weight: 700;
-  font-size: 14px;
-  text-align: center;
-  text-decoration: none;
+	background-color: transparent;
+	color:#161113;
+	font-weight: 700;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+}
+
+p.header-link.username {
+	margin-left: 8px;
 }
 
 .header-link:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .header-links li:last-child {
-  border-right: none;
-  padding-right: 0;
+	border-right: none;
+	padding-right: 0;
 }
 
 .left-greeting .header-links li:first-child {
-  padding-left: 0;
+	padding-left: 0;
 }
 
 .left-greeting .header-links li:first-child p:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .left-greeting .header-links li:first-child p {
-  font-weight: 400;
-  color: rgb(119, 119, 119);
+	font-weight: 400;
+	color: rgb(119, 119, 119);
 }
