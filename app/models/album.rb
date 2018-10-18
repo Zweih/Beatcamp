@@ -1,5 +1,4 @@
 class Album < ApplicationRecord
-
   validates :title, :user_id, presence: true
   validates :description, length: { maximum: 400 }
 
