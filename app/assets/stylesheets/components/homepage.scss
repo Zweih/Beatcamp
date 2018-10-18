@@ -1,3 +1,10 @@
+.content-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .home-main {
   height: 492.38px;
   width: 100vw;
@@ -50,10 +57,11 @@
 }
 
 .featured-albums {
+	display: flex;
+	justify-content: space-between;
+	width: 1106px;
   margin-top: 50px;
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
+	list-style: none;
 }
 
 .home-album {

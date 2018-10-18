@@ -20,7 +20,7 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="content-container">
         {this.props.homeAlbums.length > 5 ? 
         <div className="home-main">
           <div className="home-large"><Link to={`users/${this.props.homeAlbums[0].user_id}`}><img src="https://f4.bcbits.com/img/0014498149_0"/></Link></div>
