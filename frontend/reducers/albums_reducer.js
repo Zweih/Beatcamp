@@ -5,7 +5,7 @@ import {
 
 import {
 	 RECEIVE_ALBUM,
-	 RECEIVE_ALL_ALBUMS
+	 RECEIVE_ALBUMS
 } from "../actions/album_actions";
 
 import merge from "lodash/merge";
@@ -25,7 +25,7 @@ const albumsReducer = (state = {}, action) => {
 			return merge({}, state.albums, albums);
 		case RECEIVE_ALBUM:
 			return merge({}, state, { [action.album.id]: action.album });
-		case RECEIVE_ALL_ALBUMS:
+		case RECEIVE_ALBUMS:
 			return merge({}, state, action.albums);
 		default:
 			return state;

@@ -7,7 +7,7 @@ export const selectAlbumTracks = (entities, album) => {
 };
 
 export const selectUserAlbum = (entities, albumId) => {
-  return entities.albums[albumId];
+  return entities.albums[albumId] || { track_ids: [] };
 };
 
 export const selectUser = (entities, userId) => {

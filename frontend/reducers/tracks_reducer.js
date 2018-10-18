@@ -2,6 +2,10 @@ import {
 	 RECEIVE_ALBUM
  } from "../actions/album_actions";
 
+ import {
+	RECEIVE_USER
+} from "../actions/session_actions";
+
 import {
 		RECEIVE_TRACK,
 		RECEIVE_ALL_TRACKS

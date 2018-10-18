@@ -1,22 +1,31 @@
 import * as AlbumApiUtil from "../util/album_api_util";
 
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM";
-export const RECEIVE_ALL_ALBUMS = "RECEIVE_ALBUMS";
+export const RECEIVE_ALBUMS = "RECEIVE_ALBUMS";
 export const RECEIVE_ALBUM_ERRORS = "RECEIVE_ALBUM_ERRORS";
 export const REMOVE_ALBUM_ERRORS = "REMOVE_ALBUM_ERRORS";
 
 // Normal Action Creators
 
-const receiveAlbum = (album) => {
+// const receiveAlbum = (album) => {
+//   return {
+//     type: RECEIVE_ALBUM,
+//     album,
+//   };
+// };
+
+const receiveAlbum = (payload) => {
   return {
     type: RECEIVE_ALBUM,
-    album,
-  };
+		album: payload.album,
+		tracks: payload.tracks,
+  }
 };
 
-const receiveAllAlbums = (albums) => {
+
+const receiveAlbums = (albums) => {
   return {
-    type: RECEIVE_ALL_ALBUMS,
+    type: RECEIVE_ALBUMS,
     albums,
   };
 };
@@ -59,7 +68,7 @@ export const fetchAlbum = (albumId) => {
 export const fetchAlbums = () => {
   return (dispatch) => {
     return AlbumApiUtil.fetchAlbums().then( (albums) => {
-      return dispatch(receiveAllAlbums(albums));
+      return dispatch(receiveAlbums(albums));
     }), (errors) => {
       return dispatch(receiveAlbumErrors(errors.responseJSON));
     }
@@ -69,7 +78,7 @@ export const fetchAlbums = () => {
 export const fetchHomeAlbums = () => {
   return (dispatch) => {
   return AlbumApiUtil.fetchHomeAlbums().then( (albums) => {
-    return dispatch(receiveAllAlbums(albums));
+    return dispatch(receiveAlbums(albums));
   }), (errors) => {
     return dispatch(receiveAlbumErrors(errors.responseJSON));
     }

@@ -14,7 +14,7 @@ const receiveCurrentUser = (payload) => {
   return {
     type: RECEIVE_CURRENT_USER,
     user: payload.user,
-    albums: payload.albums,
+		albums: payload.albums,
   };
 };
 
@@ -22,16 +22,18 @@ const receiveUser = (payload) => {
   return {
     type: RECEIVE_USER,
     user: payload.user,
-    albums: payload.albums,
+		albums: payload.albums,
+		tracks: payload.tracks,
   };
 };
 
-const receiveAlbum = (album) => {
-  return {
-    type: RECEIVE_ALBUM,
-    album
-  }
-};
+// const receiveAlbum = (payload) => {
+//   return {
+//     type: RECEIVE_ALBUM,
+// 		album: payload.album,
+// 		tracks: payload.albums,
+//   }
+// };
 
 const logoutCurrentUser = () => {
   return {
