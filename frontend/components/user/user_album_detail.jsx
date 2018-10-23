@@ -30,7 +30,7 @@ class UserAlbumDetail extends React.Component {
               <h1 className="user-album-title">
                 {this.props.userAlbum.title}
               </h1>
-							{console.log(this.props.albumTracks)}
+							
               <p className="user-album-artist">
                 by <Link className="user-album-artist-link" to={`/users/${this.props.pageUserId}`}>{this.props.userAlbum.user}</Link>
               </p>
