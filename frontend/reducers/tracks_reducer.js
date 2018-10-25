@@ -20,7 +20,7 @@ const tracksReducer = (state = {}, action) => {
 				return tracks[track.id] = track;
 			});
 
-			return merge({}, state.tracks, tracks);
+			return merge({}, state, tracks);
 		case RECEIVE_TRACK:
 			return merge({}, state, { [action.track.id]: action.track });
 		case RECEIVE_ALL_TRACKS:

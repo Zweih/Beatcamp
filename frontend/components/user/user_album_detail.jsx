@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  Route,
   Link,
   withRouter
 } from "react-router-dom";
+import AudioPlayerContainer from "../audio_player/audio_player_container";
 
 class UserAlbumDetail extends React.Component {
   constructor(props) {
@@ -42,8 +42,10 @@ class UserAlbumDetail extends React.Component {
                 </Link>
               : ""} */}
               <div>
-                {/* {TODO: ALBUM PURCHASE / STREAM INFO
-                     SONG PLAYER */}
+								<AudioPlayerContainer
+									tracks={this.props.albumTracks}
+									album={this.props.userAlbum}
+								/>
               </div>
 							<h3 className="digital-album">
 								Digital Album

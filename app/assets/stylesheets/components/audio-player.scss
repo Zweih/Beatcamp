@@ -1,8 +1,60 @@
-#central-controls {
-	display: flex;
-	justify-content: space-around;
+.inline-player .next,
+.inline-player .prev {
+    background:transparent url(https://s3.amazonaws.com/beatcamp-pro/nextprev.png) no-repeat 0 0;
+    background-size: 40px 12px;
+    cursor: pointer;
+    width: 20px;
+    height: 12px;
+    margin:0 0 1px;
 }
 
-#central-controls div {
+.inline-player .next {
+	background-position: 100% 0;
+}
+
+.inline-player .play-pause {
+	background-image: transparent url(https://s3.amazonaws.com/beatcamp-pro/playpause.gif) no-repeat 0 0;
+	background:#fff;
+	border: 1px solid #d9d9d9;
+	border-radius: 2px;
 	cursor: pointer;
+	min-height: 50px;
+	min-width: 54px;
+}
+
+.inline-player .play-pause:after {
+	content:'';
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 11px inset transparent;
+	border-bottom: 11px inset transparent;
+	border-left: 20px solid #222;
+	border-right:0;
+	margin: 14px 0 0 18px;
+}
+
+.inline-player .play-pause.playing:after {
+	content:'';
+	border:0;
+	border-left:7px solid #2d2d2d;
+	border-right:7px solid #2d2d2d;
+	height:22px;
+	width:4px;
+	margin: 14px auto;
+}
+
+.middle-top {
+	display: flex;
+	flex-direction: row;
+}
+
+.song-title {
+	font-weight: 500;
+	padding-right: 0.5em;
+}
+
+
+#central-controls {
+	display: flex;
 }

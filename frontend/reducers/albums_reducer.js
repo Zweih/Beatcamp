@@ -22,7 +22,7 @@ const albumsReducer = (state = {}, action) => {
 				return albums[album.id] = album;
 			});
 
-			return merge({}, state.albums, albums);
+			return merge({}, state, albums);
 		case RECEIVE_ALBUM:
 			return merge({}, state, { [action.album.id]: action.album });
 		case RECEIVE_ALBUMS:
