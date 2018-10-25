@@ -1,5 +1,4 @@
 var path = require('path');
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: path.join(__dirname, "frontend", "entry.jsx"),
@@ -25,5 +24,4 @@ module.exports = {
       }
     ]
 	},
-	plugins: [new BundleAnalyzerPlugin()]
 };
