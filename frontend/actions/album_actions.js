@@ -7,13 +7,6 @@ export const REMOVE_ALBUM_ERRORS = "REMOVE_ALBUM_ERRORS";
 
 // Normal Action Creators
 
-// const receiveAlbum = (album) => {
-//   return {
-//     type: RECEIVE_ALBUM,
-//     album,
-//   };
-// };
-
 const receiveAlbum = (payload) => {
   return {
     type: RECEIVE_ALBUM,

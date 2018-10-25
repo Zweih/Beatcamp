@@ -1,15 +1,11 @@
 import React from "react";
-import { Provider } from "react-redux";
 import {
   Route,
-  Redirect,
   Switch,
   Link,
-  withRouter,
-  HashRouter
+  withRouter
 } from "react-router-dom";
 
-import { AuthRoute, ProtectedRoute } from "../../util/route_util";
 import UserHeader from "./user_header";
 import UserAlbumItemList from "./user_album_item_list";
 import UserAlbumDetailContainer from "./user_album_detail_container";

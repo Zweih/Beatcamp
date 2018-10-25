@@ -2,16 +2,12 @@ import {
 	 RECEIVE_ALBUM
  } from "../actions/album_actions";
 
- import {
-	RECEIVE_USER
-} from "../actions/session_actions";
-
 import {
 		RECEIVE_TRACK,
 		RECEIVE_ALL_TRACKS
 	} from "../actions/track_actions";
 
-import merge from "lodash/merge";
+import merge from "lodash.merge";
 
 const tracksReducer = (state = {}, action) => {
 	Object.freeze(state);

@@ -1,12 +1,7 @@
 import React from "react";
-import { Provider } from "react-redux";
 import {
-  Route,
-  Redirect,
-  Switch,
   Link,
   withRouter,
-  HashRouter
 } from "react-router-dom";
 
 class Homepage extends React.Component {

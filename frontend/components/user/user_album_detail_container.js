@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { selectUserAlbum, selectUser, selectAlbumTracks } from "../../reducers/selectors";
+import { selectUserAlbum, selectAlbumTracks } from "../../reducers/selectors";
 import { fetchAlbum } from "../../actions/album_actions";
 import UserAlbumDetail from "./user_album_detail";
 

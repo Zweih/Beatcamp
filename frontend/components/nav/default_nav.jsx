@@ -1,14 +1,10 @@
 import React from "react";
-import { Provider } from "react-redux";
 import {
-  Route,
-  Redirect,
   Switch,
-  Link,
-  HashRouter
+  Link
 } from "react-router-dom";
 
-import { AuthRoute, ProtectedRoute } from "../../util/route_util"; 
+import { AuthRoute } from "../../util/route_util"; 
 
 import RightGreetingContainer from "../greeting/greeting_container";
 import LeftGreetingContainer from "../greeting/left_greeting_container"; 

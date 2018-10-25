@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import UserProfileEdit from "./user_profile_edit";
 import { 

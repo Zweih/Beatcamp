@@ -15,8 +15,9 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
-    "lodash": "^4.17.10",
+    "lodash.merge": "^4.6.1",
     "react": "^16.5.0",
+    "react-audio-player": "^0.11.0",
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
@@ -26,6 +27,7 @@
     "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }

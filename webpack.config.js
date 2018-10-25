@@ -1,4 +1,5 @@
 var path = require('path');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: path.join(__dirname, "frontend", "entry.jsx"),
@@ -9,19 +10,20 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", "*"]
   },
-  devtool: "eval-source-map",
+  devtool: "source-map",
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(jsx)$/,
         use: {
           loader: 'babel-loader',
           query: {
             presets: ['@babel/env', '@babel/react']
           }
         },
-        exclude: /node_modules/
+        exclude: /(node_modules)/
       }
     ]
-  }
+	},
+	plugins: [new BundleAnalyzerPlugin()]
 };

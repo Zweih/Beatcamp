@@ -10,5 +10,5 @@ npm install --save @babel/core
 npm install --save @babel/preset-env
 npm install --save @babel/preset-react
 npm install --save babel-loader
-npm install --save lodash
+npm install --save lodash.merge
 npm install --save redux-thunk

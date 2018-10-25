@@ -8,7 +8,7 @@ import {
 	 RECEIVE_ALBUMS
 } from "../actions/album_actions";
 
-import merge from "lodash/merge";
+import merge from "lodash.merge";
 
 const albumsReducer = (state = {}, action) => {
 	Object.freeze(state);
