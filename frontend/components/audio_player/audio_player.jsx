@@ -40,8 +40,9 @@ class AudioPlayer extends React.Component {
 
 		this.audio.onpause = () => {
 			clearInterval(this.currentTimeInterval);
+			this.setState({ playing: false});
 			
-			if(this.state.progress > 249.0) {
+			if(this.state.progress > 249.0 && this.state.cTrackNum < this.props.tracks.length - 1) {
 				this.handleTrack(1);
 			}
 		};

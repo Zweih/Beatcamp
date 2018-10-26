@@ -617,7 +617,11 @@ function (_React$Component) {
       this.audio.onpause = function () {
         clearInterval(_this2.currentTimeInterval);
 
-        if (_this2.state.progress > 249.0) {
+        _this2.setState({
+          playing: false
+        });
+
+        if (_this2.state.progress > 249.0 && _this2.state.cTrackNum < _this2.props.tracks.length - 1) {
           _this2.handleTrack(1);
         }
       };

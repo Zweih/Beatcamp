@@ -15,16 +15,16 @@ cat = User.create(username: "sennacy", password: "password1234", bio: "I am a ca
 file = File.open('app/assets/images/sennacy.jpg')
 cat.avatar.attach(io: file, filename: 'sennacy.jpg')
 
-cat_album = Album.create(title: "softness", description: "its good", user_id: cat.id)
-file = File.open('app/assets/images/softness.jpg')
+cat_album = Album.create(title: "demo album", description: "its a good demo, huh?", user_id: cat.id)
+file = File.open('app/assets/images/1.jpg')
 cat_album.cover.attach(io: file, filename: 'softness.jpg')
 
-cat_album = Album.create(title: "attac", description: "he sharp", user_id: cat.id)
-file = File.open('app/assets/images/attac.jpg')
+cat_album = Album.create(title: "another one", description: "A sharp album for a sharp demo", user_id: cat.id)
+file = File.open('app/assets/images/2.jpg')
 cat_album.cover.attach(io: file, filename: 'attac.jpg')
 
-cat_album = Album.create(title: "funky little cowboy", description: "that one album that's superb", user_id: cat.id)
-file = File.open('app/assets/images/v7ycqdgxzan11.jpg')
+cat_album = Album.create(title: "little cowboy", description: "that one album that's superb", user_id: cat.id)
+file = File.open('app/assets/images/3.jpg')
 cat_album.cover.attach(io: file, filename: 'v7ycqdgxzan11.jpg')
 
 Faker::UniqueGenerator.clear
