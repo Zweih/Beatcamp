@@ -6,13 +6,13 @@ class AudioPlayer extends React.Component {
 		super(props);
 		
 		this.state = {
-			currentTrackUrl: this.props.defaultTrackUrl,
-			currentTrackNum: this.props.defaultTrackNum,
-			currentTrackTitle: "",
+			cTrackTitle: this.props.cTrackTitle,
+			cTrackUrl: this.props.cTrackUrl,
+			cTrackNum: this.props.cTrackNum,
 			album: this.props.album,
 			playing: false,
 			duration: null,
-			currentTime: null,
+			cTime: null,
 			progress: 0
 		}
 
@@ -25,14 +25,14 @@ class AudioPlayer extends React.Component {
 		this.audio.onloadedmetadata = function() {
 			this.setState({
 				duration: this.audio.duration,
-				currentTime: this.audio.currentTime,
-				progress: 0,
+				cTime: this.audio.currentTime,
+				progress: 0
 		});}.bind(this);
 
 		this.audio.onplay = () => {
 			this.currentTimeInterval = setInterval( () => {
 				this.setState({
-					currentTime: this.audio.currentTime,
+					cTime: this.audio.currentTime,
 					progress: this.audio.currentTime / this.audio.duration * 250
 				});
 			}, 500);
@@ -48,18 +48,18 @@ class AudioPlayer extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.album.id !== this.state.album.id) {
+		if(nextProps.album.id !== this.state.album.id) {
 			this.setState({ 
-				currentTrackUrl: nextProps.defaultTrackUrl,
-				currentTrackNum: nextProps.defaultTrackNum,
+				cTrackUrl: nextProps.cTrackUrl,
+				cTrackNum: nextProps.cTrackNum,
 				autoPlay: false,
 				playing: false
 			});
-		}
-
-		if(this.props.tracks[this.props.defaultTrackNum]) {
+		} 
+		
+		if(nextProps.tracks[nextProps.cTrackNum]) {
 			this.setState({
-				currentTrackTitle: this.props.tracks[this.props.defaultTrackNum].title
+				cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title
 			});
 		}
 	}
@@ -73,16 +73,16 @@ class AudioPlayer extends React.Component {
 	}
 
 	handleTrack(direction) {
-		let newTrackNum = this.state.currentTrackNum + direction;
+		let newTrackNum = this.state.cTrackNum + direction;
 		const trackLen = this.props.tracks.length;
 		newTrackNum = ((newTrackNum % trackLen) + trackLen) % trackLen;
 		const newTrackUrl = this.props.tracks[newTrackNum].audio_url;
 		const newTrackTitle = this.props.tracks[newTrackNum].title;
 
 		this.setState({
-			currentTrackUrl: newTrackUrl,
-			currentTrackNum: newTrackNum,
-			currentTrackTitle: newTrackTitle,
+			cTrackUrl: newTrackUrl,
+			cTrackNum: newTrackNum,
+			cTrackTitle: newTrackTitle,
 			autoPlay: true,
 			playing: true
 		});
@@ -93,7 +93,7 @@ class AudioPlayer extends React.Component {
 		this.audio.currentTime = newTime;
 		
 		this.setState({
-			currentTime: newTime,
+			cTime: newTime,
 			progress: e.currentTarget.value
 		});
   }
@@ -110,7 +110,7 @@ class AudioPlayer extends React.Component {
 					<div className="inline-player">
 						<audio
 							ref={(audio) => { this.audio = audio }}
-							src={this.state.currentTrackUrl}
+							src={this.state.cTrackUrl}
 							autoPlay={this.state.autoPlay}
 						/>
 						<div id="central-controls">
@@ -120,11 +120,11 @@ class AudioPlayer extends React.Component {
 								></span>
 							<div className="middle-top">
 								<p className="song-title">
-									{this.state.currentTrackTitle}
+									{this.state.cTrackTitle}
 								</p>
 								<p>
 									{this.state.duration ?
-									this.fmtMSS(this.state.currentTime) + " / " + this.fmtMSS(this.state.duration)
+									this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration)
 									: ""}
 								</p>
 							</div>

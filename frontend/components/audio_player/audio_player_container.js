@@ -7,10 +7,17 @@ const mapStateToProps = (state, ownProps) => {
 		return a.list_num - b.list_num;
 	});
 
-	const defaultTrackUrl = tracks[0] ? tracks[0].audio_url : "";
-	const defaultTrackNum = 0;
+	const cTrackNum = ownProps.cTrackNum || 0;
+	const cTrackUrl = tracks[cTrackNum] ? tracks[cTrackNum].audio_url : "";
+	const cTrackName = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
 
-	return { tracks, album, defaultTrackUrl, defaultTrackNum };
+	return { 
+		tracks, 
+		album, 
+		cTrackUrl,
+		cTrackName, 
+		cTrackNum,
+	};
 };
 
 export default connect(

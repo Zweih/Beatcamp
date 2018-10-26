@@ -235,6 +235,7 @@ const receiveCurrentUser = (payload) => {
     type: RECEIVE_CURRENT_USER,
     user: payload.user,
 		albums: payload.albums,
+		tracks: payload.tracks
   };
 };
 
@@ -246,14 +247,6 @@ const receiveUser = (payload) => {
 		tracks: payload.tracks,
   };
 };
-
-// const receiveAlbum = (payload) => {
-//   return {
-//     type: RECEIVE_ALBUM,
-// 		album: payload.album,
-// 		tracks: payload.albums,
-//   }
-// };
 
 const logoutCurrentUser = () => {
   return {
@@ -584,13 +577,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AudioPlayer).call(this, props));
     _this.state = {
-      currentTrackUrl: _this.props.defaultTrackUrl,
-      currentTrackNum: _this.props.defaultTrackNum,
-      currentTrackTitle: "",
+      cTrackTitle: _this.props.cTrackTitle,
+      cTrackUrl: _this.props.cTrackUrl,
+      cTrackNum: _this.props.cTrackNum,
       album: _this.props.album,
       playing: false,
       duration: null,
-      currentTime: null,
+      cTime: null,
       progress: 0
     };
     _this.handleTrack = _this.handleTrack.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -607,7 +600,7 @@ function (_React$Component) {
       this.audio.onloadedmetadata = function () {
         this.setState({
           duration: this.audio.duration,
-          currentTime: this.audio.currentTime,
+          cTime: this.audio.currentTime,
           progress: 0
         });
       }.bind(this);
@@ -615,7 +608,7 @@ function (_React$Component) {
       this.audio.onplay = function () {
         _this2.currentTimeInterval = setInterval(function () {
           _this2.setState({
-            currentTime: _this2.audio.currentTime,
+            cTime: _this2.audio.currentTime,
             progress: _this2.audio.currentTime / _this2.audio.duration * 250
           });
         }, 500);
@@ -634,16 +627,16 @@ function (_React$Component) {
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.album.id !== this.state.album.id) {
         this.setState({
-          currentTrackUrl: nextProps.defaultTrackUrl,
-          currentTrackNum: nextProps.defaultTrackNum,
+          cTrackUrl: nextProps.cTrackUrl,
+          cTrackNum: nextProps.cTrackNum,
           autoPlay: false,
           playing: false
         });
       }
 
-      if (this.props.tracks[this.props.defaultTrackNum]) {
+      if (nextProps.tracks[nextProps.cTrackNum]) {
         this.setState({
-          currentTrackTitle: this.props.tracks[this.props.defaultTrackNum].title
+          cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title
         });
       }
     }
@@ -661,15 +654,15 @@ function (_React$Component) {
   }, {
     key: "handleTrack",
     value: function handleTrack(direction) {
-      var newTrackNum = this.state.currentTrackNum + direction;
+      var newTrackNum = this.state.cTrackNum + direction;
       var trackLen = this.props.tracks.length;
       newTrackNum = (newTrackNum % trackLen + trackLen) % trackLen;
       var newTrackUrl = this.props.tracks[newTrackNum].audio_url;
       var newTrackTitle = this.props.tracks[newTrackNum].title;
       this.setState({
-        currentTrackUrl: newTrackUrl,
-        currentTrackNum: newTrackNum,
-        currentTrackTitle: newTrackTitle,
+        cTrackUrl: newTrackUrl,
+        cTrackNum: newTrackNum,
+        cTrackTitle: newTrackTitle,
         autoPlay: true,
         playing: true
       });
@@ -680,7 +673,7 @@ function (_React$Component) {
       var newTime = e.currentTarget.value / 250 * this.state.duration;
       this.audio.currentTime = newTime;
       this.setState({
-        currentTime: newTime,
+        cTime: newTime,
         progress: e.currentTarget.value
       });
     } // credit: SO user GitaarLAB
@@ -702,7 +695,7 @@ function (_React$Component) {
         ref: function ref(audio) {
           _this3.audio = audio;
         },
-        src: this.state.currentTrackUrl,
+        src: this.state.cTrackUrl,
         autoPlay: this.state.autoPlay
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "central-controls"
@@ -715,7 +708,7 @@ function (_React$Component) {
         className: "middle-top"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "song-title"
-      }, this.state.currentTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.duration ? this.fmtMSS(this.state.currentTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, this.state.cTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.duration ? this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "range",
         value: this.state.progress ? this.state.progress : 0,
         onChange: this.handleDragSlider,
@@ -763,10 +756,17 @@ const mapStateToProps = (state, ownProps) => {
 		return a.list_num - b.list_num;
 	});
 
-	const defaultTrackUrl = tracks[0] ? tracks[0].audio_url : "";
-	const defaultTrackNum = 0;
+	const cTrackNum = ownProps.cTrackNum || 0;
+	const cTrackUrl = tracks[cTrackNum] ? tracks[cTrackNum].audio_url : "";
+	const cTrackName = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
 
-	return { tracks, album, defaultTrackUrl, defaultTrackNum };
+	return { 
+		tracks, 
+		album, 
+		cTrackUrl,
+		cTrackName, 
+		cTrackNum,
+	};
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
@@ -2626,9 +2626,12 @@ const TrackErrorsReducer = (state = [], action) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/album_actions */ "./frontend/actions/album_actions.js");
-/* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/track_actions */ "./frontend/actions/track_actions.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash.merge */ "./node_modules/lodash.merge/index.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/track_actions */ "./frontend/actions/track_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash.merge */ "./node_modules/lodash.merge/index.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 
@@ -2637,20 +2640,27 @@ __webpack_require__.r(__webpack_exports__);
 
 const tracksReducer = (state = {}, action) => {
 	Object.freeze(state);
+	const tracks = {}
 
 	switch (action.type) {
-		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
-			const tracks = {};
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]: 
+			Object.values(action.albums).forEach( (album) => { 
+				Object.values(album.tracks).forEach( (track) => {
+					return tracks[track.id] = track;
+				});
+			});
 
+			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, tracks);
+		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
 			Object.values(action.tracks).forEach( (track) => { 
 				return tracks[track.id] = track;
 			});
 
-			return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, tracks);
-		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_TRACK"]:
-			return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, { [action.track.id]: action.track });
-		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_TRACKS"]:
-			return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, action.tracks);
+			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, tracks);
+		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_TRACK"]:
+			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, { [action.track.id]: action.track });
+		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ALL_TRACKS"]:
+			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, action.tracks);
 		default:
 			return state;
 	}
