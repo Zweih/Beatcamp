@@ -73,3 +73,34 @@
 .purchase-info {
 	font-size: 12px;
 }
+
+.track-listings li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.track-listings li p {
+	color: #0687f5;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.track-listings li p:hover {
+	text-decoration: underline;
+}
+
+.track-listings li .track-play {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #d9d9d9;
+	border-radius: 2px;
+	min-height: 16px;
+	min-width: 17px;
+}
+
+.track-listings li i {
+	font-size: 10px;
+}

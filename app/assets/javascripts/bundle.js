@@ -612,6 +612,8 @@ function (_React$Component) {
             progress: _this2.audio.currentTime / _this2.audio.duration * 250
           });
         }, 500);
+
+        _this2.props.handlePlay();
       };
 
       this.audio.onpause = function () {
@@ -624,6 +626,8 @@ function (_React$Component) {
         if (_this2.state.progress > 249.0 && _this2.state.cTrackNum < _this2.props.tracks.length - 1) {
           _this2.handleTrack(1);
         }
+
+        _this2.props.handlePause();
       };
     }
   }, {
@@ -1717,13 +1721,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -1735,9 +1739,19 @@ function (_React$Component) {
   _inherits(UserAlbumDetail, _React$Component);
 
   function UserAlbumDetail(props) {
+    var _this;
+
     _classCallCheck(this, UserAlbumDetail);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(UserAlbumDetail).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserAlbumDetail).call(this, props));
+    _this.handleTrackClick = _this.handleTrackClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handlePause = _this.handlePause.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.state = {
+      cTrackNum: 0,
+      playing: false
+    };
+    return _this;
   }
 
   _createClass(UserAlbumDetail, [{
@@ -1753,8 +1767,47 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "handlePlay",
+    value: function handlePlay() {
+      this.setState({
+        playing: true
+      });
+      console.log(true);
+    }
+  }, {
+    key: "handlePause",
+    value: function handlePause() {
+      this.setState({
+        playing: false
+      });
+      console.log(false);
+    }
+  }, {
+    key: "handleTrackClick",
+    value: function handleTrackClick(trackNum) {
+      this.setState({
+        cTrackNum: trackNum
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var trackListings = this.props.albumTracks.map(function (track, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: idx
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "track-play"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa ".concat(_this2.state.playing ? "fa-pause" : "fa-play"),
+          "aria-hidden": "true"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: function onClick() {
+            return _this2.handleTrackClick(idx);
+          }
+        }, idx + 1, ". ", track.title));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.userAlbum ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-album-detail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1768,14 +1821,19 @@ function (_React$Component) {
         to: "/users/".concat(this.props.pageUserId)
       }, this.props.userAlbum.user)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         tracks: this.props.albumTracks,
-        album: this.props.userAlbum
+        album: this.props.userAlbum,
+        cTrackNum: this.state.cTrackNum,
+        handlePlay: this.handlePlay,
+        handlePause: this.handlePause
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "digital-album"
       }, "Digital Album"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "streaming"
       }, "Streaming"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "purchase-info"
-      }, "Includes unlimited streaming via the free Beatcamp app."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "Includes unlimited streaming via the free Beatcamp app."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "track-listings"
+      }, trackListings ? trackListings : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-album-desc"
       }, this.props.userAlbum.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-album-col"

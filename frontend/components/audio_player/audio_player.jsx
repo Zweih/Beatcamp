@@ -15,29 +15,31 @@ class AudioPlayer extends React.Component {
 			cTime: null,
 			progress: 0
 		}
-
+		
 		this.handleTrack = this.handleTrack.bind(this);
 		this.handlePlay = this.handlePlay.bind(this);
 		this.handleDragSlider = this.handleDragSlider.bind(this);
 	}
-
+	
 	componentDidMount() {
 		this.audio.onloadedmetadata = function() {
 			this.setState({
 				duration: this.audio.duration,
 				cTime: this.audio.currentTime,
 				progress: 0
-		});}.bind(this);
+			});}.bind(this);
+			
+			this.audio.onplay = () => {
+				this.currentTimeInterval = setInterval( () => {
+					this.setState({
+						cTime: this.audio.currentTime,
+						progress: this.audio.currentTime / this.audio.duration * 250
+					});
+				}, 500);
 
-		this.audio.onplay = () => {
-			this.currentTimeInterval = setInterval( () => {
-				this.setState({
-					cTime: this.audio.currentTime,
-					progress: this.audio.currentTime / this.audio.duration * 250
-				});
-			}, 500);
+				this.props.handlePlay();
 		};
-
+		
 		this.audio.onpause = () => {
 			clearInterval(this.currentTimeInterval);
 			this.setState({ playing: false});
@@ -45,9 +47,11 @@ class AudioPlayer extends React.Component {
 			if(this.state.progress > 249.0 && this.state.cTrackNum < this.props.tracks.length - 1) {
 				this.handleTrack(1);
 			}
+
+			this.props.handlePause();
 		};
 	}
-
+	
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.album.id !== this.state.album.id) {
 			this.setState({ 
