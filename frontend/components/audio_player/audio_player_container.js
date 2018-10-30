@@ -9,14 +9,14 @@ const mapStateToProps = (state, ownProps) => {
 
 	const cTrackNum = ownProps.cTrackNum || 0;
 	const cTrackUrl = tracks[cTrackNum] ? tracks[cTrackNum].audio_url : "";
-	const cTrackName = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
+	const cTrackTitle = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
 
 	return { 
 		tracks, 
 		album, 
 		cTrackUrl,
-		cTrackName, 
-		cTrackNum,
+		cTrackTitle,
+		cTrackNum
 	};
 };
 

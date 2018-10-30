@@ -6,18 +6,18 @@ class AudioPlayer extends React.Component {
 		super(props);
 		
 		this.state = {
+			album: this.props.album,
 			cTrackTitle: this.props.cTrackTitle,
 			cTrackUrl: this.props.cTrackUrl,
 			cTrackNum: this.props.cTrackNum,
-			album: this.props.album,
-			playing: false,
+			playing: this.props.playing,
+			autoPlay: false,
 			duration: null,
 			cTime: null,
 			progress: 0
 		}
 		
 		this.handleTrack = this.handleTrack.bind(this);
-		this.handlePlay = this.handlePlay.bind(this);
 		this.handleDragSlider = this.handleDragSlider.bind(this);
 	}
 	
@@ -29,57 +29,68 @@ class AudioPlayer extends React.Component {
 				progress: 0
 			});}.bind(this);
 			
-			this.audio.onplay = () => {
-				this.currentTimeInterval = setInterval( () => {
-					this.setState({
-						cTime: this.audio.currentTime,
-						progress: this.audio.currentTime / this.audio.duration * 250
-					});
-				}, 500);
+		this.audio.onplay = () => {
 
-				this.props.handlePlay();
+			this.currentTimeInterval = setInterval( () => {
+				this.setState({
+					cTime: this.audio.currentTime,
+					progress: this.audio.currentTime / this.audio.duration * 250
+				});
+			}, 500);
 		};
 		
 		this.audio.onpause = () => {
 			clearInterval(this.currentTimeInterval);
-			this.setState({ playing: false});
 			
-			if(this.state.progress > 249.0 && this.state.cTrackNum < this.props.tracks.length - 1) {
+			if(this.state.progress > 249) {
 				this.handleTrack(1);
 			}
-
-			this.props.handlePause();
 		};
 	}
 	
-	componentWillReceiveProps(nextProps) {
-		if(nextProps.album.id !== this.state.album.id) {
-			this.setState({ 
-				cTrackUrl: nextProps.cTrackUrl,
+	static getDerivedStateFromProps(nextProps, prevState) {
+		if(nextProps.album.id !== prevState.album.id) {
+			nextProps.handleTrackChange(0);
+			nextProps.handleTrackPlay(false);
+
+			return ({ 
+				album: nextProps.album,
+				tracks: nextProps.tracks,
 				cTrackNum: nextProps.cTrackNum,
-				autoPlay: false,
-				playing: false
-			});
-		} 
-		
-		if(nextProps.tracks[nextProps.cTrackNum]) {
-			this.setState({
-				cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title
+				cTrackTitle: nextProps.cTrackTitle,
+				cTrackUrl: nextProps.cTrackUrl,
+				autoPlay: false
 			});
 		}
+		
+		if(prevState.cTrackNum != nextProps.cTrackNum) {
+			return ({
+				cTrackNum: nextProps.cTrackNum,
+				cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
+				cTrackUrl: nextProps.tracks[nextProps.cTrackNum].audio_url
+			});
+		}
+
+		if(prevState.playing != nextProps.playing) {
+			return ({
+				playing: nextProps.playing,
+				autoPlay: nextProps.playing
+			});
+		}
+
+		return null;
 	}
 
-	handlePlay() {
-		this.setState({playing: !this.state.playing});
-
-		if(this.audio) {
-			this.state.playing ? this.audio.pause() : this.audio.play();
+	componentDidUpdate(prevProps, _) {
+		if(this.props.playing != prevProps.playing && this.audio) {
+			this.props.playing ? this.audio.play() : this.audio.pause();
 		}
 	}
 
 	handleTrack(direction) {
 		let newTrackNum = this.state.cTrackNum + direction;
 		const trackLen = this.props.tracks.length;
+		const isPlaying = (newTrackNum < trackLen);
 		newTrackNum = ((newTrackNum % trackLen) + trackLen) % trackLen;
 		const newTrackUrl = this.props.tracks[newTrackNum].audio_url;
 		const newTrackTitle = this.props.tracks[newTrackNum].title;
@@ -88,13 +99,15 @@ class AudioPlayer extends React.Component {
 			cTrackUrl: newTrackUrl,
 			cTrackNum: newTrackNum,
 			cTrackTitle: newTrackTitle,
-			autoPlay: true,
-			playing: true
+			autoPlay: true
 		});
+
+		this.props.handleTrackPlay(isPlaying);
+		this.props.handleTrackChange(newTrackNum);
 	}
 
 	handleDragSlider (e) {
-		const newTime = e.currentTarget.value / 250 * this.state.duration
+		const newTime = e.currentTarget.value / 250 * this.state.duration;
 		this.audio.currentTime = newTime;
 		
 		this.setState({
@@ -121,7 +134,7 @@ class AudioPlayer extends React.Component {
 						<div id="central-controls">
 							<span 
 								className={`${this.state.playing ? "playing " : ""}play-pause`}
-								onClick={() => this.handlePlay() }
+								onClick={() => this.props.handleTrackPlay(!this.state.playing) }
 								></span>
 							<div className="middle-top">
 								<p className="song-title">

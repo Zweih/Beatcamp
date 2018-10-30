@@ -8,9 +8,8 @@ import AudioPlayerContainer from "../audio_player/audio_player_container";
 class UserAlbumDetail extends React.Component {
   constructor(props) {
 		super(props);
-		this.handleTrackClick = this.handleTrackClick.bind(this);
-		this.handlePlay = this.handlePlay.bind(this);
-		this.handlePause = this.handlePause.bind(this);
+		this.handleTrackChange = this.handleTrackChange.bind(this);
+		this.handleTrackPlay = this.handleTrackPlay.bind(this);
 		
 		this.state = {
 			cTrackNum: 0,
@@ -23,41 +22,44 @@ class UserAlbumDetail extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.albumId !== nextProps.match.params.albumId) {
+    if(this.props.match.params.albumId !== nextProps.match.params.albumId) {
       this.props.fetchAlbum(nextProps.match.params.albumId);
     }
 	}
 
-	handlePlay() {
-		this.setState({playing: true});
-		console.log(true);
-	}
-
-	handlePause() {
-		this.setState({playing: false});
-		console.log(false);
+	handleTrackPlay(isPlaying) {
+		console.log(isPlaying);
+		this.setState({ playing: isPlaying });
 	}
 	
-	handleTrackClick(trackNum) {
-		this.setState({
-			cTrackNum: trackNum
-		});
+	handleTrackChange(trackNum) {
+		this.setState({ cTrackNum: trackNum });
 	}
 
   render() {
 		const trackListings = this.props.albumTracks.map((track, idx) => {
 			return (
 				<li key={idx}>
-					<span className="track-play">
-						<i className={`fa ${this.state.playing ? "fa-pause" : "fa-play"}`} aria-hidden="true"></i>
+					<span onClick={() => {
+						if(idx != this.state.cTrackNum) { 
+							this.handleTrackPlay(true);
+						} else {
+							this.handleTrackPlay(!this.state.playing);
+						}
+
+						this.handleTrackChange(idx);
+					}}
+						className="track-play">
+						<i 
+						className={`fa ${this.state.playing && this.state.cTrackNum === idx ? "fa-pause" : "fa-play"}`}
+						aria-hidden="true"></i>
 					</span>
-					<p onClick={() => this.handleTrackClick(idx)}>
+					<p onClick={() => {this.handleTrackChange(idx)}}>
 						{idx + 1}. {track.title}
 					</p>
 				</li>
 			);
 		})
-
 
     return (
       <div>
@@ -80,13 +82,17 @@ class UserAlbumDetail extends React.Component {
                 </Link>
               : ""} */}
               <div>
-								<AudioPlayerContainer
-									tracks={this.props.albumTracks}
-									album={this.props.userAlbum}
-									cTrackNum={this.state.cTrackNum}
-									handlePlay={this.handlePlay}
-									handlePause={this.handlePause}
-								/>
+								{
+									this.props.albumTracks.length > 0 ? 
+									<AudioPlayerContainer
+										tracks={this.props.albumTracks}
+										album={this.props.userAlbum}
+										cTrackNum={this.state.cTrackNum}
+										playing={this.state.playing}
+										handleTrackPlay={this.handleTrackPlay}
+										handleTrackChange={this.handleTrackChange}
+									/> : ""
+								}
               </div>
 							<h3 className="digital-album">
 								Digital Album
