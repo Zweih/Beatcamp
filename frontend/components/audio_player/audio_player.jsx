@@ -185,13 +185,21 @@ class AudioPlayer extends React.Component {
 							/>
 							<span 
 								className={`prev ${this.state.isPrev ? "" : "no-click"}`}
-								onClick={() => this.handleTrack(-1)}
+								onClick={() => {
+									if(this.state.isPrev) {
+										this.handleTrack(-1);
+									}
+								}}
 							>
 								<i className="fas fa-fast-backward"></i>
 							</span>
 							<span
 								className={`next ${this.state.isNext ? "" : "no-click"}`}
-								onClick={() => this.handleTrack(1)}
+								onClick={() => {
+									if(this.state.isNext) {
+										this.handleTrack(1);
+									}
+								}}
 							>
 								<i className="fas fa-fast-forward"></i>
 							</span>

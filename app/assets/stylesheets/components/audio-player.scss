@@ -19,12 +19,12 @@
 	background:#fff;
 	border: 1px solid #d9d9d9;
 	border-radius: 2px;
-	cursor: pointer;
 	min-height: 50px;
 	min-width: 54px;
 }
 
 .inline-player .play-pause:after {
+	cursor: pointer;
 	content:'';
 	display: block;
 	width: 0;
@@ -37,6 +37,7 @@
 }
 
 .inline-player .play-pause.playing:after {
+	cursor: pointer;
 	content:'';
 	border:0;
 	border-left:7px solid #2d2d2d;
@@ -51,6 +52,8 @@
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	border:none;
+	pointer-events: none;
+	cursor: not-allowed;
 	height: 42px;
 	margin: 4px auto;
 	width: 44px;

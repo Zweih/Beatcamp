@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import AudioPlayer from "./audio_player";
 
-const mapStateToProps = (state, ownProps) => {
-	const album = ownProps.album;
+const mapStateToProps = (_, ownProps) => {
 	const tracks = ownProps.tracks.sort((a, b) => {
 		return a.list_num - b.list_num;
 	});
@@ -13,7 +12,6 @@ const mapStateToProps = (state, ownProps) => {
 
 	return { 
 		tracks, 
-		album, 
 		cTrackUrl,
 		cTrackTitle,
 		cTrackNum

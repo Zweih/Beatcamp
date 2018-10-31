@@ -17,7 +17,6 @@
     "babel-loader": "^8.0.2",
     "lodash.merge": "^4.6.1",
     "react": "^16.5.0",
-    "react-audio-player": "^0.11.0",
     "react-dom": "^16.5.0",
     "react-image": "^1.5.1",
     "react-redux": "^5.0.7",
