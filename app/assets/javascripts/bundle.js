@@ -627,6 +627,9 @@ function (_React$Component) {
           _this2.handleTrack(1);
         }
       };
+
+      this.audio.onprogress = function () {//TODO: ADD PROGRESS BAR
+      };
     }
   }, {
     key: "componentDidUpdate",
@@ -657,12 +660,35 @@ function (_React$Component) {
   }, {
     key: "handleDragSlider",
     value: function handleDragSlider(e) {
-      var newTime = e.currentTarget.value / 250 * this.state.duration;
-      this.audio.currentTime = newTime;
+      var _this3 = this;
+
+      clearInterval(this.seekWait);
+      var sliderValue = e.currentTarget.value;
+      var newTime = sliderValue / 250 * this.state.duration;
+      this.audio.pause();
       this.setState({
         cTime: newTime,
-        progress: e.currentTarget.value
+        progress: sliderValue
       });
+      this.seekWait = setInterval(function () {
+        if (_this3.state.progress > 249) {
+          _this3.setState({
+            progress: 0
+          });
+
+          _this3.handleTrack(1);
+
+          clearInterval(_this3.seekWait);
+        } else if (_this3.audio.seekable.start(0) <= newTime && newTime <= _this3.audio.seekable.end(_this3.audio.seekable.length - 1)) {
+          _this3.audio.currentTime = newTime;
+
+          _this3.props.handleTrackPlay(true);
+
+          _this3.audio.play();
+
+          clearInterval(_this3.seekWait);
+        }
+      }, 100);
     } // credit: SO user GitaarLAB
 
   }, {
@@ -674,13 +700,13 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inline-player"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
         ref: function ref(audio) {
-          _this3.audio = audio;
+          _this4.audio = audio;
         },
         src: this.state.cTrackUrl,
         autoPlay: this.state.autoPlay
@@ -689,7 +715,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "".concat(this.state.playing ? "playing" : "", " ").concat(this.state.loading ? "loading" : "", " play-pause"),
         onClick: function onClick() {
-          return _this3.props.handleTrackPlay(!_this3.state.playing);
+          return _this4.props.handleTrackPlay(!_this4.state.playing);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "middle-top"
@@ -705,14 +731,14 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prev ".concat(this.state.isPrev ? "" : "no-click"),
         onClick: function onClick() {
-          return _this3.handleTrack(-1);
+          return _this4.handleTrack(-1);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-fast-backward"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "next ".concat(this.state.isNext ? "" : "no-click"),
         onClick: function onClick() {
-          return _this3.handleTrack(1);
+          return _this4.handleTrack(1);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-fast-forward"

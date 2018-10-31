@@ -36,22 +36,25 @@ class AudioPlayer extends React.Component {
 			});}.bind(this);
 			
 		this.audio.onplay = () => {
-
-			this.currentTimeInterval = setInterval( () => {
+			this.currentTimeInterval = setInterval(() => {
 				this.setState({
 					cTime: this.audio.currentTime,
 					progress: this.audio.currentTime / this.audio.duration * 250
 				});
 			}, 500);
 		};
-		
+	
 		this.audio.onpause = () => {
 			clearInterval(this.currentTimeInterval);
-			
+
 			if(this.state.progress > 249) {
 				this.handleTrack(1);
 			}
 		};
+
+		this.audio.onprogress = () => {
+			//TODO: ADD PROGRESS BAR
+		}
 	}
 	
 	static getDerivedStateFromProps(nextProps, prevState) {
@@ -115,14 +118,31 @@ class AudioPlayer extends React.Component {
 		this.props.handleTrackChange(newTrackNum);
 	}
 
-	handleDragSlider (e) {
-		const newTime = e.currentTarget.value / 250 * this.state.duration;
-		this.audio.currentTime = newTime;
-		
+	handleDragSlider(e) {
+		clearInterval(this.seekWait);
+		const sliderValue = e.currentTarget.value
+		const newTime = sliderValue / 250 * this.state.duration;
+		this.audio.pause();
+
 		this.setState({
 			cTime: newTime,
-			progress: e.currentTarget.value
+			progress: sliderValue
 		});
+
+		this.seekWait = setInterval(() => {
+			if(this.state.progress > 249) {
+				this.setState({ progress: 0 });
+				this.handleTrack(1);
+
+				clearInterval(this.seekWait);
+			} else if(this.audio.seekable.start(0) <= newTime && newTime <=  this.audio.seekable.end(this.audio.seekable.length - 1)) {
+				this.audio.currentTime = newTime;
+				this.props.handleTrackPlay(true);
+				this.audio.play();
+
+				clearInterval(this.seekWait);
+			}
+		}, 100);
   }
 
 	// credit: SO user GitaarLAB
