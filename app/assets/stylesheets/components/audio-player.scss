@@ -9,12 +9,12 @@
 	margin:0 0 1px;
 }
 
-.inline-player .no-click {
+.inline-player span.no-click {
 	pointer-events: none;
 	color:#C0C0C0;
 }
 
-.inline-player .play-pause.pause {
+.inline-player .play-pause {
 	background-image: transparent url(https://s3.amazonaws.com/beatcamp-pro/playpause.gif) no-repeat 0 0;
 	background:#fff;
 	border: 1px solid #d9d9d9;
@@ -24,8 +24,7 @@
 	min-width: 54px;
 }
 
-
-.inline-player .play-pause.pause:after {
+.inline-player .play-pause:after {
 	content:'';
 	display: block;
 	width: 0;
@@ -47,15 +46,14 @@
 	margin: 14px auto;
 }
 
-.inline-player .play-pause.loading {
-	background-image: none !important;
-	background: transparent url(https://s3.amazonaws.com/beatcamp-pro/playerbusy-noborder.gif) no-repeat 0 0 !important;
-	background:#fff;
-	border: 1px solid #d9d9d9;
-	border-radius: 2px;
-	cursor: pointer;
-	min-height: 50px;
-	min-width: 54px;
+.inline-player .play-pause.loading:after {
+	background-image: url(https://s3.amazonaws.com/beatcamp-pro/playerbusy-noborder.gif);
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	border:none;
+	height: 42px;
+	margin: 4px auto;
+	width: 44px;
 }
 
 .middle-top {

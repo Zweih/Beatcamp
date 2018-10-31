@@ -579,6 +579,7 @@ function (_React$Component) {
     _this.state = {
       album: _this.props.album,
       cTrackTitle: _this.props.cTrackTitle,
+      tempTitle: _this.props.cTrackTitle,
       cTrackUrl: _this.props.cTrackUrl,
       cTrackNum: _this.props.cTrackNum,
       playing: _this.props.playing,
@@ -602,6 +603,7 @@ function (_React$Component) {
         this.setState({
           duration: this.audio.duration,
           cTime: this.audio.currentTime,
+          tempTitle: this.state.cTrackTitle,
           isPrev: this.props.cTrackNum > 0,
           isNext: this.props.cTrackNum < this.props.tracks.length - 1,
           progress: 0,
@@ -629,7 +631,7 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, _) {
-      if (this.props.playing != prevProps.playing && this.audio) {
+      if (this.props.playing !== prevProps.playing && this.audio) {
         this.props.playing ? this.audio.play() : this.audio.pause();
       }
     }
@@ -685,7 +687,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "central-controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "".concat(this.state.playing ? "playing" : "", " ").concat(this.state.loading ? "loading" : "pause", " play-pause"),
+        className: "".concat(this.state.playing ? "playing" : "", " ").concat(this.state.loading ? "loading" : "", " play-pause"),
         onClick: function onClick() {
           return _this3.props.handleTrackPlay(!_this3.state.playing);
         }
@@ -693,13 +695,13 @@ function (_React$Component) {
         className: "middle-top"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "song-title"
-      }, this.state.cTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.duration ? this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, this.state.loading ? this.state.tempTitle : this.state.cTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.duration ? this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "range",
         value: this.state.progress ? this.state.progress : 0,
         onChange: this.handleDragSlider,
         min: "1",
         max: "250",
-        className: "progress-slider"
+        className: "progress-slider ".concat(this.state.loading ? "no-click" : "")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prev ".concat(this.state.isPrev ? "" : "no-click"),
         onClick: function onClick() {
@@ -719,7 +721,7 @@ function (_React$Component) {
   }], [{
     key: "getDerivedStateFromProps",
     value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (nextProps.album.id != prevState.album.id) {
+      if (nextProps.album.id !== prevState.album.id) {
         nextProps.handleTrackChange(0);
         nextProps.handleTrackPlay(false);
         return {
@@ -733,7 +735,7 @@ function (_React$Component) {
         };
       }
 
-      if (prevState.cTrackNum != nextProps.cTrackNum) {
+      if (prevState.cTrackNum !== nextProps.cTrackNum) {
         return {
           cTrackNum: nextProps.cTrackNum,
           cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
@@ -742,7 +744,7 @@ function (_React$Component) {
         };
       }
 
-      if (prevState.playing != nextProps.playing) {
+      if (prevState.playing !== nextProps.playing) {
         return {
           playing: nextProps.playing,
           autoPlay: nextProps.playing
@@ -1764,7 +1766,8 @@ function (_React$Component) {
     _this.handleTrackPlay = _this.handleTrackPlay.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
       cTrackNum: 0,
-      playing: false
+      playing: false,
+      trackBold: false
     };
     return _this;
   }
@@ -1779,6 +1782,9 @@ function (_React$Component) {
     value: function componentWillReceiveProps(nextProps) {
       if (this.props.match.params.albumId !== nextProps.match.params.albumId) {
         this.props.fetchAlbum(nextProps.match.params.albumId);
+        this.setState({
+          trackBold: false
+        });
       }
     }
   }, {
@@ -1786,7 +1792,13 @@ function (_React$Component) {
     value: function handleTrackPlay(isPlaying) {
       this.setState({
         playing: isPlaying
-      });
+      }); // only change on first play
+
+      if (isPlaying) {
+        this.setState({
+          trackBold: true
+        });
+      }
     }
   }, {
     key: "handleTrackChange",
@@ -1805,7 +1817,7 @@ function (_React$Component) {
           key: idx
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           onClick: function onClick() {
-            if (idx != _this2.state.cTrackNum) {
+            if (idx !== _this2.state.cTrackNum) {
               _this2.handleTrackPlay(true);
             } else {
               _this2.handleTrackPlay(!_this2.state.playing);
@@ -1817,11 +1829,17 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fa ".concat(_this2.state.playing && _this2.state.cTrackNum === idx ? "fa-pause" : "fa-play"),
           "aria-hidden": "true"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "track-info",
           onClick: function onClick() {
             _this2.handleTrackChange(idx);
-          }
-        }, idx + 1, ". ", track.title));
+          },
+          id: _this2.state.trackBold && _this2.state.cTrackNum === idx ? "track-bold" : "idx"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "track-num"
+        }, idx + 1, ". "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "track-title"
+        }, track.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.userAlbum ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-album-detail"
@@ -1847,7 +1865,7 @@ function (_React$Component) {
         className: "streaming"
       }, "Streaming"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "purchase-info"
-      }, "Includes unlimited streaming via the free Beatcamp app."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "Includes unlimited streaming via the free Beatcamp web-app."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "track-listings"
       }, trackListings ? trackListings : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-album-desc"

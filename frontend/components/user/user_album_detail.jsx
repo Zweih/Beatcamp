@@ -13,7 +13,8 @@ class UserAlbumDetail extends React.Component {
 		
 		this.state = {
 			cTrackNum: 0,
-			playing: false
+			playing: false,
+			trackBold: false
 		};
   }
 
@@ -23,12 +24,18 @@ class UserAlbumDetail extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props.match.params.albumId !== nextProps.match.params.albumId) {
-      this.props.fetchAlbum(nextProps.match.params.albumId);
+			this.props.fetchAlbum(nextProps.match.params.albumId);
+			this.setState({ trackBold: false });
     }
 	}
 
 	handleTrackPlay(isPlaying) {
 		this.setState({ playing: isPlaying });
+
+		// only change on first play
+		if(isPlaying) {
+			this.setState({ trackBold: true })
+		}
 	}
 	
 	handleTrackChange(trackNum) {
@@ -40,7 +47,7 @@ class UserAlbumDetail extends React.Component {
 			return (
 				<li key={idx}>
 					<span onClick={() => {
-						if(idx != this.state.cTrackNum) { 
+						if(idx !== this.state.cTrackNum) { 
 							this.handleTrackPlay(true);
 						} else {
 							this.handleTrackPlay(!this.state.playing);
@@ -52,8 +59,16 @@ class UserAlbumDetail extends React.Component {
 						className={`fa ${this.state.playing && this.state.cTrackNum === idx ? "fa-pause" : "fa-play"}`}
 						aria-hidden="true"></i>
 					</span>
-					<p onClick={() => {this.handleTrackChange(idx)}}>
-						{idx + 1}. {track.title}
+					<span
+						className="track-info"
+						onClick={() => {this.handleTrackChange(idx)}}
+						id={this.state.trackBold && this.state.cTrackNum === idx ? "track-bold" : "idx"}
+					>
+						<p className="track-num">{idx + 1}. </p>
+						<p className="track-title">{track.title}</p>
+					</span>
+					<p
+					>
 					</p>
 				</li>
 			);
@@ -99,7 +114,7 @@ class UserAlbumDetail extends React.Component {
 								Streaming
 							</h4>
 							<p className="purchase-info">
-								Includes unlimited streaming via the free Beatcamp app.
+								Includes unlimited streaming via the free Beatcamp web-app.
 							</p>
 							<ul className="track-listings">
 								{trackListings ? trackListings : ""}

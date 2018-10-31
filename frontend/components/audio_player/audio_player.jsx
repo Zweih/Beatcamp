@@ -8,6 +8,7 @@ class AudioPlayer extends React.Component {
 		this.state = {
 			album: this.props.album,
 			cTrackTitle: this.props.cTrackTitle,
+			tempTitle: this.props.cTrackTitle,
 			cTrackUrl: this.props.cTrackUrl,
 			cTrackNum: this.props.cTrackNum,
 			playing: this.props.playing,
@@ -27,6 +28,7 @@ class AudioPlayer extends React.Component {
 			this.setState({
 				duration: this.audio.duration,
 				cTime: this.audio.currentTime,
+				tempTitle: this.state.cTrackTitle,
 				isPrev: this.props.cTrackNum > 0,
 				isNext: this.props.cTrackNum < this.props.tracks.length - 1,
 				progress: 0,
@@ -53,7 +55,7 @@ class AudioPlayer extends React.Component {
 	}
 	
 	static getDerivedStateFromProps(nextProps, prevState) {
-		if(nextProps.album.id != prevState.album.id) {
+		if(nextProps.album.id !== prevState.album.id) {
 			nextProps.handleTrackChange(0);
 			nextProps.handleTrackPlay(false);
 
@@ -68,7 +70,7 @@ class AudioPlayer extends React.Component {
 			});
 		}
 		
-		if(prevState.cTrackNum != nextProps.cTrackNum) {
+		if(prevState.cTrackNum !== nextProps.cTrackNum) {
 			return ({
 				cTrackNum: nextProps.cTrackNum,
 				cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
@@ -77,7 +79,7 @@ class AudioPlayer extends React.Component {
 			});
 		}
 
-		if(prevState.playing != nextProps.playing) {
+		if(prevState.playing !== nextProps.playing) {
 			return ({
 				playing: nextProps.playing,
 				autoPlay: nextProps.playing
@@ -88,7 +90,7 @@ class AudioPlayer extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, _) {
-		if(this.props.playing != prevProps.playing && this.audio) {
+		if(this.props.playing !== prevProps.playing && this.audio) {
 			this.props.playing ? this.audio.play() : this.audio.pause();
 		}
 	}
@@ -140,12 +142,12 @@ class AudioPlayer extends React.Component {
 						/>
 						<div id="central-controls">
 							<span 
-								className={`${this.state.playing ? "playing" : ""} ${this.state.loading ? "loading" : "pause"} play-pause`}
+								className={`${this.state.playing ? "playing" : ""} ${this.state.loading ? "loading" : ""} play-pause`}
 								onClick={() => this.props.handleTrackPlay(!this.state.playing) }
 								></span>
 							<div className="middle-top">
 								<p className="song-title">
-									{this.state.cTrackTitle}
+									{this.state.loading ? this.state.tempTitle : this.state.cTrackTitle}
 								</p>
 								<p>
 									{this.state.duration ?
@@ -159,7 +161,7 @@ class AudioPlayer extends React.Component {
 								onChange={this.handleDragSlider}
 								min="1"
 								max="250"
-								className="progress-slider"
+								className={`progress-slider ${this.state.loading ? "no-click" : ""}`}
 							/>
 							<span 
 								className={`prev ${this.state.isPrev ? "" : "no-click"}`}

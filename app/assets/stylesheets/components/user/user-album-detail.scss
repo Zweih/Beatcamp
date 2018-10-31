@@ -76,18 +76,42 @@
 
 .track-listings li {
 	display: flex;
-	flex-direction: row;
+	justify-content: flex-start;
 	align-items: center;
 }
 
-.track-listings li p {
-	color: #0687f5;
-	text-decoration: none;
-	cursor: pointer;
+.track-listings li .track-info {
+	display: flex;
+	align-items: center;
 	font-size: 12px;
+	font-weight: 400;
+	text-decoration: none;
 }
 
-.track-listings li p:hover {
+.track-listings li .track-info p {
+	padding: 6px 2px;
+	vertical-align: top;
+	border: none;
+}
+
+.track-listings li .track-num {
+	text-align: right;
+	min-width: 15px;
+	margin-left: 5px;
+	color: #888888;
+}
+
+.track-listings li .track-title {
+	color: #0687f5;
+	width: 220px;
+	cursor: pointer;
+}
+
+.track-listings li .track-info#track-bold {
+	font-weight: 700;
+}
+
+.track-listings li .track-title:hover {
 	text-decoration: underline;
 }
 
@@ -101,6 +125,7 @@
 	min-width: 17px;
 	color: #000000;
 }
+
 
 .track-listings li i {
 	font-size: 10px;
