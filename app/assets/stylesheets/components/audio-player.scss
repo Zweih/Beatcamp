@@ -59,14 +59,33 @@
 	width: 44px;
 }
 
-.middle-top {
+.middle-controls {
+	display: flex;
+	flex-direction: column;
+	margin-left: 12px;
+}
+
+.middle-top,
+.middle-bottom {
 	display: flex;
 	flex-direction: row;
+	align-items: baseline;
 }
 
 .song-title {
+	color: #363636;
+	font-size: 12px;
 	font-weight: 500;
 	padding-right: 0.5em;
+	line-height: 15px;
+}
+
+.song-time {
+	color: #888888;
+	font-weight: 400;
+	padding-right: 0.5em;
+	font-size: 12px;
+	line-height: 15px;
 }
 
 #central-controls {

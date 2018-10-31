@@ -637,6 +637,10 @@ function (_React$Component) {
       if (this.props.playing !== prevProps.playing && this.audio) {
         this.props.playing ? this.audio.play() : this.audio.pause();
       }
+
+      if (this.props.album.id !== prevProps.album.id || this.props.cTrackNum !== prevProps.cTrackNum) {
+        clearInterval(this.seekWait);
+      }
     }
   }, {
     key: "handleTrack",
@@ -718,10 +722,16 @@ function (_React$Component) {
           return _this4.props.handleTrackPlay(!_this4.state.playing);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "middle-controls"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "middle-top"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "song-title"
-      }, this.state.loading ? this.state.tempTitle : this.state.cTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.duration ? this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, this.state.loading ? this.state.tempTitle : this.state.cTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "song-time"
+      }, this.state.duration ? this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "middle-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "range",
         value: this.state.progress ? this.state.progress : 0,
         onChange: this.handleDragSlider,
@@ -746,7 +756,7 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-fast-forward"
-      })))));
+      })))))));
     }
   }], [{
     key: "getDerivedStateFromProps",
@@ -1880,7 +1890,9 @@ function (_React$Component) {
       }, "by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "user-album-artist-link",
         to: "/users/".concat(this.props.pageUserId)
-      }, this.props.userAlbum.user)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, this.props.userAlbum.user)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "audio-player"
+      }, this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         tracks: this.props.albumTracks,
         album: this.props.userAlbum,
         cTrackNum: this.state.cTrackNum,

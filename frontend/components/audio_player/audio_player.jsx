@@ -96,6 +96,10 @@ class AudioPlayer extends React.Component {
 		if(this.props.playing !== prevProps.playing && this.audio) {
 			this.props.playing ? this.audio.play() : this.audio.pause();
 		}
+
+		if(this.props.album.id !== prevProps.album.id || this.props.cTrackNum !== prevProps.cTrackNum) {
+			clearInterval(this.seekWait);
+		}
 	}
 
 	handleTrack(direction) {
@@ -165,44 +169,48 @@ class AudioPlayer extends React.Component {
 								className={`${this.state.playing ? "playing" : ""} ${this.state.loading ? "loading" : ""} play-pause`}
 								onClick={() => this.props.handleTrackPlay(!this.state.playing) }
 								></span>
-							<div className="middle-top">
-								<p className="song-title">
-									{this.state.loading ? this.state.tempTitle : this.state.cTrackTitle}
-								</p>
-								<p>
-									{this.state.duration ?
-									this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration)
-									: ""}
-								</p>
+							<div className="middle-controls">
+								<div className="middle-top">
+									<p className="song-title">
+										{this.state.loading ? this.state.tempTitle : this.state.cTrackTitle}
+									</p>
+									<p className="song-time">
+										{this.state.duration ?
+										this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration)
+										: ""}
+									</p>
+								</div>
+								<div className="middle-bottom">
+									<input 
+										type="range"
+										value={this.state.progress ? this.state.progress : 0}
+										onChange={this.handleDragSlider}
+										min="1"
+										max="250"
+										className={`progress-slider ${this.state.loading ? "no-click" : ""}`}
+									/>
+									<span 
+										className={`prev ${this.state.isPrev ? "" : "no-click"}`}
+										onClick={() => {
+											if(this.state.isPrev) {
+												this.handleTrack(-1);
+											}
+										}}
+									>
+										<i className="fas fa-fast-backward"></i>
+									</span>
+									<span
+										className={`next ${this.state.isNext ? "" : "no-click"}`}
+										onClick={() => {
+											if(this.state.isNext) {
+												this.handleTrack(1);
+											}
+										}}
+									>
+										<i className="fas fa-fast-forward"></i>
+									</span>
+								</div>
 							</div>
-							<input 
-								type="range"
-								value={this.state.progress ? this.state.progress : 0}
-								onChange={this.handleDragSlider}
-								min="1"
-								max="250"
-								className={`progress-slider ${this.state.loading ? "no-click" : ""}`}
-							/>
-							<span 
-								className={`prev ${this.state.isPrev ? "" : "no-click"}`}
-								onClick={() => {
-									if(this.state.isPrev) {
-										this.handleTrack(-1);
-									}
-								}}
-							>
-								<i className="fas fa-fast-backward"></i>
-							</span>
-							<span
-								className={`next ${this.state.isNext ? "" : "no-click"}`}
-								onClick={() => {
-									if(this.state.isNext) {
-										this.handleTrack(1);
-									}
-								}}
-							>
-								<i className="fas fa-fast-forward"></i>
-							</span>
 						</div>
 					</div>
 			</div>

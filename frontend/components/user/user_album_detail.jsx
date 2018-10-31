@@ -94,7 +94,7 @@ class UserAlbumDetail extends React.Component {
                   </button>
                 </Link>
               : ""} */}
-              <div>
+              <div className="audio-player">
 								{
 									this.props.albumTracks.length > 0 ? 
 									<AudioPlayerContainer
