@@ -11,6 +11,7 @@ class AudioPlayer extends React.Component {
 			cTrackUrl: this.props.cTrackUrl,
 			cTrackNum: this.props.cTrackNum,
 			playing: this.props.playing,
+			loading: true,
 			autoPlay: false,
 			duration: null,
 			cTime: null,
@@ -26,7 +27,10 @@ class AudioPlayer extends React.Component {
 			this.setState({
 				duration: this.audio.duration,
 				cTime: this.audio.currentTime,
-				progress: 0
+				isPrev: this.props.cTrackNum > 0,
+				isNext: this.props.cTrackNum < this.props.tracks.length - 1,
+				progress: 0,
+				loading: false
 			});}.bind(this);
 			
 		this.audio.onplay = () => {
@@ -49,7 +53,7 @@ class AudioPlayer extends React.Component {
 	}
 	
 	static getDerivedStateFromProps(nextProps, prevState) {
-		if(nextProps.album.id !== prevState.album.id) {
+		if(nextProps.album.id != prevState.album.id) {
 			nextProps.handleTrackChange(0);
 			nextProps.handleTrackPlay(false);
 
@@ -59,7 +63,8 @@ class AudioPlayer extends React.Component {
 				cTrackNum: nextProps.cTrackNum,
 				cTrackTitle: nextProps.cTrackTitle,
 				cTrackUrl: nextProps.cTrackUrl,
-				autoPlay: false
+				autoPlay: false,
+				loading: true
 			});
 		}
 		
@@ -67,7 +72,8 @@ class AudioPlayer extends React.Component {
 			return ({
 				cTrackNum: nextProps.cTrackNum,
 				cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
-				cTrackUrl: nextProps.tracks[nextProps.cTrackNum].audio_url
+				cTrackUrl: nextProps.tracks[nextProps.cTrackNum].audio_url,
+				loading: true
 			});
 		}
 
@@ -99,6 +105,7 @@ class AudioPlayer extends React.Component {
 			cTrackUrl: newTrackUrl,
 			cTrackNum: newTrackNum,
 			cTrackTitle: newTrackTitle,
+			loading: true,
 			autoPlay: true
 		});
 
@@ -133,7 +140,7 @@ class AudioPlayer extends React.Component {
 						/>
 						<div id="central-controls">
 							<span 
-								className={`${this.state.playing ? "playing " : ""}play-pause`}
+								className={`${this.state.playing ? "playing" : ""} ${this.state.loading ? "loading" : "pause"} play-pause`}
 								onClick={() => this.props.handleTrackPlay(!this.state.playing) }
 								></span>
 							<div className="middle-top">
@@ -155,13 +162,17 @@ class AudioPlayer extends React.Component {
 								className="progress-slider"
 							/>
 							<span 
-								className="prev"
+								className={`prev ${this.state.isPrev ? "" : "no-click"}`}
 								onClick={() => this.handleTrack(-1)}
-							></span>
+							>
+								<i className="fas fa-fast-backward"></i>
+							</span>
 							<span
-								className="next"
+								className={`next ${this.state.isNext ? "" : "no-click"}`}
 								onClick={() => this.handleTrack(1)}
-							></span>
+							>
+								<i className="fas fa-fast-forward"></i>
+							</span>
 						</div>
 					</div>
 			</div>

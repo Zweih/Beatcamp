@@ -28,7 +28,6 @@ class UserAlbumDetail extends React.Component {
 	}
 
 	handleTrackPlay(isPlaying) {
-		console.log(isPlaying);
 		this.setState({ playing: isPlaying });
 	}
 	
@@ -46,7 +45,6 @@ class UserAlbumDetail extends React.Component {
 						} else {
 							this.handleTrackPlay(!this.state.playing);
 						}
-
 						this.handleTrackChange(idx);
 					}}
 						className="track-play">

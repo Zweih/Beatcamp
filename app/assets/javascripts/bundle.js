@@ -582,6 +582,7 @@ function (_React$Component) {
       cTrackUrl: _this.props.cTrackUrl,
       cTrackNum: _this.props.cTrackNum,
       playing: _this.props.playing,
+      loading: true,
       autoPlay: false,
       duration: null,
       cTime: null,
@@ -601,7 +602,10 @@ function (_React$Component) {
         this.setState({
           duration: this.audio.duration,
           cTime: this.audio.currentTime,
-          progress: 0
+          isPrev: this.props.cTrackNum > 0,
+          isNext: this.props.cTrackNum < this.props.tracks.length - 1,
+          progress: 0,
+          loading: false
         });
       }.bind(this);
 
@@ -642,6 +646,7 @@ function (_React$Component) {
         cTrackUrl: newTrackUrl,
         cTrackNum: newTrackNum,
         cTrackTitle: newTrackTitle,
+        loading: true,
         autoPlay: true
       });
       this.props.handleTrackPlay(isPlaying);
@@ -680,7 +685,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "central-controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "".concat(this.state.playing ? "playing " : "", "play-pause"),
+        className: "".concat(this.state.playing ? "playing" : "", " ").concat(this.state.loading ? "loading" : "pause", " play-pause"),
         onClick: function onClick() {
           return _this3.props.handleTrackPlay(!_this3.state.playing);
         }
@@ -696,21 +701,25 @@ function (_React$Component) {
         max: "250",
         className: "progress-slider"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "prev",
+        className: "prev ".concat(this.state.isPrev ? "" : "no-click"),
         onClick: function onClick() {
           return _this3.handleTrack(-1);
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "next",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-fast-backward"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "next ".concat(this.state.isNext ? "" : "no-click"),
         onClick: function onClick() {
           return _this3.handleTrack(1);
         }
-      }))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-fast-forward"
+      })))));
     }
   }], [{
     key: "getDerivedStateFromProps",
     value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (nextProps.album.id !== prevState.album.id) {
+      if (nextProps.album.id != prevState.album.id) {
         nextProps.handleTrackChange(0);
         nextProps.handleTrackPlay(false);
         return {
@@ -719,7 +728,8 @@ function (_React$Component) {
           cTrackNum: nextProps.cTrackNum,
           cTrackTitle: nextProps.cTrackTitle,
           cTrackUrl: nextProps.cTrackUrl,
-          autoPlay: false
+          autoPlay: false,
+          loading: true
         };
       }
 
@@ -727,7 +737,8 @@ function (_React$Component) {
         return {
           cTrackNum: nextProps.cTrackNum,
           cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
-          cTrackUrl: nextProps.tracks[nextProps.cTrackNum].audio_url
+          cTrackUrl: nextProps.tracks[nextProps.cTrackNum].audio_url,
+          loading: true
         };
       }
 
@@ -1773,7 +1784,6 @@ function (_React$Component) {
   }, {
     key: "handleTrackPlay",
     value: function handleTrackPlay(isPlaying) {
-      console.log(isPlaying);
       this.setState({
         playing: isPlaying
       });
