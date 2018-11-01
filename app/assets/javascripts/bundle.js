@@ -730,6 +730,8 @@ function (_React$Component) {
         className: "song-time"
       }, this.state.duration ? this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "middle-bottom"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "range",
         value: this.state.progress ? this.state.progress : 0,
@@ -737,7 +739,7 @@ function (_React$Component) {
         min: "1",
         max: "250",
         className: "progress-slider ".concat(this.state.loading ? "no-click" : "")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "prev ".concat(this.state.isPrev ? "" : "no-click"),
         onClick: function onClick() {
           if (_this4.state.isPrev) {
