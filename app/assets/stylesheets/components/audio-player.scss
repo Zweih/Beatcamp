@@ -1,17 +1,25 @@
 .inline-player .next,
 .inline-player .prev {
-	background: transparent;
-	background-size: 40px 12px;
-	cursor: pointer;
-	color: #000000;
-	width: 20px;
-	height: 12px;
-	margin:0 0 1px;
+    background:transparent url(https://s3.amazonaws.com/beatcamp-pro/nextprev.png) no-repeat 0 0;
+    background-size: 40px 12px;
+    cursor: pointer;
+    width: 20px;
+    height: 12px;
+    margin:0 0 1px;
+}
+
+.inline-player .prev {
+	margin-right: 5px;
+}
+
+.inline-player .next {
+	background-position: 100% 0;
+	margin-left: 5px;
 }
 
 .inline-player span.no-click {
 	pointer-events: none;
-	color:#C0C0C0;
+	opacity: 0.25;
 }
 
 .inline-player .play-pause {

@@ -49,7 +49,7 @@
   height: 350px;
 }
 
-.player {
+.audio-player {
 	width: 376px;
 	height: 52px;
 	margin-top: 24px;
@@ -113,6 +113,7 @@
 	color: #0687f5;
 	width: 220px;
 	cursor: pointer;
+	padding: 6px 2px;
 }
 
 .track-listings li .track-info#track-bold {

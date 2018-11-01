@@ -744,18 +744,14 @@ function (_React$Component) {
             _this4.handleTrack(-1);
           }
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-fast-backward"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "next ".concat(this.state.isNext ? "" : "no-click"),
         onClick: function onClick() {
           if (_this4.state.isNext) {
             _this4.handleTrack(1);
           }
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-fast-forward"
-      })))))));
+      }))))));
     }
   }], [{
     key: "getDerivedStateFromProps",
