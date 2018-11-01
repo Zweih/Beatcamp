@@ -60,7 +60,6 @@ class AudioPlayer extends React.Component {
 	static getDerivedStateFromProps(nextProps, prevState) {
 		if(nextProps.album.id !== prevState.album.id) {
 			nextProps.handleTrackChange(0);
-			nextProps.handleTrackPlay(false);
 
 			return ({ 
 				album: nextProps.album,
@@ -99,6 +98,11 @@ class AudioPlayer extends React.Component {
 
 		if(this.props.album.id !== prevProps.album.id || this.props.cTrackNum !== prevProps.cTrackNum) {
 			clearInterval(this.seekWait);
+			clearInterval(this.currentTimeInterval);
+		}
+
+		if(this.props.album.id !== prevProps.album.id) {
+			this.props.handleTrackPlay(false);
 		}
 	}
 
@@ -123,26 +127,26 @@ class AudioPlayer extends React.Component {
 	}
 
 	handleDragSlider(e) {
-		const sliderValue = e.currentTarget.value
-		
-		this.setState({
-			progress: sliderValue
-		});
-
-		const newTime = sliderValue / 250 * this.state.duration;
 		clearInterval(this.seekWait);
 		this.audio.pause();
+		const sliderValue = e.currentTarget.value
+		const newTime = sliderValue / 250 * this.state.duration;
+		
+		this.setState({
+			progress: sliderValue,
+			cTime: newTime
+		});
 
 		this.seekWait = setInterval(() => {
 			if(sliderValue > 249) {
+				clearInterval(this.seekWait);
 				this.setState({ progress: 0 });
 				this.handleTrack(1);
-				clearInterval(this.seekWait);
 			} else if(this.audio.seekable.start(0) <= newTime && newTime <=  this.audio.seekable.end(this.audio.seekable.length - 1)) {
+				clearInterval(this.seekWait);
 				this.audio.currentTime = newTime;
 				this.props.handleTrackPlay(true);
 				this.audio.play();
-				clearInterval(this.seekWait);
 			}
 		}, 100);
   }

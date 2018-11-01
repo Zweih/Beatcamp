@@ -640,6 +640,11 @@ function (_React$Component) {
 
       if (this.props.album.id !== prevProps.album.id || this.props.cTrackNum !== prevProps.cTrackNum) {
         clearInterval(this.seekWait);
+        clearInterval(this.currentTimeInterval);
+      }
+
+      if (this.props.album.id !== prevProps.album.id) {
+        this.props.handleTrackPlay(false);
       }
     }
   }, {
@@ -666,30 +671,30 @@ function (_React$Component) {
     value: function handleDragSlider(e) {
       var _this3 = this;
 
-      var sliderValue = e.currentTarget.value;
-      this.setState({
-        progress: sliderValue
-      });
-      var newTime = sliderValue / 250 * this.state.duration;
       clearInterval(this.seekWait);
       this.audio.pause();
+      var sliderValue = e.currentTarget.value;
+      var newTime = sliderValue / 250 * this.state.duration;
+      this.setState({
+        progress: sliderValue,
+        cTime: newTime
+      });
       this.seekWait = setInterval(function () {
         if (sliderValue > 249) {
+          clearInterval(_this3.seekWait);
+
           _this3.setState({
             progress: 0
           });
 
           _this3.handleTrack(1);
-
-          clearInterval(_this3.seekWait);
         } else if (_this3.audio.seekable.start(0) <= newTime && newTime <= _this3.audio.seekable.end(_this3.audio.seekable.length - 1)) {
+          clearInterval(_this3.seekWait);
           _this3.audio.currentTime = newTime;
 
           _this3.props.handleTrackPlay(true);
 
           _this3.audio.play();
-
-          clearInterval(_this3.seekWait);
         }
       }, 100);
     } // credit: SO user GitaarLAB
@@ -760,7 +765,6 @@ function (_React$Component) {
     value: function getDerivedStateFromProps(nextProps, prevState) {
       if (nextProps.album.id !== prevState.album.id) {
         nextProps.handleTrackChange(0);
-        nextProps.handleTrackPlay(false);
         return {
           album: nextProps.album,
           tracks: nextProps.tracks,
@@ -1818,7 +1822,8 @@ function (_React$Component) {
       if (this.props.match.params.albumId !== nextProps.match.params.albumId) {
         this.props.fetchAlbum(nextProps.match.params.albumId);
         this.setState({
-          trackBold: false
+          trackBold: false,
+          playing: false
         });
       }
     }
@@ -1887,16 +1892,16 @@ function (_React$Component) {
       }, "by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "user-album-artist-link",
         to: "/users/".concat(this.props.pageUserId)
-      }, this.props.userAlbum.user)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.userAlbum.user)), this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "audio-player"
-      }, this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         tracks: this.props.albumTracks,
         album: this.props.userAlbum,
         cTrackNum: this.state.cTrackNum,
         playing: this.state.playing,
         handleTrackPlay: this.handleTrackPlay,
         handleTrackChange: this.handleTrackChange
-      }) : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buy-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "digital-album"

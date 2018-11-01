@@ -25,7 +25,9 @@ class UserAlbumDetail extends React.Component {
   componentWillReceiveProps(nextProps) {
     if(this.props.match.params.albumId !== nextProps.match.params.albumId) {
 			this.props.fetchAlbum(nextProps.match.params.albumId);
-			this.setState({ trackBold: false });
+			this.setState({ 
+				trackBold: false,
+				playing: false });
     }
 	}
 
@@ -94,19 +96,19 @@ class UserAlbumDetail extends React.Component {
                   </button>
                 </Link>
               : ""} */}
-              <div className="audio-player">
 								{
 									this.props.albumTracks.length > 0 ? 
-									<AudioPlayerContainer
-										tracks={this.props.albumTracks}
-										album={this.props.userAlbum}
-										cTrackNum={this.state.cTrackNum}
-										playing={this.state.playing}
-										handleTrackPlay={this.handleTrackPlay}
-										handleTrackChange={this.handleTrackChange}
-									/> : ""
+									<div className="audio-player">
+										<AudioPlayerContainer
+											tracks={this.props.albumTracks}
+											album={this.props.userAlbum}
+											cTrackNum={this.state.cTrackNum}
+											playing={this.state.playing}
+											handleTrackPlay={this.handleTrackPlay}
+											handleTrackChange={this.handleTrackChange}
+										/>
+									</div> : ""
 								}
-              </div>
 							<div className="buy-info">
 								<h3 className="digital-album">
 									Digital Album
