@@ -666,16 +666,15 @@ function (_React$Component) {
     value: function handleDragSlider(e) {
       var _this3 = this;
 
-      clearInterval(this.seekWait);
       var sliderValue = e.currentTarget.value;
-      var newTime = sliderValue / 250 * this.state.duration;
-      this.audio.pause();
       this.setState({
-        cTime: newTime,
         progress: sliderValue
       });
+      var newTime = sliderValue / 250 * this.state.duration;
+      clearInterval(this.seekWait);
+      this.audio.pause();
       this.seekWait = setInterval(function () {
-        if (_this3.state.progress > 249) {
+        if (sliderValue > 249) {
           _this3.setState({
             progress: 0
           });
@@ -1899,13 +1898,15 @@ function (_React$Component) {
         playing: this.state.playing,
         handleTrackPlay: this.handleTrackPlay,
         handleTrackChange: this.handleTrackChange
-      }) : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }) : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "buy-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "digital-album"
       }, "Digital Album"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "streaming"
       }, "Streaming"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "purchase-info"
-      }, "Includes unlimited streaming via the free Beatcamp web-app."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "Includes unlimited streaming via the free Beatcamp web-app.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "track-listings"
       }, trackListings ? trackListings : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-album-desc"

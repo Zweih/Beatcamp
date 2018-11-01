@@ -123,27 +123,25 @@ class AudioPlayer extends React.Component {
 	}
 
 	handleDragSlider(e) {
-		clearInterval(this.seekWait);
 		const sliderValue = e.currentTarget.value
-		const newTime = sliderValue / 250 * this.state.duration;
-		this.audio.pause();
-
+		
 		this.setState({
-			cTime: newTime,
 			progress: sliderValue
 		});
 
+		const newTime = sliderValue / 250 * this.state.duration;
+		clearInterval(this.seekWait);
+		this.audio.pause();
+
 		this.seekWait = setInterval(() => {
-			if(this.state.progress > 249) {
+			if(sliderValue > 249) {
 				this.setState({ progress: 0 });
 				this.handleTrack(1);
-
 				clearInterval(this.seekWait);
 			} else if(this.audio.seekable.start(0) <= newTime && newTime <=  this.audio.seekable.end(this.audio.seekable.length - 1)) {
 				this.audio.currentTime = newTime;
 				this.props.handleTrackPlay(true);
 				this.audio.play();
-
 				clearInterval(this.seekWait);
 			}
 		}, 100);

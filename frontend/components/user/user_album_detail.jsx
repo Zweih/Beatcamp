@@ -107,15 +107,17 @@ class UserAlbumDetail extends React.Component {
 									/> : ""
 								}
               </div>
-							<h3 className="digital-album">
-								Digital Album
-							</h3>
-							<h4 className="streaming">
-								Streaming
-							</h4>
-							<p className="purchase-info">
-								Includes unlimited streaming via the free Beatcamp web-app.
-							</p>
+							<div className="buy-info">
+								<h3 className="digital-album">
+									Digital Album
+								</h3>
+								<h4 className="streaming">
+									Streaming
+								</h4>
+								<p className="purchase-info">
+									Includes unlimited streaming via the free Beatcamp web-app.
+								</p>
+							</div>
 							<ul className="track-listings">
 								{trackListings ? trackListings : ""}
 							</ul>
