@@ -134,10 +134,14 @@
 	min-width: 17px;
 	color: #000000;
 	padding-left: 1px;
-	padding-bottom: 2px;
+	padding-bottom: 1px;
 }
 
 .track-listings li i {
+	font-size: 10px;
+}
+
+.track-listings li i.fa-play {
 	font-size: 10px;
 	margin-left: 2px;
 }
