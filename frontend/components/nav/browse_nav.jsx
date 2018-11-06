@@ -69,12 +69,14 @@ class BrowseNav extends React.Component {
                     placeholder="search Beatcamp"
                   />
                   <span className="search-submit-span">
+									<Link to="/discover">
                     <button 
                       className="search-submit"
                       type="submit"
                     >
                       <i className="fas fa-search fa-lg"></i>
                     </button>
+									</Link>
                   </span>
                 </form>
               </li>

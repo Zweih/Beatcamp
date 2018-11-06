@@ -14,6 +14,7 @@ import BrowseNavContainer from "./nav/browse_nav_container";
 import UserProfileContainer from "./user/user_profile_container";
 import UserProfileEditContainer from "./user/user_profile_edit_container";
 import HomepageContainer from "./homepage_container";
+import ParkingPage from "./parking_page";
 
 const App = () => (
   <div>
@@ -38,6 +39,7 @@ const App = () => (
               <UserProfileContainer key={props.match.params.userId} {...props} />)
             } />
             <AuthRoute exact path="/login" component={LoginFormContainer} />
+						<Route exact path="/discover" component={ParkingPage} />
           </Switch>
         </section>
       </div>

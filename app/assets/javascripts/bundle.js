@@ -475,7 +475,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_user_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user/user_profile_container */ "./frontend/components/user/user_profile_container.js");
 /* harmony import */ var _user_user_profile_edit_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user/user_profile_edit_container */ "./frontend/components/user/user_profile_edit_container.js");
 /* harmony import */ var _homepage_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./homepage_container */ "./frontend/components/homepage_container.js");
+/* harmony import */ var _parking_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./parking_page */ "./frontend/components/parking_page.jsx");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 
 
 
@@ -525,6 +527,10 @@ var App = function App() {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/discover",
+    component: _parking_page__WEBPACK_IMPORTED_MODULE_10__["default"]
   }))))));
 };
 
@@ -1240,12 +1246,14 @@ function (_React$Component) {
         placeholder: "search Beatcamp"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "search-submit-span"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/discover"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-submit",
         type: "submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-search fa-lg"
-      })))))), this.props.currentUser ? this.loggedIn() : this.notLoggedIn())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
+      }))))))), this.props.currentUser ? this.loggedIn() : this.notLoggedIn())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
         exact: true,
         path: "/login",
         component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -1376,12 +1384,14 @@ function (_React$Component) {
         placeholder: "Search for artist, track or album"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "search-submit-span"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/discover"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-submit",
         type: "submit"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-search fa-lg"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
         exact: true,
         path: "/login",
         component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -1460,6 +1470,35 @@ var LoginNav = function LoginNav() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (LoginNav);
+
+/***/ }),
+
+/***/ "./frontend/components/parking_page.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/components/parking_page.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+
+
+var ParkingPage = function ParkingPage() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "parking-page"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "This feature is currently under construction!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Check back later to see what we've been up to!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "home-button"
+  }, "Back to Homepage")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ParkingPage);
 
 /***/ }),
 

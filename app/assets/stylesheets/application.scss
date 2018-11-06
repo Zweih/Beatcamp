@@ -17,14 +17,15 @@
 @import "./base/reset.scss";
 @import "./base/base.scss";
 @import "./components/app.scss";
+@import "./components/homepage.scss";
+@import "./components/audio-player.scss";
+@import "./components/parking-page.scss";
 @import "./components/nav/default-header.scss";
 @import "./components/nav/login-header.scss";
-@import "./components/homepage.scss";
 @import "./components/session-form/login-form.scss";
 @import "./components/session-form/signup-form.scss";
 @import "./components/nav/browse-header.scss";
 @import "./components/user/user-header.scss";
 @import "./components/user/user-profile.scss";
 @import "./components/user/user-album-detail.scss";
-@import "./components/audio-player.scss";
 @import "./components/user/user-edit-form.scss";

@@ -35,12 +35,14 @@ class DefaultNav extends React.Component {
                   placeholder="Search for artist, track or album"
                 />
                 <span className="search-submit-span">
-                  <button 
-                    className="search-submit"
-                    type="submit"
-                  >
-                    <i className="fas fa-search fa-lg"></i>
-                  </button>
+									<Link to="/discover">
+										<button 
+											className="search-submit"
+											type="submit"
+										>
+											<i className="fas fa-search fa-lg"></i>
+										</button>
+									</Link>
                 </span>
               </form>
               <RightGreetingContainer />
