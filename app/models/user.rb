@@ -48,7 +48,12 @@ class User < ApplicationRecord
   end
 
   def avatar_url
-    self.avatar.attached? ? self.avatar.service_url : nil
+		if(self.avatar.attached?)
+			self.avatar.service.url_expires_in = 1.hour
+			self.avatar.service_url
+		else
+			""
+		end
   end
 
   def attach_avatar(url)
