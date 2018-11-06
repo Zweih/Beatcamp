@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  Route,
-  Switch,
-  HashRouter
+	Route,
+	Switch,
+	HashRouter
 } from "react-router-dom";
 
 import { AuthRoute } from "../util/route_util"; 
@@ -17,34 +17,34 @@ import HomepageContainer from "./homepage_container";
 import ParkingPage from "./parking_page";
 
 const App = () => (
-  <div>
-    <HashRouter>
-      <div>
-        <Switch>
-          <AuthRoute exact path="/login" component={LoginNav} />
-          <Route exact path="/" component={DefaultNavContainer} />
-          <Route exact path="/signup" component={DefaultNavContainer} />
-          <Route path="/" component={BrowseNavContainer} />
-        </Switch>
-        <section className="content-section">
-          <Switch>
-            {
-              <Route exact path="/" component={HomepageContainer} />
-            }
-            <Route exact path="/users/:userId/edit" component={UserProfileEditContainer} />
-            {
-              // <Route path="/users/:userId" component={UserProfileContainer} />
-            }
-            <Route path="/users/:userId" render={(props) => (
-              <UserProfileContainer key={props.match.params.userId} {...props} />)
-            } />
-            <AuthRoute exact path="/login" component={LoginFormContainer} />
+	<div>
+		<HashRouter>
+			<div>
+				<Switch>
+					<AuthRoute exact path="/login" component={LoginNav} />
+					<Route exact path="/" component={DefaultNavContainer} />
+					<Route exact path="/signup" component={DefaultNavContainer} />
+					<Route path="/" component={BrowseNavContainer} />
+				</Switch>
+				<section className="content-section">
+					<Switch>
+						{
+							<Route exact path="/" component={HomepageContainer} />
+						}
+						<Route exact path="/users/:userId/edit" component={UserProfileEditContainer} />
+						{
+							// <Route path="/users/:userId" component={UserProfileContainer} />
+						}
+						<Route path="/users/:userId" render={(props) => (
+							<UserProfileContainer key={props.match.params.userId} {...props} />)
+						} />
+						<AuthRoute exact path="/login" component={LoginFormContainer} />
 						<Route exact path="/discover" component={ParkingPage} />
-          </Switch>
-        </section>
-      </div>
-    </HashRouter>
-  </div>
+					</Switch>
+				</section>
+			</div>
+		</HashRouter>
+	</div>
 );
 
 export default App;

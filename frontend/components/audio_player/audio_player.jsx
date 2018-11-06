@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 class AudioPlayer extends React.Component {
-  constructor(props) {
+	constructor(props) {
 		super(props);
 		
 		this.state = {
@@ -149,7 +149,7 @@ class AudioPlayer extends React.Component {
 				this.audio.play();
 			}
 		}, 100);
-  }
+	}
 
 	// credit: SO user GitaarLAB
 	fmtMSS(s) {
