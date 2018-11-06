@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  Link,
-  withRouter
+	Link,
+	withRouter
 } from "react-router-dom";
 import AudioPlayerContainer from "../audio_player/audio_player_container";
 
 class UserAlbumDetail extends React.Component {
-  constructor(props) {
+	constructor(props) {
 		super(props);
 		this.handleTrackChange = this.handleTrackChange.bind(this);
 		this.handleTrackPlay = this.handleTrackPlay.bind(this);
@@ -16,19 +16,19 @@ class UserAlbumDetail extends React.Component {
 			playing: false,
 			trackBold: false
 		};
-  }
+	}
 
-  componentDidMount() {
+	componentDidMount() {
 		this.props.fetchAlbum(this.props.albumId);
-  }
+	}
 
-  componentWillReceiveProps(nextProps) {
-    if(this.props.match.params.albumId !== nextProps.match.params.albumId) {
+	componentWillReceiveProps(nextProps) {
+		if(this.props.match.params.albumId !== nextProps.match.params.albumId) {
 			this.props.fetchAlbum(nextProps.match.params.albumId);
 			this.setState({ 
 				trackBold: false,
 				playing: false });
-    }
+		}
 	}
 
 	handleTrackPlay(isPlaying) {
@@ -44,7 +44,7 @@ class UserAlbumDetail extends React.Component {
 		this.setState({ cTrackNum: trackNum });
 	}
 
-  render() {
+	render() {
 		const trackListings = this.props.albumTracks.map((track, idx) => {
 			return (
 				<li key={idx}>
@@ -76,26 +76,26 @@ class UserAlbumDetail extends React.Component {
 			);
 		})
 
-    return (
-      <div>
-        {
-          this.props.userAlbum ?
-          <div className="user-album-detail">
-            <div className="left-album-col">
-              <h1 className="user-album-title">
-                {this.props.userAlbum.title}
-              </h1>
+		return (
+			<div>
+				{
+					this.props.userAlbum ?
+					<div className="user-album-detail">
+						<div className="left-album-col">
+							<h1 className="user-album-title">
+								{this.props.userAlbum.title}
+							</h1>
 							
-              <p className="user-album-artist">
-                by <Link className="user-album-artist-link" to={`/users/${this.props.pageUserId}`}>{this.props.userAlbum.user}</Link>
-              </p>
-              {/* { this.props.currentUser.id === this.props.pageUserId ?
-                <Link to={`/users/${this.props.currentUser.id}/albums/${this.props.userAlbum.id}/edit`}>
-                  <button>
-                    Edit Album
-                  </button>
-                </Link>
-              : ""} */}
+							<p className="user-album-artist">
+								by <Link className="user-album-artist-link" to={`/users/${this.props.pageUserId}`}>{this.props.userAlbum.user}</Link>
+							</p>
+							{/* { this.props.currentUser.id === this.props.pageUserId ?
+								<Link to={`/users/${this.props.currentUser.id}/albums/${this.props.userAlbum.id}/edit`}>
+									<button>
+										Edit Album
+									</button>
+								</Link>
+							: ""} */}
 								{
 									this.props.albumTracks.length > 0 ? 
 									<div className="audio-player">
@@ -123,25 +123,25 @@ class UserAlbumDetail extends React.Component {
 							<ul className="track-listings">
 								{trackListings ? trackListings : ""}
 							</ul>
-              <p className="user-album-desc">
-                {this.props.userAlbum.description}
-              </p>
-            </div>
-            <div className="right-album-col">
-              <a href={this.props.userAlbum.cover_url}>
-                <img 
-                  className="user-album-cover"
+							<p className="user-album-desc">
+								{this.props.userAlbum.description}
+							</p>
+						</div>
+						<div className="right-album-col">
+							<a href={this.props.userAlbum.cover_url}>
+								<img 
+									className="user-album-cover"
 									src={this.props.userAlbum.cover_url}
-                />
-              </a>
-            </div>
+								/>
+							</a>
+						</div>
 
-            </div>
-          : ""
-        }
-      </div>
-    );
-  }
+						</div>
+					: ""
+				}
+			</div>
+		);
+	}
 }
 
 export default withRouter(UserAlbumDetail);

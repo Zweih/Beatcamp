@@ -1,9 +1,9 @@
 class Track < ApplicationRecord
-  validates :title, :album_id, :list_num, presence: true
+	validates :title, :album_id, :list_num, presence: true
 
-  has_one_attached :audio
+	has_one_attached :audio
 
-  belongs_to :album
+	belongs_to :album
 
 	def audio_url
 		if(self.audio.attached?)

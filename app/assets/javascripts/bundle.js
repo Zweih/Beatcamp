@@ -915,19 +915,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state) => {
-  const currentUser = state.entities.users[state.session.id];
-  return { currentUser };
+	const currentUser = state.entities.users[state.session.id];
+	return { currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])()),
-  };
+	return {
+		logout: () => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])()),
+	};
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(_greeting__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
@@ -993,12 +993,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state) => {
-  const currentUser = state.entities.users[state.session.id];
-  return { currentUser };
+	const currentUser = state.entities.users[state.session.id];
+	return { currentUser };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps
+	mapStateToProps
 )(_left_greeting__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
@@ -1129,21 +1129,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state) => {
-  const currentUser = state.entities.users[state.session.id];
-  const homeAlbums = Object.values(state.entities.albums);
-  
-  return { currentUser, homeAlbums };
+	const currentUser = state.entities.users[state.session.id];
+	const homeAlbums = Object.values(state.entities.albums);
+	
+	return { currentUser, homeAlbums };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchHomeAlbums: () => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchHomeAlbums"])()),
-  };
+	return {
+		fetchHomeAlbums: () => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchHomeAlbums"])()),
+	};
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(_homepage__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
@@ -1289,19 +1289,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state) => {
-  const currentUser = state.entities.users[state.session.id];
-  return { currentUser };
+	const currentUser = state.entities.users[state.session.id];
+	return { currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"])()),
-  }
+	return {
+		logout: () => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"])()),
+	}
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(_browse_nav__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
@@ -1425,12 +1425,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state) => {
-  const currentUser = state.entities.users[state.session.id];
-  return { currentUser };
+	const currentUser = state.entities.users[state.session.id];
+	return { currentUser };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps
+	mapStateToProps
 )(_default_nav__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
@@ -1989,23 +1989,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUser = state.entities.users[state.session.id];
-  const albumId = ownProps.match.params.albumId;
-  const pageUserId = parseInt(ownProps.match.params.userId);
+	const currentUser = state.entities.users[state.session.id];
+	const albumId = ownProps.match.params.albumId;
+	const pageUserId = parseInt(ownProps.match.params.userId);
 	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectUserAlbum"])(state.entities, albumId);
 	const albumTracks = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectAlbumTracks"])(state.entities, userAlbum);
-  return { userAlbum, albumId, pageUserId, currentUser, albumTracks };
+	return { userAlbum, albumId, pageUserId, currentUser, albumTracks };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
+	return {
 		fetchAlbum: (albumId) => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAlbum"])(albumId)),
-  };
+	};
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(_user_album_detail__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
@@ -2253,24 +2253,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUser = state.entities.users[state.session.id];
-  const pageUserId = parseInt(ownProps.match.params.userId);
-  const pageUser = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUser"])(state.entities, pageUserId);
-  const userAlbums = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUserAlbums"])(state.entities, pageUser);
-  const nextUserId = pageUserId + 1;
-  
-  return { currentUser, pageUser, pageUserId, nextUserId, userAlbums };
+	const currentUser = state.entities.users[state.session.id];
+	const pageUserId = parseInt(ownProps.match.params.userId);
+	const pageUser = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUser"])(state.entities, pageUserId);
+	const userAlbums = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUserAlbums"])(state.entities, pageUser);
+	const nextUserId = pageUserId + 1;
+	
+	return { currentUser, pageUser, pageUserId, nextUserId, userAlbums };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUser: (userId) => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUser"])(userId)),
-  };
+	return {
+		fetchUser: (userId) => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchUser"])(userId)),
+	};
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(_user_profile__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
@@ -2446,24 +2446,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const mapStateToProps = (state) => {
-  const currentUser = state.entities.users[state.session.id];
-  const errors = state.errors.session;
-  const formType = "User Edit";
-  const formClass = "u-edit";
+	const currentUser = state.entities.users[state.session.id];
+	const errors = state.errors.session;
+	const formType = "User Edit";
+	const formClass = "u-edit";
 
-  return { errors, formType, formClass, currentUser };
+	return { errors, formType, formClass, currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    processForm: (user) => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["updateUser"])(user)),
-    clearSessionErrors: () => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["clearSessionErrors"])()),
-  };
+	return {
+		processForm: (user) => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["updateUser"])(user)),
+		clearSessionErrors: () => dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["clearSessionErrors"])()),
+	};
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(_user_profile_edit__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),

@@ -1,32 +1,32 @@
 #login-header-wrapper {
-  width: 100%;
-  height: 105px;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  top: 0;
-  left: 0;
-  background-color: #DDDDDD;
-  display: flex;
-  direction: column;
-  justify-content: center;
+	width: 100%;
+	height: 105px;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	top: 0;
+	left: 0;
+	background-color: #DDDDDD;
+	display: flex;
+	direction: column;
+	justify-content: center;
 }
 
 .login-main-header {
-  display: flex;
-  overflow: hidden;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 1106px;
+	display: flex;
+	overflow: hidden;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 1106px;
 }
 
 .login-left-header {
-  display: flex;
-  flex-direction: column;
-  width: 636px;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	width: 636px;
+	justify-content: center;
 }
 
 .logo {
-  background-color: transparent;
+	background-color: transparent;
 }

@@ -1,112 +1,112 @@
 .user-profile {
-  display: flex;
-  flex-direction: column;
-  width: 975px;
-  min-height: 88vh;
-  padding: 35px 30px 80px 30px;
-  margin: 0px 465px 40px 465px;
-  background-color: rgb(255, 255, 255);
+	display: flex;
+	flex-direction: column;
+	width: 975px;
+	min-height: 88vh;
+	padding: 35px 30px 80px 30px;
+	margin: 0px 465px 40px 465px;
+	background-color: rgb(255, 255, 255);
 }
 
 .user-main {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 975px;
+	background-color: rgb(255, 255, 255);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 975px;
 }
 
 .user-sidebar {
-  width: 120px;
+	width: 120px;
 }
 
 .user-avatar {
-  width: 120px;
-  height: 120px;
+	width: 120px;
+	height: 120px;
 }
 
 .user-title-location {
-  word-wrap: break-word;
-  margin: 0 0 1em;
+	word-wrap: break-word;
+	margin: 0 0 1em;
 }
 
 .user-title {
-  font-size: 14px;
-  font-weight: 700;
-  border-top: 0;
-  margin: 0 0 3px;
-  display: block;
+	font-size: 14px;
+	font-weight: 700;
+	border-top: 0;
+	margin: 0 0 3px;
+	display: block;
 }
 
 .user-location {
-  color: #888888;
-  display: block;
-  font-weight: 400;
-  font-size: 12px;
+	color: #888888;
+	display: block;
+	font-weight: 400;
+	font-size: 12px;
 }
 
 .user-mid-col {
-  display: flex;
-  height: 100%;
+	display: flex;
+	height: 100%;
 }
 
 .user-album-items {
-  width: 788px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+	width: 788px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .album-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-decoration: none;
-  margin: 0 26px 30px 0;
-  width: 368px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	text-decoration: none;
+	margin: 0 26px 30px 0;
+	width: 368px;
 }
 
 .album-item:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .album-item-cover {
-  width: 368px;
-  height: 368px;
+	width: 368px;
+	height: 368px;
 }
 
 .album-item-label {
-  color: #0687F5;
-  font-size: 14px;
-  font-weight: 700;
-  margin: 0.7em 0 0.3em 0;
+	color: #0687F5;
+	font-size: 14px;
+	font-weight: 700;
+	margin: 0.7em 0 0.3em 0;
 }
 
 .user-sidebar .user-album-items {
-  display: flex;
-  flex-direction: column;
-  width: 120px;
-  // margin: 0 0 1.25em;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	width: 120px;
+	// margin: 0 0 1.25em;
+	justify-content: space-between;
 }
 
 .user-sidebar .album-item {
-  margin: 0 0 12px 0;
-  width: 120px;
+	margin: 0 0 12px 0;
+	width: 120px;
 }
 
 .user-sidebar .album-item-cover {
-  width: 120px;
-  height: 120px;
+	width: 120px;
+	height: 120px;
 }
 
 .user-sidebar .album-item-label {
-  font-size: 12px;
+	font-size: 12px;
 }
 
 .user-sidebar h3 {
-  margin: 0 0 1.25em;
-  font-size: 14px;
+	margin: 0 0 1.25em;
+	font-size: 14px;
 }
 
 .user-bio {
@@ -114,19 +114,19 @@
 }
 
 .user-button {
-  margin: 20px 0px 1.75em 0px;
-  display: inline-block;
-  width: 100%;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  height: 36px;
-  text-align: center;
-  color: #fff;
-  background-color: rgb(0,161,198);
-  border-radius: 0;
-  outline: none;
-  background: rgb(0,161,198);
+	margin: 20px 0px 1.75em 0px;
+	display: inline-block;
+	width: 100%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	height: 36px;
+	text-align: center;
+	color: #fff;
+	background-color: rgb(0,161,198);
+	border-radius: 0;
+	outline: none;
+	background: rgb(0,161,198);
 	border: none;
 	cursor: pointer;
 }

@@ -1,27 +1,27 @@
 class Api::TracksController < ApplicationController
-  def create
-    @track = Track.new(track_params)
+	def create
+		@track = Track.new(track_params)
 
-    if @track.save
-      render "api/tracks/show"
-    else
-      render json: @track.errors.full_messages, status: 422
-    end
-  end
+		if @track.save
+			render "api/tracks/show"
+		else
+			render json: @track.errors.full_messages, status: 422
+		end
+	end
 
-  def index
+	def index
 		@tracks = Track.all
-    render "api/tracks/index"
-  end
+		render "api/tracks/index"
+	end
 
-  def show
-    @track = Track.find_by(id: params[:id])
-    render "api/tracks/show"
-  end
+	def show
+		@track = Track.find_by(id: params[:id])
+		render "api/tracks/show"
+	end
 
-  private
+	private
 
-  def track_params
-    params.require(:track).permit(:title, :list_num, :album_id)
-  end
+	def track_params
+		params.require(:track).permit(:title, :list_num, :album_id)
+	end
 end
