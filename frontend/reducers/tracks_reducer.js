@@ -1,5 +1,5 @@
 import {
-	 RECEIVE_ALBUM
+	RECEIVE_ALBUM
  } from "../actions/album_actions";
 
 import {
@@ -7,8 +7,8 @@ import {
 } from "../actions/session_actions";
 
 import {
-		RECEIVE_TRACK,
-		RECEIVE_ALL_TRACKS
+	RECEIVE_TRACK,
+	RECEIVE_ALL_TRACKS
 	} from "../actions/track_actions";
 
 import merge from "lodash.merge";

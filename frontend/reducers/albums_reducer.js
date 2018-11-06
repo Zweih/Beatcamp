@@ -4,8 +4,8 @@ import {
 } from "../actions/session_actions";
 
 import {
-	 RECEIVE_ALBUM,
-	 RECEIVE_ALBUMS
+	RECEIVE_ALBUM,
+	RECEIVE_ALBUMS
 } from "../actions/album_actions";
 
 import merge from "lodash.merge";

@@ -4,7 +4,7 @@ import track from "./track_errors_reducer";
 import { combineReducers } from "redux";
 
 const errorsReducer = combineReducers({
-  session,
+	session,
 	album,
 	track,
 });

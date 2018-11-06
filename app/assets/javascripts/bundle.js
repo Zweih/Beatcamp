@@ -2528,17 +2528,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const AlbumErrorsReducer = (state = [], action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM_ERRORS"]:
-      return action.errors;
-    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ALBUM_ERRORS"]:
-    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
-    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUMS"]:
-      return [];
-    default:
-      return state;
-  }
+	Object.freeze(state);
+	switch (action.type) {
+		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM_ERRORS"]:
+			return action.errors;
+		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ALBUM_ERRORS"]:
+		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
+		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUMS"]:
+			return [];
+		default:
+			return state;
+	}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AlbumErrorsReducer);
@@ -2609,7 +2609,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]) ({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+	users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
 	albums: _albums_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
 	tracks: _tracks_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
 });
@@ -2637,7 +2637,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_3__["combineReducers"])({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+	session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
 	album: _album_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
 	track: _track_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
 });
@@ -2686,19 +2686,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectUserAlbum", function() { return selectUserAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectUser", function() { return selectUser; });
 const selectUserAlbums = (entities, user) => {
-  return user.album_ids.map(albumId => entities.albums[albumId]);
+	return user.album_ids.map(albumId => entities.albums[albumId]);
 };
 
 const selectAlbumTracks = (entities, album) => {
-  return album.track_ids.map(trackId => entities.tracks[trackId]);
+	return album.track_ids.map(trackId => entities.tracks[trackId]);
 };
 
 const selectUserAlbum = (entities, albumId) => {
-  return entities.albums[albumId] || { track_ids: [] };
+	return entities.albums[albumId] || { track_ids: [] };
 };
 
 const selectUser = (entities, userId) => {
-  return entities.users[userId] || { album_ids: [] };
+	return entities.users[userId] || { album_ids: [] };
 };
 
 /***/ }),
@@ -2716,16 +2716,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const sessionErrorsReducer = (state = [], action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
-      return action.errors;
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SESSION_ERRORS"]:
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return [];
-    default:
-      return state;
-  }
+	Object.freeze(state);
+	switch (action.type) {
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
+			return action.errors;
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SESSION_ERRORS"]:
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+			return [];
+		default:
+			return state;
+	}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionErrorsReducer);
@@ -2745,20 +2745,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const defaultState = {
-  currentUserId: null,
+	currentUserId: null,
 };
 
 const session_reducer = (state = defaultState, action) => {
-  Object.freeze(state);
+	Object.freeze(state);
 
-  switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return { id: action.user.id };
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
-      return defaultState;
-    default:
-      return state;
-  }
+	switch (action.type) {
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+			return { id: action.user.id };
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
+			return defaultState;
+		default:
+			return state;
+	}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (session_reducer);
@@ -2778,17 +2778,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const TrackErrorsReducer = (state = [], action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK_ERRORS"]:
-      return action.errors;
-    case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TRACK_ERRORS"]:
-    case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
-    case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_TRACKS"]:
-      return [];
-    default:
-      return state;
-  }
+	Object.freeze(state);
+	switch (action.type) {
+		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK_ERRORS"]:
+			return action.errors;
+		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TRACK_ERRORS"]:
+		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRACK"]:
+		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_TRACKS"]:
+			return [];
+		default:
+			return state;
+	}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TrackErrorsReducer);
@@ -2865,17 +2865,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const usersReducer = (state = {}, action) => {
-  Object.freeze(state);
+	Object.freeze(state);
 
-  switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, { [action.user.id]: action.user });
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USERS"]:
-      return Object.assign({}, state.users, action.users)
-    default:
-      return state;
-  }
+	switch (action.type) {
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+			return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, { [action.user.id]: action.user });
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_USERS"]:
+			return Object.assign({}, state.users, action.users)
+		default:
+			return state;
+	}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (usersReducer);
@@ -2904,13 +2904,13 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__W
 const middlewares = [redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]];
 
 if (true) {
-  // must use "require" (import only allowed at top of file)
-  const { logger } = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
-  middlewares.push(logger);
+	// must use "require" (import only allowed at top of file)
+	const { logger } = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
+	middlewares.push(logger);
 }
 
 const configureStore = (preloadedState = {}) => {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(...middlewares)));
+	return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(...middlewares)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
@@ -2931,37 +2931,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchHomeAlbums", function() { return fetchHomeAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
 const createAlbum = (album) => {
-  return $.ajax({
-    method: "POST",
-    url: "/api/albums",
-    data: {
-      album,
-    },
-  });
+	return $.ajax({
+		method: "POST",
+		url: "/api/albums",
+		data: {
+			album,
+		},
+	});
 };
 
 const fetchAlbums = () => {
-  return $.ajax({
-    method: "GET",
-    url: "api/albums",
-  });
+	return $.ajax({
+		method: "GET",
+		url: "api/albums",
+	});
 };
 
 const fetchHomeAlbums = () => {
-  return $.ajax({
-    method: "GET",
-    url: "api/albums",
-    data: {
-      num: 10,
-    }
-  });
+	return $.ajax({
+		method: "GET",
+		url: "api/albums",
+		data: {
+			num: 10,
+		}
+	});
 };
 
 const fetchAlbum = (albumId) => {
-  return $.ajax({
-    method: "GET",
-    url: `api/albums/${albumId}`,
-  });
+	return $.ajax({
+		method: "GET",
+		url: `api/albums/${albumId}`,
+	});
 };
 
 /***/ }),
@@ -3046,57 +3046,57 @@ __webpack_require__.r(__webpack_exports__);
 // User Requests
 
 const signup = (user) => {
-  return $.ajax({
-    method: "POST",
-    url: "api/users",
-    data: {
-      user,
-    },
-  });
+	return $.ajax({
+		method: "POST",
+		url: "api/users",
+		data: {
+			user,
+		},
+	});
 };
 
 const fetchUsers = () => {
-  return $.ajax({
-    method: "GET",
-    url: "api/users",
-  });
+	return $.ajax({
+		method: "GET",
+		url: "api/users",
+	});
 };
 
 const fetchUser = (userId) => {
-  return $.ajax({
-    method: "GET",
-    url: `api/users/${userId}`,
-  });
+	return $.ajax({
+		method: "GET",
+		url: `api/users/${userId}`,
+	});
 };
 
 const updateUser = (user) => {
-  return $.ajax({
-    method: "PATCH",
-    url: `api/users/${user.userId}`,
-    data: {
-      user,
-    },
-  });
+	return $.ajax({
+		method: "PATCH",
+		url: `api/users/${user.userId}`,
+		data: {
+			user,
+		},
+	});
 };
 
 // Session Requests
 
 const login = (user) => {
-  return $.ajax({
-    method: "POST",
-    url: "api/session",
-    data: {
-      user,
-    }
-  });
+	return $.ajax({
+		method: "POST",
+		url: "api/session",
+		data: {
+			user,
+		}
+	});
 };
 
 
 const logout = () => {
-  return $.ajax({
-    method: "DELETE",
-    url: "api/session",
-  });
+	return $.ajax({
+		method: "DELETE",
+		url: "api/session",
+	});
 };
 
 
@@ -3115,27 +3115,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTracks", function() { return fetchTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTrack", function() { return fetchTrack; });
 const createTrack = (track) => {
-  return $.ajax({
-    method: "POST",
-    url: "/api/tracks",
-    data: {
-      track,
-    },
-  });
+	return $.ajax({
+		method: "POST",
+		url: "/api/tracks",
+		data: {
+			track,
+		},
+	});
 };
 
 const fetchTracks = () => {
-  return $.ajax({
-    method: "GET",
-    url: "api/tracks",
-  });
+	return $.ajax({
+		method: "GET",
+		url: "api/tracks",
+	});
 };
 
 const fetchTrack = (trackId) => {
-  return $.ajax({
-    method: "GET",
-    url: `api/tracks/${trackId}`,
-  });
+	return $.ajax({
+		method: "GET",
+		url: `api/tracks/${trackId}`,
+	});
 };
 
 /***/ }),

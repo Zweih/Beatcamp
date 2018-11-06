@@ -4,7 +4,7 @@ import albums from "./albums_reducer";
 import tracks from "./tracks_reducer";
 
 const entitiesReducer = combineReducers ({
-  users,
+	users,
 	albums,
 	tracks,
 });
