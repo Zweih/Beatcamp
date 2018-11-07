@@ -15,15 +15,15 @@ cat = User.create(username: "sennacy", password: "password1234", bio: "I am a ca
 file = File.open('app/assets/images/sennacy.jpg')
 cat.avatar.attach(io: file, filename: 'sennacy.jpg')
 
-cat_album = Album.create(title: "demo album", description: "its a good demo, huh?", user_id: cat.id)
+cat_album = Album.create(title: "Demo Album 1", description: "Above is an example album. This is an example description.", user_id: cat.id)
 file = File.open('app/assets/images/1.jpg')
 cat_album.cover.attach(io: file, filename: 'softness.jpg')
 
-cat_album = Album.create(title: "another one", description: "A sharp album for a sharp demo", user_id: cat.id)
+cat_album = Album.create(title: "Second Demo", description: "A sharp album for a sharp demo. This is yet another demo description.", user_id: cat.id)
 file = File.open('app/assets/images/2.jpg')
 cat_album.cover.attach(io: file, filename: 'attac.jpg')
 
-cat_album = Album.create(title: "little cowboy", description: "that one album that's superb", user_id: cat.id)
+cat_album = Album.create(title: "Album Number 3", description: "that one album that's superb because it's the third demo!", user_id: cat.id)
 file = File.open('app/assets/images/3.jpg')
 cat_album.cover.attach(io: file, filename: 'v7ycqdgxzan11.jpg')
 
@@ -53,7 +53,7 @@ def get_locations(num)
   locations[num]
 end
 
-100.times do |i|
+10.times do |i|
   cat = User.create(username: Faker::RockBand.unique.name, password: Faker::Internet.password(10, 20, true), bio: get_words(rand(0..5)), location: get_locations(rand(0..2)))
   profileUrl = (i % 2) ? Faker::LoremFlickr.image("400x400", ['cat']) : Faker::LoremFlickr.image("400x400", ['dog'])
   url = URI.parse(profileUrl)
