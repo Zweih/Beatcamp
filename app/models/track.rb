@@ -1,4 +1,6 @@
-require 'taglib' if File.basename($PROGRAM_NAME) != 'rake'
+require "open-uri"
+
+require "taglib" if File.basename($PROGRAM_NAME) != "rake" && File.basename($PROGRAM_NAME) != "rails"
 
 class Track < ApplicationRecord
 	validates :title, :album_id, :list_num, presence: true
@@ -16,19 +18,22 @@ class Track < ApplicationRecord
 		end
 	end
 
-	def audio_len
-		len = 0
-		audio_path = "#{Rails.root.join('tmp').to_s}/#{self.audio.filename}"
-		
-		File.open(audio_path, 'wb') do |file|
-			file.write(self.audio.download)
-		end
+	def attach_audio(url)
+		url = URI.parse(url)
+		file = open(url)
 
-		TagLib::MPEG::File.open(audio_path) do |file|
+		self.audio.purge
+		filepath = "temp.#{file.content_type_parse.first.split("/").last}"
+		self.audio.attach(io: file, filename: filepath, content_type: file.content_type_parse.first)
+
+		len = 0
+
+		TagLib::MPEG::File.open(file.path) do |file|
 			properties = file.audio_properties
 			len = properties.length
 		end
 
-		return len
+		self.length = len
+		self.save!
 	end
 end
