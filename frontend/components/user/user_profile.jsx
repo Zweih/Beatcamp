@@ -65,15 +65,6 @@ class UserProfile extends React.Component {
 								</button>
 							</Link>
 						: ""}
-						{
-							this.props.pageUser.username ?
-								<Link to={`/users/${this.props.nextUserId}`}>
-									<button className="user-button">
-										Next User
-									</button>
-								</Link>
-							: ""
-						}
 						<h3>discography</h3>
 							<UserAlbumItemList
 								userAlbums={this.props.userAlbums}
