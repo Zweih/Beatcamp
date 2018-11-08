@@ -633,9 +633,6 @@ function (_React$Component) {
           _this2.handleTrack(1);
         }
       };
-
-      this.audio.onprogress = function () {//TODO: ADD PROGRESS BAR
-      };
     }
   }, {
     key: "componentDidUpdate",
@@ -703,6 +700,11 @@ function (_React$Component) {
           _this3.audio.play();
         }
       }, 100);
+    }
+  }, {
+    key: "onError",
+    value: function onError() {
+      this.props.fetchTrack(this.props.tracks[this.state.cTrackNum].id);
     } // credit: SO user GitaarLAB
 
   }, {
@@ -723,7 +725,8 @@ function (_React$Component) {
           _this4.audio = audio;
         },
         src: this.state.cTrackUrl,
-        autoPlay: this.state.autoPlay
+        autoPlay: this.state.autoPlay,
+        onError: this.onError.bind(this)
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "central-controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -782,7 +785,7 @@ function (_React$Component) {
         };
       }
 
-      if (prevState.cTrackNum !== nextProps.cTrackNum) {
+      if (prevState.cTrackNum !== nextProps.cTrackNum || prevState.cTrackUrl !== nextProps.cTrackUrl) {
         return {
           cTrackNum: nextProps.cTrackNum,
           cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
@@ -820,29 +823,37 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _audio_player__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audio_player */ "./frontend/components/audio_player/audio_player.jsx");
+/* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/track_actions */ "./frontend/actions/track_actions.js");
 
 
 
-const mapStateToProps = (_, ownProps) => {
-	const tracks = ownProps.tracks.sort((a, b) => {
-		return a.list_num - b.list_num;
+
+const mapStateToProps = (state, ownProps) => {
+	let tracks = ownProps.trackIds.map((id) => {
+		return state.entities.tracks[id];
 	});
-
+	
 	const cTrackNum = ownProps.cTrackNum || 0;
 	const cTrackUrl = tracks[cTrackNum] ? tracks[cTrackNum].audio_url : "";
 	const cTrackTitle = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
 
 	return { 
-		tracks, 
+		tracks,
 		cTrackUrl,
 		cTrackTitle,
 		cTrackNum
 	};
 };
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchTrack: (trackId) => dispatch(Object(_actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["fetchTrack"])(trackId)),
+	};
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
   mapStateToProps,
-  null
+  mapDispatchToProps,
 )(_audio_player__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
@@ -1934,7 +1945,7 @@ function (_React$Component) {
       }, this.props.userAlbum.user)), this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "audio-player"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        tracks: this.props.albumTracks,
+        trackIds: this.props.albumTrackIds,
         album: this.props.userAlbum,
         cTrackNum: this.state.cTrackNum,
         playing: this.state.playing,
@@ -1993,8 +2004,21 @@ const mapStateToProps = (state, ownProps) => {
 	const albumId = ownProps.match.params.albumId;
 	const pageUserId = parseInt(ownProps.match.params.userId);
 	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectUserAlbum"])(state.entities, albumId);
-	const albumTracks = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectAlbumTracks"])(state.entities, userAlbum);
-	return { userAlbum, albumId, pageUserId, currentUser, albumTracks };
+
+	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+		return a - b;
+	});
+
+	const albumTracks = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectAlbumTracks"])(state.entities, albumTrackIds);
+
+	return {
+		userAlbum,
+		albumId,
+		pageUserId,
+		currentUser,
+		albumTracks,
+		albumTrackIds
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -2216,11 +2240,7 @@ function (_React$Component) {
         to: "/users/".concat(this.props.currentUser.id, "/edit")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "user-button"
-      }, "Edit Profile")) : "", this.props.pageUser.username ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/users/".concat(this.props.nextUserId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "user-button"
-      }, "Next User")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "Edit Profile")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         userAlbums: this.props.userAlbums,
         pageUserId: this.props.pageUserId
       }))));
@@ -2257,9 +2277,8 @@ const mapStateToProps = (state, ownProps) => {
 	const pageUserId = parseInt(ownProps.match.params.userId);
 	const pageUser = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUser"])(state.entities, pageUserId);
 	const userAlbums = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUserAlbums"])(state.entities, pageUser);
-	const nextUserId = pageUserId + 1;
 	
-	return { currentUser, pageUser, pageUserId, nextUserId, userAlbums };
+	return { currentUser, pageUser, pageUserId, userAlbums };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -2689,8 +2708,8 @@ const selectUserAlbums = (entities, user) => {
 	return user.album_ids.map(albumId => entities.albums[albumId]);
 };
 
-const selectAlbumTracks = (entities, album) => {
-	return album.track_ids.map(trackId => entities.tracks[trackId]);
+const selectAlbumTracks = (entities, trackIds) => {
+	return trackIds.map(trackId => entities.tracks[trackId]);
 };
 
 const selectUserAlbum = (entities, albumId) => {
@@ -2823,13 +2842,7 @@ const tracksReducer = (state = {}, action) => {
 
 	switch (action.type) {
 		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]: 
-			Object.values(action.albums).forEach( (album) => { 
-				Object.values(album.tracks).forEach( (track) => {
-					return tracks[track.id] = track;
-				});
-			});
-
-			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, tracks);
+			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, action.tracks);
 		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
 			Object.values(action.tracks).forEach( (track) => { 
 				return tracks[track.id] = track;
