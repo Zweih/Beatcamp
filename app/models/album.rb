@@ -9,11 +9,6 @@ class Album < ApplicationRecord
 	belongs_to :user
 
 	def cover_url
-		if(self.cover.attached?)
-			self.cover.service.url_expires_in = 1.hour
-			self.cover.service_url
-		else
-			""
-		end
+		self.cover.attached? ? self.cover.service_url : nil
 	end
 end

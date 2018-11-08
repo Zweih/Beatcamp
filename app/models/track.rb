@@ -10,12 +10,7 @@ class Track < ApplicationRecord
 	belongs_to :album
 
 	def audio_url
-		if(self.audio.attached?)
-			self.audio.service.url_expires_in = 1.hour
-			self.audio.service_url
-		else
-			""
-		end
+		self.audio.attached? ? self.audio.service_url : nil
 	end
 
 	def attach_audio(url)
