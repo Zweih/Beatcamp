@@ -11,6 +11,7 @@ class User < ApplicationRecord
 	has_one_attached :avatar
 
 	has_many :albums, dependent: :destroy
+	has_many :tracks, through: :albums
 	
 	after_initialize :ensure_session_token
 
