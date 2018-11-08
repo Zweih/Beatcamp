@@ -8,8 +8,21 @@ const mapStateToProps = (state, ownProps) => {
 	const albumId = ownProps.match.params.albumId;
 	const pageUserId = parseInt(ownProps.match.params.userId);
 	const userAlbum = selectUserAlbum(state.entities, albumId);
-	const albumTracks = selectAlbumTracks(state.entities, userAlbum);
-	return { userAlbum, albumId, pageUserId, currentUser, albumTracks };
+
+	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+		return a - b;
+	});
+
+	const albumTracks = selectAlbumTracks(state.entities, albumTrackIds);
+
+	return {
+		userAlbum,
+		albumId,
+		pageUserId,
+		currentUser,
+		albumTracks,
+		albumTrackIds
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
