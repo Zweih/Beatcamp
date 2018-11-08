@@ -51,10 +51,6 @@ class AudioPlayer extends React.Component {
 				this.handleTrack(1);
 			}
 		};
-
-		this.audio.onprogress = () => {
-			//TODO: ADD PROGRESS BAR
-		}
 	}
 	
 	static getDerivedStateFromProps(nextProps, prevState) {
@@ -72,7 +68,7 @@ class AudioPlayer extends React.Component {
 			});
 		}
 		
-		if(prevState.cTrackNum !== nextProps.cTrackNum) {
+		if(prevState.cTrackNum !== nextProps.cTrackNum || prevState.cTrackUrl !== nextProps.cTrackUrl) {
 			return ({
 				cTrackNum: nextProps.cTrackNum,
 				cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
@@ -151,6 +147,10 @@ class AudioPlayer extends React.Component {
 		}, 100);
 	}
 
+	onError() {
+		this.props.fetchTrack(this.props.tracks[this.state.cTrackNum].id);
+	}
+
 	// credit: SO user GitaarLAB
 	fmtMSS(s) {
 		s = ~~s
@@ -165,6 +165,7 @@ class AudioPlayer extends React.Component {
 							ref={(audio) => { this.audio = audio }}
 							src={this.state.cTrackUrl}
 							autoPlay={this.state.autoPlay}
+							onError={this.onError.bind(this)}
 						/>
 						<div id="central-controls">
 							<span 
