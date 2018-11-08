@@ -1,24 +1,31 @@
 import { connect } from "react-redux";
 import AudioPlayer from "./audio_player";
+import { fetchTrack } from "../../actions/track_actions";
 
-const mapStateToProps = (_, ownProps) => {
-	const tracks = ownProps.tracks.sort((a, b) => {
-		return a.list_num - b.list_num;
+const mapStateToProps = (state, ownProps) => {
+	let tracks = ownProps.trackIds.map((id) => {
+		return state.entities.tracks[id];
 	});
-
+	
 	const cTrackNum = ownProps.cTrackNum || 0;
 	const cTrackUrl = tracks[cTrackNum] ? tracks[cTrackNum].audio_url : "";
 	const cTrackTitle = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
 
 	return { 
-		tracks, 
+		tracks,
 		cTrackUrl,
 		cTrackTitle,
 		cTrackNum
 	};
 };
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchTrack: (trackId) => dispatch(fetchTrack(trackId)),
+	};
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps,
 )(AudioPlayer);
