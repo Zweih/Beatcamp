@@ -100,7 +100,7 @@ class UserAlbumDetail extends React.Component {
 									this.props.albumTracks.length > 0 ? 
 									<div className="audio-player">
 										<AudioPlayerContainer
-											tracks={this.props.albumTracks}
+											trackIds={this.props.albumTrackIds}
 											album={this.props.userAlbum}
 											cTrackNum={this.state.cTrackNum}
 											playing={this.state.playing}
