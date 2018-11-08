@@ -8,13 +8,12 @@ class AudioPlayer extends React.Component {
 		this.state = {
 			album: this.props.album,
 			cTrackTitle: this.props.cTrackTitle,
-			tempTitle: this.props.cTrackTitle,
 			cTrackUrl: this.props.cTrackUrl,
 			cTrackNum: this.props.cTrackNum,
 			playing: this.props.playing,
 			loading: true,
 			autoPlay: false,
-			duration: null,
+			duration: this.props.cTrackDuration,
 			cTime: null,
 			progress: 0
 		}
@@ -24,16 +23,19 @@ class AudioPlayer extends React.Component {
 	}
 	
 	componentDidMount() {
-		this.audio.onloadedmetadata = function() {
+		this.audio.onloadedmetadata = () => {
 			this.setState({
 				duration: this.audio.duration,
 				cTime: this.audio.currentTime,
-				tempTitle: this.state.cTrackTitle,
 				isPrev: this.props.cTrackNum > 0,
 				isNext: this.props.cTrackNum < this.props.tracks.length - 1,
-				progress: 0,
-				loading: false
-			});}.bind(this);
+				progress: 0
+			});
+		}
+
+		this.audio.oncanplay = () => {
+			this.setState({ loading: false });
+		}
 			
 		this.audio.onplay = () => {
 			this.currentTimeInterval = setInterval(() => {
@@ -62,6 +64,7 @@ class AudioPlayer extends React.Component {
 				tracks: nextProps.tracks,
 				cTrackNum: nextProps.cTrackNum,
 				cTrackTitle: nextProps.cTrackTitle,
+				duration: nextProps.cTrackDuration,
 				cTrackUrl: nextProps.cTrackUrl,
 				autoPlay: false,
 				loading: true
@@ -73,6 +76,7 @@ class AudioPlayer extends React.Component {
 				cTrackNum: nextProps.cTrackNum,
 				cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
 				cTrackUrl: nextProps.tracks[nextProps.cTrackNum].audio_url,
+				duration: nextProps.tracks[nextProps.cTrackNum].length,
 				loading: true
 			});
 		}
@@ -175,12 +179,10 @@ class AudioPlayer extends React.Component {
 							<div className="middle-controls">
 								<div className="middle-top">
 									<p className="song-title">
-										{this.state.loading ? this.state.tempTitle : this.state.cTrackTitle}
+										{this.state.cTrackTitle}
 									</p>
 									<p className="song-time">
-										{this.state.duration ?
-										this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration)
-										: ""}
+										{this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration)}
 									</p>
 								</div>
 								<div className="middle-bottom">

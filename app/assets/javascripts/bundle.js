@@ -585,13 +585,12 @@ function (_React$Component) {
     _this.state = {
       album: _this.props.album,
       cTrackTitle: _this.props.cTrackTitle,
-      tempTitle: _this.props.cTrackTitle,
       cTrackUrl: _this.props.cTrackUrl,
       cTrackNum: _this.props.cTrackNum,
       playing: _this.props.playing,
       loading: true,
       autoPlay: false,
-      duration: null,
+      duration: _this.props.cTrackDuration,
       cTime: null,
       progress: 0
     };
@@ -606,16 +605,20 @@ function (_React$Component) {
       var _this2 = this;
 
       this.audio.onloadedmetadata = function () {
-        this.setState({
-          duration: this.audio.duration,
-          cTime: this.audio.currentTime,
-          tempTitle: this.state.cTrackTitle,
-          isPrev: this.props.cTrackNum > 0,
-          isNext: this.props.cTrackNum < this.props.tracks.length - 1,
-          progress: 0,
+        _this2.setState({
+          duration: _this2.audio.duration,
+          cTime: _this2.audio.currentTime,
+          isPrev: _this2.props.cTrackNum > 0,
+          isNext: _this2.props.cTrackNum < _this2.props.tracks.length - 1,
+          progress: 0
+        });
+      };
+
+      this.audio.oncanplay = function () {
+        _this2.setState({
           loading: false
         });
-      }.bind(this);
+      };
 
       this.audio.onplay = function () {
         _this2.currentTimeInterval = setInterval(function () {
@@ -740,9 +743,9 @@ function (_React$Component) {
         className: "middle-top"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "song-title"
-      }, this.state.loading ? this.state.tempTitle : this.state.cTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, this.state.cTrackTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "song-time"
-      }, this.state.duration ? this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.fmtMSS(this.state.cTime) + " / " + this.fmtMSS(this.state.duration))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "middle-bottom"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress-container"
@@ -779,6 +782,7 @@ function (_React$Component) {
           tracks: nextProps.tracks,
           cTrackNum: nextProps.cTrackNum,
           cTrackTitle: nextProps.cTrackTitle,
+          duration: nextProps.cTrackDuration,
           cTrackUrl: nextProps.cTrackUrl,
           autoPlay: false,
           loading: true
@@ -790,6 +794,7 @@ function (_React$Component) {
           cTrackNum: nextProps.cTrackNum,
           cTrackTitle: nextProps.tracks[nextProps.cTrackNum].title,
           cTrackUrl: nextProps.tracks[nextProps.cTrackNum].audio_url,
+          duration: nextProps.tracks[nextProps.cTrackNum].length,
           loading: true
         };
       }
@@ -836,12 +841,14 @@ const mapStateToProps = (state, ownProps) => {
 	const cTrackNum = ownProps.cTrackNum || 0;
 	const cTrackUrl = tracks[cTrackNum] ? tracks[cTrackNum].audio_url : "";
 	const cTrackTitle = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
+	const cTrackDuration = tracks[cTrackNum] ? tracks[cTrackNum].length : 0;
 
 	return { 
 		tracks,
 		cTrackUrl,
 		cTrackTitle,
-		cTrackNum
+		cTrackNum,
+		cTrackDuration
 	};
 };
 

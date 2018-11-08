@@ -10,12 +10,14 @@ const mapStateToProps = (state, ownProps) => {
 	const cTrackNum = ownProps.cTrackNum || 0;
 	const cTrackUrl = tracks[cTrackNum] ? tracks[cTrackNum].audio_url : "";
 	const cTrackTitle = tracks[cTrackNum] ? tracks[cTrackNum].title : "";
+	const cTrackDuration = tracks[cTrackNum] ? tracks[cTrackNum].length : 0;
 
 	return { 
 		tracks,
 		cTrackUrl,
 		cTrackTitle,
-		cTrackNum
+		cTrackNum,
+		cTrackDuration
 	};
 };
 
