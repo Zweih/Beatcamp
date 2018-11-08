@@ -25,7 +25,7 @@ class UserProfile extends React.Component {
 		}
 	}
 	
-	render() {      
+	render() {
 		return (
 			<div className="user-profile">
 				<UserHeader pageUser={this.props.pageUser} />
