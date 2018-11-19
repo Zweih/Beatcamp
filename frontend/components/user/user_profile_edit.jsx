@@ -9,6 +9,7 @@ class UserProfileEdit extends React.Component {
 			avatar_url: "",
 			bio: "",
 			location: "",
+			disabled: false,
 			id: this.props.currentUser.id,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,6 +17,7 @@ class UserProfileEdit extends React.Component {
 
 	handleSubmit(element) {
 		element.preventDefault();
+		this.setState({disabled: true});
 		const user = {}; 
 
 		Object.keys(this.state).forEach((key) => {
@@ -27,7 +29,8 @@ class UserProfileEdit extends React.Component {
 
 	update(field) {
 		return (element) => this.setState({
-					[field]: element.target.value,
+			disabled: false,
+			[field]: element.target.value,
 		});
 	}
 
@@ -35,7 +38,7 @@ class UserProfileEdit extends React.Component {
 		return(
 			<ul>
 				{this.props.errors.map((error, i) => (
-					<li key={`error-${i}`}>
+					<li className="error" key={`error-${i}`}>
 						{error}
 					</li>
 				))}
@@ -104,6 +107,7 @@ class UserProfileEdit extends React.Component {
 					<div className={`${this.props.formClass}-buttons`}>
 						<input
 							type="submit"
+							disabled={this.state.disabled}
 							value={this.props.formType}
 							className={`button`}
 						/>

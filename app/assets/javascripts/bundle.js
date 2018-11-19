@@ -2364,6 +2364,7 @@ function (_React$Component) {
       avatar_url: "",
       bio: "",
       location: "",
+      disabled: false,
       id: _this.props.currentUser.id
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -2376,6 +2377,9 @@ function (_React$Component) {
       var _this2 = this;
 
       element.preventDefault();
+      this.setState({
+        disabled: true
+      });
       var user = {};
       Object.keys(this.state).forEach(function (key) {
         user[key] = _this2.state[key].length > 0 ? _this2.state[key] : _this2.props.currentUser[key];
@@ -2388,7 +2392,9 @@ function (_React$Component) {
       var _this3 = this;
 
       return function (element) {
-        return _this3.setState(_defineProperty({}, field, element.target.value));
+        return _this3.setState(_defineProperty({
+          disabled: false
+        }, field, element.target.value));
       };
     }
   }, {
@@ -2396,6 +2402,7 @@ function (_React$Component) {
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "error",
           key: "error-".concat(i)
         }, error);
       }));
@@ -2460,6 +2467,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-buttons")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
+        disabled: this.state.disabled,
         value: this.props.formType,
         className: "button"
       }))));
