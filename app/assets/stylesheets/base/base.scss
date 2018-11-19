@@ -20,7 +20,7 @@ body {
 	cursor: pointer;
 }
 
-.button.disabled {
+.button:disabled {
 	background: #555;
 	color: #ccc;
 	opacity: 0.3;

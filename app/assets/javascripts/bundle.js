@@ -1658,7 +1658,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.state = {
       username: "",
-      password: ""
+      password: "",
+      disabled: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -1669,6 +1670,9 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(element) {
       element.preventDefault();
+      this.setState({
+        disabled: true
+      });
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
     }
@@ -1676,6 +1680,9 @@ function (_React$Component) {
     key: "handleDemo",
     value: function handleDemo(element) {
       element.preventDefault();
+      this.setState({
+        disabled: true
+      });
       this.props.demo();
     }
   }, {
@@ -1684,7 +1691,9 @@ function (_React$Component) {
       var _this2 = this;
 
       return function (element) {
-        return _this2.setState(_defineProperty({}, field, element.target.value));
+        return _this2.setState(_defineProperty({
+          disabled: false
+        }, field, element.target.value));
       };
     }
   }, {
@@ -1720,6 +1729,7 @@ function (_React$Component) {
       }, "Username / email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.username,
+        required: true,
         onChange: this.update("username"),
         className: "session-input, ".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1729,6 +1739,7 @@ function (_React$Component) {
       }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
+        required: true,
         onChange: this.update("password"),
         className: "session-input, ".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1736,7 +1747,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: this.props.formType,
-        className: "button"
+        className: "button",
+        disabled: this.state.disabled
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDemo,
         className: "button"

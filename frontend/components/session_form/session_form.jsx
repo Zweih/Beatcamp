@@ -7,6 +7,7 @@ class SessionForm extends React.Component {
 		this.state = {
 			username: "",
 			password: "",
+			disabled: false,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleDemo = this.handleDemo.bind(this);
@@ -14,18 +15,21 @@ class SessionForm extends React.Component {
 
 	handleSubmit(element) {
 		element.preventDefault();
+		this.setState({disabled: true});
 		const user = Object.assign({}, this.state)
 		this.props.processForm(user);
 	}
 
 	handleDemo(element) {
 		element.preventDefault();
+		this.setState({disabled: true})
 		this.props.demo();
 	}
 
 	update(field) {
 		return (element) => this.setState({
-					[field]: element.target.value,
+			disabled: false,
+			[field]: element.target.value,
 		});
 	}
 
@@ -59,6 +63,7 @@ class SessionForm extends React.Component {
 						<input
 							type="text"
 							value={this.state.username}
+							required
 							onChange={this.update("username")}
 							className={`session-input, ${this.props.formClass}-input`}
 						/>
@@ -70,6 +75,7 @@ class SessionForm extends React.Component {
 						<input
 							type="password"
 							value={this.state.password}
+							required
 							onChange={this.update("password")}
 							className={`session-input, ${this.props.formClass}-input`}
 						/>
@@ -78,6 +84,7 @@ class SessionForm extends React.Component {
 						<input type="submit"
 							value={this.props.formType}
 							className={`button`}
+							disabled={this.state.disabled}
 							/>
 						<button 
 							onClick={this.handleDemo}
