@@ -1,24 +1,27 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 class UserProfileEdit extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			username: this.props.currentUser.username,
 			password: "",
 			avatar_url: "",
 			bio: "",
 			location: "",
-			disabled: false,
 			id: this.props.currentUser.id,
+			disabled: false,
+			success: false
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleSubmit(element) {
 		element.preventDefault();
+		this.props.clearSessionErrors();
 		this.setState({disabled: true});
-		const user = {}; 
+		const user = {};
 
 		Object.keys(this.state).forEach((key) => {
 			user[key] = this.state[key].length > 0 ? this.state[key] : this.props.currentUser[key]; 
@@ -50,7 +53,18 @@ class UserProfileEdit extends React.Component {
 		this.props.clearSessionErrors();
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.errors.length < 1 && this.state.disabled) {
+			this.setState({ success: true });
+		}
+	}
+	
 	render() {
+		if(this.state.success) {
+			return (
+				<Redirect to={`/users/${this.props.currentUser.id}`}/>
+			);
+		}
 		return (
 			<div className={`session-form, ${this.props.formClass}`}>
 				<form onSubmit={this.handleSubmit} className="session-form-box">

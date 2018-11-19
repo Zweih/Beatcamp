@@ -2360,12 +2360,14 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserProfileEdit).call(this, props));
     _this.state = {
+      username: _this.props.currentUser.username,
       password: "",
       avatar_url: "",
       bio: "",
       location: "",
+      id: _this.props.currentUser.id,
       disabled: false,
-      id: _this.props.currentUser.id
+      success: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -2377,6 +2379,7 @@ function (_React$Component) {
       var _this2 = this;
 
       element.preventDefault();
+      this.props.clearSessionErrors();
       this.setState({
         disabled: true
       });
@@ -2413,8 +2416,23 @@ function (_React$Component) {
       this.props.clearSessionErrors();
     }
   }, {
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.errors.length < 1 && this.state.disabled) {
+        this.setState({
+          success: true
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      if (this.state.success) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+          to: "/users/".concat(this.props.currentUser.id)
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-form, ".concat(this.props.formClass)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -2967,13 +2985,14 @@ const configureStore = (preloadedState = {}) => {
 /*!*****************************************!*\
   !*** ./frontend/util/album_api_util.js ***!
   \*****************************************/
-/*! exports provided: createAlbum, fetchAlbums, fetchHomeAlbums, fetchAlbum */
+/*! exports provided: createAlbum, fetchAlbums, updateAlbum, fetchHomeAlbums, fetchAlbum */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAlbum", function() { return createAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbums", function() { return fetchAlbums; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAlbum", function() { return updateAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchHomeAlbums", function() { return fetchHomeAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
 const createAlbum = (album) => {
@@ -2992,6 +3011,17 @@ const fetchAlbums = () => {
 		url: "api/albums",
 	});
 };
+
+const updateAlbum = (album) => {
+	return $.ajax({
+		method: "PATCH",
+		url: `api/album/${album.id}`,
+		data: {
+			user,
+		},
+	});
+};
+
 
 const fetchHomeAlbums = () => {
 	return $.ajax({
