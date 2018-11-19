@@ -1512,7 +1512,7 @@ var ParkingPage = function ParkingPage() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "This feature is currently under construction!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Check back later to see what we've been up to!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "home-button"
+    className: "button"
   }, "Back to Homepage")));
 };
 
@@ -1736,10 +1736,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: this.props.formType,
-        className: "".concat(this.props.formClass, "-button")
+        className: "button"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDemo,
-        className: "".concat(this.props.formClass, "-button")
+        className: "button"
       }, "Demo User")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-other-link"
       }, this.props.linkText, " have an account? ", this.props.navLink, ".")));
@@ -2246,7 +2246,7 @@ function (_React$Component) {
       }, this.props.pageUser.bio), this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/users/".concat(this.props.currentUser.id, "/edit")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "user-button"
+        className: "button"
       }, "Edit Profile")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         userAlbums: this.props.userAlbums,
         pageUserId: this.props.pageUserId
@@ -2443,7 +2443,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: this.props.formType,
-        className: "".concat(this.props.formClass, "-button")
+        className: "button"
       }))));
     }
   }]);

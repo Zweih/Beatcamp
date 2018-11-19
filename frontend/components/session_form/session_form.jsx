@@ -77,11 +77,11 @@ class SessionForm extends React.Component {
 					<div className={`${this.props.formClass}-buttons`}>
 						<input type="submit"
 							value={this.props.formType}
-							className={`${this.props.formClass}-button`}
+							className={`button`}
 							/>
 						<button 
 							onClick={this.handleDemo}
-							className={`${this.props.formClass}-button`}
+							className={`button`}
 						>
 							Demo User
 						</button>

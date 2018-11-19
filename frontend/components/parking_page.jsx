@@ -6,7 +6,7 @@ const ParkingPage = () => (
 	<h1>This feature is currently under construction!</h1>
 	<h2>Check back later to see what we've been up to!</h2>
 	<Link to="/">
-		<button className="home-button">
+		<button className="button">
 			Back to Homepage
 		</button>
 	</Link>
