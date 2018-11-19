@@ -9,14 +9,19 @@ class UserProfileEdit extends React.Component {
 			avatar_url: "",
 			bio: "",
 			location: "",
-			userId: this.props.currentUser.id,
+			id: this.props.currentUser.id,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleSubmit(element) {
 		element.preventDefault();
-		const user = Object.assign({}, this.props.currentUser, this.state);
+		const user = {}; 
+
+		Object.keys(this.state).forEach((key) => {
+			user[key] = this.state[key].length > 0 ? this.state[key] : this.props.currentUser[key]; 
+		});
+
 		this.props.processForm(user);
 	}
 
@@ -91,6 +96,7 @@ class UserProfileEdit extends React.Component {
 						<input
 							type="password"
 							value={this.state.password}
+							required
 							onChange={this.update("password")}
 							className={`session-input, ${this.props.formClass}-input`}
 						/>

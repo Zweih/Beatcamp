@@ -2363,8 +2363,8 @@ function (_React$Component) {
       password: "",
       avatar_url: "",
       bio: "",
-      location: _this.props.currentUser.location,
-      userId: _this.props.currentUser.id
+      location: "",
+      id: _this.props.currentUser.id
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -2373,17 +2373,22 @@ function (_React$Component) {
   _createClass(UserProfileEdit, [{
     key: "handleSubmit",
     value: function handleSubmit(element) {
+      var _this2 = this;
+
       element.preventDefault();
-      var user = Object.assign({}, this.props.currentUser, this.state);
+      var user = {};
+      Object.keys(this.state).forEach(function (key) {
+        user[key] = _this2.state[key].length > 0 ? _this2.state[key] : _this2.props.currentUser[key];
+      });
       this.props.processForm(user);
     }
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (element) {
-        return _this2.setState(_defineProperty({}, field, element.target.value));
+        return _this3.setState(_defineProperty({}, field, element.target.value));
       };
     }
   }, {

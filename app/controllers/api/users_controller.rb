@@ -15,13 +15,19 @@ class Api::UsersController < ApplicationController
 	def update
 		@user = User.find_by_credentials(params[:user][:username],
 			params[:user][:password])
-		
-		@user.attach_avatar(params[:user][:avatar_url])
 
-		if @user.update_attributes(update_params)
-			render "api/users/show"
+		if @user
+			unless params[:user][:avatar_url].blank?
+				@user.attach_avatar(params[:user][:avatar_url])
+			end
+
+			if @user.update_attributes(update_params)
+				render "api/users/show"
+			else
+				render json: @user.errors.full_messages, status: 422
+			end
 		else
-			render json: [@user.errors.full_messages], status: 422
+			render json: ["Invalid credentials"], status: 401
 		end
 	end
 
