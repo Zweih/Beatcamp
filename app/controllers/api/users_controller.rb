@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
 	def update
 		@user = User.find_by_credentials(params[:user][:username],
 			params[:user][:password])
-
+		
 		if @user
 			unless params[:user][:avatar_url].blank?
 				@user.attach_avatar(params[:user][:avatar_url])
