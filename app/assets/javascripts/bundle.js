@@ -2258,7 +2258,7 @@ function (_React$Component) {
       }, this.props.pageUser.bio), this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/users/".concat(this.props.currentUser.id, "/edit")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "button"
+        className: "user-button"
       }, "Edit Profile")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         userAlbums: this.props.userAlbums,
         pageUserId: this.props.pageUserId
@@ -2363,7 +2363,7 @@ function (_React$Component) {
       password: "",
       avatar_url: "",
       bio: "",
-      location: "",
+      location: _this.props.currentUser.location,
       userId: _this.props.currentUser.id
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -2448,6 +2448,7 @@ function (_React$Component) {
       }, "Confirm password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
+        required: true,
         onChange: this.update("password"),
         className: "session-input, ".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
