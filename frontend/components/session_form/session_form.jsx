@@ -65,7 +65,7 @@ class SessionForm extends React.Component {
 							value={this.state.username}
 							required
 							onChange={this.update("username")}
-							className={`session-input, ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-item`}>
@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
 							value={this.state.password}
 							required
 							onChange={this.update("password")}
-							className={`session-input, ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-buttons`}>

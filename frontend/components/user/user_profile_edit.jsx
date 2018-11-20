@@ -87,7 +87,7 @@ class UserProfileEdit extends React.Component {
 							type="text"
 							value={this.state.avatar_url}
 							onChange={this.update("avatar_url")}
-							className={`session-input, ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-item`}>
@@ -99,7 +99,7 @@ class UserProfileEdit extends React.Component {
 							placeholder={this.props.currentUser.bio}
 							onChange={this.update("bio")}
 							cols="30" rows="10"
-							className={`session-input ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-item`}>
@@ -111,7 +111,7 @@ class UserProfileEdit extends React.Component {
 							value={this.state.location}
 							placeholder={this.props.currentUser.location}
 							onChange={this.update("location")}
-							className={`session-input, ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-item`}>
@@ -123,7 +123,7 @@ class UserProfileEdit extends React.Component {
 							value={this.state.password}
 							required
 							onChange={this.update("password")}
-							className={`session-input, ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-buttons`}>

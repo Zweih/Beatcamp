@@ -95,7 +95,7 @@ class UserAlbumEdit extends React.Component {
 							type="text"
 							value={this.state.cover_url}
 							onChange={this.update("cover_url")}
-							className={`session-input, ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-item`}>
@@ -107,7 +107,7 @@ class UserAlbumEdit extends React.Component {
 							value={this.state.description}
 							placeholder={this.props.userAlbum.edit}
 							onChange={this.update("description")}
-							className={`session-input ${this.props.formClass}-input`}
+							className={`${this.props.formClass}-input`}
 						/>
 					</div>
 					<div className={`${this.props.formClass}-buttons`}>

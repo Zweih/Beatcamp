@@ -1748,7 +1748,7 @@ function (_React$Component) {
         value: this.state.username,
         required: true,
         onChange: this.update("username"),
-        className: "session-input, ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -1758,7 +1758,7 @@ function (_React$Component) {
         value: this.state.password,
         required: true,
         onChange: this.update("password"),
-        className: "session-input, ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-buttons")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -2222,7 +2222,7 @@ function (_React$Component) {
         type: "text",
         value: this.state.cover_url,
         onChange: this.update("cover_url"),
-        className: "session-input, ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -2232,7 +2232,7 @@ function (_React$Component) {
         value: this.state.description,
         placeholder: this.props.userAlbum.edit,
         onChange: this.update("description"),
-        className: "session-input ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-buttons")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -2708,7 +2708,7 @@ function (_React$Component) {
         type: "text",
         value: this.state.avatar_url,
         onChange: this.update("avatar_url"),
-        className: "session-input, ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -2719,7 +2719,7 @@ function (_React$Component) {
         onChange: this.update("bio"),
         cols: "30",
         rows: "10",
-        className: "session-input ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -2729,7 +2729,7 @@ function (_React$Component) {
         value: this.state.location,
         placeholder: this.props.currentUser.location,
         onChange: this.update("location"),
-        className: "session-input, ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -2739,7 +2739,7 @@ function (_React$Component) {
         value: this.state.password,
         required: true,
         onChange: this.update("password"),
-        className: "session-input, ".concat(this.props.formClass, "-input")
+        className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-buttons")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
