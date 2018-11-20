@@ -94,11 +94,11 @@ class UserProfileEdit extends React.Component {
 						<label className={`${this.props.formClass}-label`}>
 							New bio
 						</label>
-						<input
-							type="textarea"
+						<textarea
 							value={this.state.bio}
 							placeholder={this.props.currentUser.bio}
 							onChange={this.update("bio")}
+							cols="30" rows="10"
 							className={`session-input ${this.props.formClass}-input`}
 						/>
 					</div>

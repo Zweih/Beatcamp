@@ -29,11 +29,11 @@
 
 .u-edit-item {
 	width: 650px;
-	height: 60px;
+	margin: 10px 0 10px 0;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: baseline;
 }
 
 .u-edit-label {
@@ -65,8 +65,9 @@
 	margin-right: 7px;
 }
 
-.user-edit-bio-input {
-	height: 350px;
+textarea.u-edit-input {
+	height: 180px;
+	padding-top: 10px;
 }
 
 .u-edit-other-link {
