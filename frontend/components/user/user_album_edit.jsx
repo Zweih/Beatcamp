@@ -6,6 +6,7 @@ class UserAlbumEdit extends React.Component {
 		super(props);
 		this.state = {
 			cover_url: "",
+			title: "",
 			description: "",
 			disabled: false,
 			success: false,
@@ -87,6 +88,17 @@ class UserAlbumEdit extends React.Component {
 					<h3 className={`${this.props.formClass}-title`}>{this.props.formType}</h3>
 					{this.renderErrors()}
 					<div className={`${this.props.formClass}-divider`}></div>
+					<div className={`${this.props.formClass}-item`}>
+						<label className={`${this.props.formClass}-label`}>
+							New title
+						</label>
+						<input
+							type="text"
+							value={this.state.title}
+							onChange={this.update("title")}
+							className={`${this.props.formClass}-input`}
+						/>
+					</div>
 					<div className={`${this.props.formClass}-item`}>
 						<label className={`${this.props.formClass}-label`}>
 							New cover URL

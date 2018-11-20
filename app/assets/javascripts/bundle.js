@@ -2120,6 +2120,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserAlbumEdit).call(this, props));
     _this.state = {
       cover_url: "",
+      title: "",
       description: "",
       disabled: false,
       success: false,
@@ -2215,6 +2216,15 @@ function (_React$Component) {
       }, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-divider")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-item")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "".concat(this.props.formClass, "-label")
+      }, "New title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.title,
+        onChange: this.update("title"),
+        className: "".concat(this.props.formClass, "-input")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
