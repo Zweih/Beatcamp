@@ -29,11 +29,11 @@
 
 .a-edit-item {
 	width: 650px;
-	height: 60px;
+	margin: 10px 0 10px 0;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: baseline;
 }
 
 .a-edit-label {
@@ -65,11 +65,12 @@
 	margin-right: 7px;
 }
 
-.a-edit-bio-input {
-	height: 350px;
+textarea.a-edit-input {
+	height: 180px;
+	padding-top: 10px;
 }
 
-.u-edit-other-link {
+.a-edit-other-link {
 	margin: 72px 0px 20px 0px;
 	font-size: 12px;
 	color: rgb(129, 130, 133);
