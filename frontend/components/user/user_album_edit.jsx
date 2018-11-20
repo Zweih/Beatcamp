@@ -28,7 +28,7 @@ class UserAlbumEdit extends React.Component {
 				album[key] = this.props.userAlbum[key];
 			}
 		});
-
+		
 		console.log("album", album);
 		this.props.processForm(album, this.props.currentUser);
 	}
