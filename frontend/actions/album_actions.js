@@ -48,6 +48,16 @@ export const createAlbum = (album) => {
   }
 };
 
+export const updateAlbum = (album, user) => {
+  return (dispatch) => {
+    return AlbumApiUtil.updateAlbum(album, user).then( (album) => {
+      return dispatch(receiveAlbum(album));
+    }, (errors) => {
+      return dispatch(receiveAlbumErrors(errors.responseJSON));
+    });
+  }
+};
+
 export const fetchAlbum = (albumId) => {
   return (dispatch) => {
     return AlbumApiUtil.fetchAlbum(albumId).then( (album) => {
