@@ -90,7 +90,7 @@
 /*!*******************************************!*\
   !*** ./frontend/actions/album_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_ALBUM, RECEIVE_ALBUMS, RECEIVE_ALBUM_ERRORS, REMOVE_ALBUM_ERRORS, createAlbum, fetchAlbum, fetchAlbums, fetchHomeAlbums, clearAlbumErrors */
+/*! exports provided: RECEIVE_ALBUM, RECEIVE_ALBUMS, RECEIVE_ALBUM_ERRORS, REMOVE_ALBUM_ERRORS, createAlbum, updateAlbum, fetchAlbum, fetchAlbums, fetchHomeAlbums, clearAlbumErrors */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100,6 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALBUM_ERRORS", function() { return RECEIVE_ALBUM_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALBUM_ERRORS", function() { return REMOVE_ALBUM_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAlbum", function() { return createAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateAlbum", function() { return updateAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbum", function() { return fetchAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAlbums", function() { return fetchAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchHomeAlbums", function() { return fetchHomeAlbums; });
@@ -148,6 +149,16 @@ const removeAlbumErrors = () => {
 const createAlbum = (album) => {
   return (dispatch) => {
     return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["createAlbum"](album).then( (album) => {
+      return dispatch(receiveAlbum(album));
+    }, (errors) => {
+      return dispatch(receiveAlbumErrors(errors.responseJSON));
+    });
+  }
+};
+
+const updateAlbum = (album, user) => {
+  return (dispatch) => {
+    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAlbum"](album, user).then( (album) => {
       return dispatch(receiveAlbum(album));
     }, (errors) => {
       return dispatch(receiveAlbumErrors(errors.responseJSON));
@@ -474,9 +485,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_browse_nav_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav/browse_nav_container */ "./frontend/components/nav/browse_nav_container.js");
 /* harmony import */ var _user_user_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user/user_profile_container */ "./frontend/components/user/user_profile_container.js");
 /* harmony import */ var _user_user_profile_edit_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user/user_profile_edit_container */ "./frontend/components/user/user_profile_edit_container.js");
-/* harmony import */ var _homepage_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./homepage_container */ "./frontend/components/homepage_container.js");
-/* harmony import */ var _parking_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./parking_page */ "./frontend/components/parking_page.jsx");
+/* harmony import */ var _user_user_album_edit_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user/user_album_edit_container */ "./frontend/components/user/user_album_edit_container.js");
+/* harmony import */ var _homepage_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./homepage_container */ "./frontend/components/homepage_container.js");
+/* harmony import */ var _parking_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./parking_page */ "./frontend/components/parking_page.jsx");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 
 
 
@@ -511,11 +524,15 @@ var App = function App() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
-    component: _homepage_container__WEBPACK_IMPORTED_MODULE_9__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    component: _homepage_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
     path: "/users/:userId/edit",
     component: _user_user_profile_edit_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    exact: true,
+    path: "/users/:userId/albums/:albumId/edit",
+    component: _user_user_album_edit_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/users/:userId",
     render: function render(props) {
@@ -530,7 +547,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/discover",
-    component: _parking_page__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _parking_page__WEBPACK_IMPORTED_MODULE_11__["default"]
   }))))));
 };
 
@@ -1961,7 +1978,9 @@ function (_React$Component) {
       }, "by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "user-album-artist-link",
         to: "/users/".concat(this.props.pageUserId)
-      }, this.props.userAlbum.user)), this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.userAlbum.user)), this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/users/".concat(this.props.currentUser.id, "/albums/").concat(this.props.userAlbum.id, "/edit")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Edit Album")) : "", this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "audio-player"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         trackIds: this.props.albumTrackIds,
@@ -2050,6 +2069,239 @@ const mapDispatchToProps = (dispatch) => {
 	mapStateToProps,
 	mapDispatchToProps
 )(_user_album_detail__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/user/user_album_edit.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/user/user_album_edit.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+
+var UserAlbumEdit =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(UserAlbumEdit, _React$Component);
+
+  function UserAlbumEdit(props) {
+    var _this;
+
+    _classCallCheck(this, UserAlbumEdit);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserAlbumEdit).call(this, props));
+    _this.state = {
+      cover_url: "",
+      description: "",
+      disabled: false,
+      success: false,
+      unauthorized: false
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(UserAlbumEdit, [{
+    key: "handleSubmit",
+    value: function handleSubmit(element) {
+      var _this2 = this;
+
+      element.preventDefault();
+      this.props.clearAlbumErrors();
+      this.setState({
+        disabled: true
+      });
+      var album = {};
+      Object.keys(this.props.userAlbum).forEach(function (key) {
+        if (_this2.state[key] && _this2.state[key].length > 0) {
+          album[key] = _this2.state[key];
+        } else {
+          album[key] = _this2.props.userAlbum[key];
+        }
+      });
+      console.log("album", album);
+      this.props.processForm(album, this.props.currentUser);
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this3 = this;
+
+      return function (element) {
+        return _this3.setState(_defineProperty({
+          disabled: false
+        }, field, element.target.value));
+      };
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "error",
+          key: "error-".concat(i)
+        }, error);
+      }));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchAlbum(this.props.albumId);
+      this.props.clearAlbumErrors();
+    }
+  }, {
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.errors.length < 1 && this.state.disabled) {
+        this.setState({
+          success: true
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.success) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+          to: "/users/".concat(this.props.albumUserId, "/albums/").concat(this.props.albumId)
+        });
+      }
+
+      var userAlbum = this.props.userAlbum;
+      var currentUser = this.props.currentUser;
+      var albumUserId = this.props.albumUserId;
+
+      if (userAlbum.userId && userAlbum.userId !== currentUser.id || userAlbum.userId && userAlbum.userId !== albumUserId || albumUserId !== currentUser.id) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+          to: "/"
+        });
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "session-form, ".concat(this.props.formClass)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit,
+        className: "session-form-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "".concat(this.props.formClass, "-title")
+      }, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-divider")
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-item")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "".concat(this.props.formClass, "-label")
+      }, "New cover URL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.cover_url,
+        onChange: this.update("cover_url"),
+        className: "session-input, ".concat(this.props.formClass, "-input")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-item")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "".concat(this.props.formClass, "-label")
+      }, "New description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "textarea",
+        value: this.state.description,
+        placeholder: this.props.userAlbum.edit,
+        onChange: this.update("description"),
+        className: "session-input ".concat(this.props.formClass, "-input")
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-buttons")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        disabled: this.state.disabled,
+        value: this.props.formType,
+        className: "button"
+      }))));
+    }
+  }]);
+
+  return UserAlbumEdit;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(UserAlbumEdit));
+
+/***/ }),
+
+/***/ "./frontend/components/user/user_album_edit_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/user/user_album_edit_container.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _user_album_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_album_edit */ "./frontend/components/user/user_album_edit.jsx");
+/* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/album_actions */ "./frontend/actions/album_actions.js");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+
+
+
+
+
+
+const mapStateToProps = (state, ownProps) => {
+	const currentUser = state.entities.users[state.session.id];
+	const albumUserId = parseInt(ownProps.match.params.userId);
+	const albumId = parseInt(ownProps.match.params.albumId);
+	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUserAlbum"])(state.entities, albumId);
+	const errors = state.errors.album;
+	const formType = "Album Edit";
+	const formClass = "a-edit";
+
+	return {
+		errors,
+		formType,
+		formClass,
+		currentUser,
+		userAlbum,
+		albumId,
+		albumUserId,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		processForm: (album, user) => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["updateAlbum"])(album, user)),
+		fetchAlbum: (albumId) => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAlbum"])(albumId)),
+		clearAlbumErrors: () => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["clearAlbumErrors"])()),
+	};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
+	mapStateToProps,
+	mapDispatchToProps
+)(_user_album_edit__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -3012,12 +3264,13 @@ const fetchAlbums = () => {
 	});
 };
 
-const updateAlbum = (album) => {
+const updateAlbum = (album, user) => {
 	return $.ajax({
 		method: "PATCH",
-		url: `api/album/${album.id}`,
+		url: `api/albums/${album.id}`,
 		data: {
 			user,
+			album,
 		},
 	});
 };
