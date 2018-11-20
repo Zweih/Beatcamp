@@ -14,6 +14,7 @@ class UserProfileEdit extends React.Component {
 			disabled: false,
 			success: false
 		};
+		
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
