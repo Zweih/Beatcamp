@@ -10,6 +10,28 @@ class Api::AlbumsController < ApplicationController
 		end
 	end
 
+	def update
+		@album = Album.find_by(id: params[:id])
+
+		if @album
+			if @album.user_id != params[:user][:id]
+				unless params[:album][:cover_url].blank?
+					@album.attach_cover(params[:album][:cover_url])
+				end
+				
+				if @album.update_attributes(update_params)
+					render "api/albums/show"
+				else
+					render json: @album.errors.full_messages, status: 422
+				end
+			else
+				render json: ["Invalid credentials"], status: 401
+			end
+		else
+			render json: ["No such album"], status: 401
+		end
+	end
+
 	def index
 		num = params[:num].to_i
 		
@@ -30,6 +52,10 @@ class Api::AlbumsController < ApplicationController
 	private
 
 	def album_params
+		params.require(:album).permit(:title, :description, :user_id)
+	end
+
+	def update_params
 		params.require(:album).permit(:title, :description, :user_id)
 	end
 end
