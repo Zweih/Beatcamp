@@ -1,0 +1,77 @@
+.a-edit {
+	background-color: #F3F3F3;
+	width: 100%;
+	min-height: 920px;
+}
+
+.a-edit > .session-form-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #F3F3F3;
+	min-height: 550px;
+	padding: 40px 0px 60px 0px;
+}
+
+.a-edit-title {
+	font-size: 18px;
+	color: #333;
+	font-weight: 500;
+	margin: 15px 0px 15px 0px;
+}
+
+.a-edit-divider {
+	width: 650px;
+	margin: 36px 0px 28px 0px;
+	border-top: 2px dotted #ccc;
+}
+
+.a-edit-item {
+	width: 650px;
+	height: 60px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.a-edit-label {
+	text-align: right;
+	color: rgb(51, 51, 51);
+	width: 155px;
+	margin-top: 8px;
+	font-size: 16px;
+	margin-right: 16px;
+}
+
+.a-edit-input {
+	height: 35px;
+	padding-left: 10px;
+	background: #fff;
+	border: 1px solid #ccc;
+	color: #333;
+	outline: none;
+	width: 287px;
+	margin: 0;
+	font-size: 16px;
+	font-weight: 400;
+	// transition: border 0.3s;
+}
+
+.a-edit-buttons {
+	display: flex;
+	flex-direction: column;
+	margin-right: 7px;
+}
+
+.a-edit-bio-input {
+	height: 350px;
+}
+
+.u-edit-other-link {
+	margin: 72px 0px 20px 0px;
+	font-size: 12px;
+	color: rgb(129, 130, 133);
+	font-weight: 400;
+}
