@@ -2221,6 +2221,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-label")
       }, "New title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        placeholder: this.props.userAlbum.title,
         value: this.state.title,
         onChange: this.update("title"),
         className: "".concat(this.props.formClass, "-input")
@@ -2237,10 +2238,11 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
-      }, "New description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "textarea",
+      }, "New description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         value: this.state.description,
-        placeholder: this.props.userAlbum.edit,
+        placeholder: this.props.userAlbum.description,
+        cols: "40",
+        rows: "10",
         onChange: this.update("description"),
         className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

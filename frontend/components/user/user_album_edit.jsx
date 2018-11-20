@@ -94,6 +94,7 @@ class UserAlbumEdit extends React.Component {
 						</label>
 						<input
 							type="text"
+							placeholder={this.props.userAlbum.title}
 							value={this.state.title}
 							onChange={this.update("title")}
 							className={`${this.props.formClass}-input`}
@@ -114,10 +115,11 @@ class UserAlbumEdit extends React.Component {
 						<label className={`${this.props.formClass}-label`}>
 							New description
 						</label>
-						<input
-							type="textarea"
+						<textarea
 							value={this.state.description}
-							placeholder={this.props.userAlbum.edit}
+							placeholder={this.props.userAlbum.description}
+							cols="40"
+							rows="10"
 							onChange={this.update("description")}
 							className={`${this.props.formClass}-input`}
 						/>
