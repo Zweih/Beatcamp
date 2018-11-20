@@ -1,3 +1,6 @@
+require "open-uri"
+require "fileutils"
+
 class Album < ApplicationRecord
 	validates :title, :user_id, presence: true
 	validates :description, length: { maximum: 400 }
@@ -10,5 +13,24 @@ class Album < ApplicationRecord
 
 	def cover_url
 		self.cover.attached? ? self.cover.service_url : nil
+	end
+
+	def attach_cover(url)
+		url = URI.parse(url)
+		file = open(url)
+
+		if(should_upload?(file))
+			self.cover.purge
+			self.cover.attach(io: file, filename: "temp.#{file.content_type_parse.first.split("/").last}", content_type: file.content_type_parse.first)
+		end
+	end
+
+	private
+
+	def should_upload?(file)
+		return true if !self.cover.attached?
+		
+		currentFile = open(URI.parse(self.cover.service_url))
+		!FileUtils.identical?(file, currentFile)
 	end
 end
