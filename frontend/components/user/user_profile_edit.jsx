@@ -98,7 +98,8 @@ class UserProfileEdit extends React.Component {
 							value={this.state.bio}
 							placeholder={this.props.currentUser.bio}
 							onChange={this.update("bio")}
-							cols="30" rows="10"
+							cols="30"
+							rows="10"
 							className={`${this.props.formClass}-input`}
 						/>
 					</div>
