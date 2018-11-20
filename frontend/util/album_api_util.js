@@ -15,6 +15,18 @@ export const fetchAlbums = () => {
 	});
 };
 
+export const updateAlbum = (album, user) => {
+	return $.ajax({
+		method: "PATCH",
+		url: `api/albums/${album.id}`,
+		data: {
+			user,
+			album,
+		},
+	});
+};
+
+
 export const fetchHomeAlbums = () => {
 	return $.ajax({
 		method: "GET",
