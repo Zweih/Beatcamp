@@ -2685,6 +2685,12 @@ function (_React$Component) {
         });
       }
 
+      if (this.props.currentUser.id !== this.props.pageUserId) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+          to: "/"
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-form, ".concat(this.props.formClass)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -2767,13 +2773,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
+	const pageUserId = parseInt(ownProps.match.params.userId);
 	const errors = state.errors.session;
 	const formType = "User Edit";
 	const formClass = "u-edit";
 
-	return { errors, formType, formClass, currentUser };
+	return {
+		errors,
+		formType,
+		formClass,
+		currentUser,
+		pageUserId
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {

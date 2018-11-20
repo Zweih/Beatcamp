@@ -14,7 +14,7 @@ class UserProfileEdit extends React.Component {
 			disabled: false,
 			success: false
 		};
-		
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -66,6 +66,13 @@ class UserProfileEdit extends React.Component {
 				<Redirect to={`/users/${this.props.currentUser.id}`}/>
 			);
 		}
+
+		if(this.props.currentUser.id !== this.props.pageUserId) {
+			return (
+				<Redirect to={`/`}/>
+			);
+		}
+
 		return (
 			<div className={`session-form, ${this.props.formClass}`}>
 				<form onSubmit={this.handleSubmit} className="session-form-box">

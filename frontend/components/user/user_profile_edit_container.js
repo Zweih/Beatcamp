@@ -4,13 +4,20 @@ import {
 	updateUser,
 	clearSessionErrors } from "../../actions/session_actions";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
+	const pageUserId = parseInt(ownProps.match.params.userId);
 	const errors = state.errors.session;
 	const formType = "User Edit";
 	const formClass = "u-edit";
 
-	return { errors, formType, formClass, currentUser };
+	return {
+		errors,
+		formType,
+		formClass,
+		currentUser,
+		pageUserId
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
