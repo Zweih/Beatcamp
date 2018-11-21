@@ -32,7 +32,7 @@ export const fetchHomeAlbums = () => {
 		method: "GET",
 		url: "api/albums",
 		data: {
-			num: 10,
+			num: 8,
 		}
 	});
 };
