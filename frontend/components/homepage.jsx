@@ -18,14 +18,39 @@ class Homepage extends React.Component {
 			<div className="content-container">
 				{this.props.homeAlbums.length > 5 ? 
 				<div className="home-main">
-					<div className="home-large"><Link to={`users/${this.props.homeAlbums[0].user_id}`}><img src="https://f4.bcbits.com/img/0014498149_0"/></Link></div>
+					<Link to={`users/${this.props.homeAlbums[0].user_id}`}>
+						<div
+							className="home-large"
+							style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498149_0)"}}
+							>
+							<p>{this.props.homeAlbums[0].artist}</p>
+						</div>
+					</Link>
 					<ul className="home-small">
-						<li><Link to={`users/${this.props.homeAlbums[8].user_id}`}><img src="https://f4.bcbits.com/img/0014498598_170.jpg"/></Link></li>
-						<li><Link to={`users/${this.props.homeAlbums[7].user_id}`}><img src="https://f4.bcbits.com/img/0014497570_170.jpg"/></Link></li>
-						<li><Link to={`users/${this.props.homeAlbums[9].user_id}`}><img src="https://f4.bcbits.com/img/0014504111_170.jpg"/></Link></li>
+						<Link to={`users/${this.props.homeAlbums[8].user_id}`}>
+							<li
+								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498598_170.jpg)"}}
+							>
+								<p>{this.props.homeAlbums[8].artist}</p>
+							</li>
+						</Link>
+						<Link to={`users/${this.props.homeAlbums[7].user_id}`}>
+							<li
+								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014497570_170.jpg)"}}
+							>
+								<p>{this.props.homeAlbums[7].artist}</p>
+							</li>
+						</Link>
+						<Link to={`users/${this.props.homeAlbums[9].user_id}`}>
+							<li
+								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014504111_170.jpg)"}}
+							>
+								<p>{this.props.homeAlbums[9].artist}</p>
+							</li>
+						</Link>
 					</ul>
 				</div> : "" }
-				<div class="featured-albums-divider">
+				<div className="featured-albums-divider">
 					<h3>NEW AND NOTABLE ALBUMS</h3>
 				</div>
 				<div className="featured-albums">
