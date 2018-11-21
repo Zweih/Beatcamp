@@ -1659,7 +1659,9 @@ function (_React$Component) {
   _createClass(Homepage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchHomeAlbums();
+      if (this.props.homeAlbums < 9) {
+        this.props.fetchHomeAlbums();
+      }
     }
   }, {
     key: "render",
@@ -1675,31 +1677,31 @@ function (_React$Component) {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014498149_0)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[0].artist))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[0].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "home-small"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "users/".concat(this.props.homeAlbums[8].user_id)
+        to: "users/".concat(this.props.homeAlbums[1].user_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014498598_170.jpg)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[8].artist))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "users/".concat(this.props.homeAlbums[7].user_id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[1].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "users/".concat(this.props.homeAlbums[2].user_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014497570_170.jpg)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[7].artist))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "users/".concat(this.props.homeAlbums[9].user_id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[2].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "users/".concat(this.props.homeAlbums[3].user_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014504111_170.jpg)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[9].artist))))) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[3].user))))) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums-divider"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "NEW AND NOTABLE ALBUMS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums"
-      }, this.props.homeAlbums.length > 5 ? this.props.homeAlbums.slice(2, 7).map(function (album, idx) {
+      }, this.props.homeAlbums.length > 4 ? this.props.homeAlbums.slice(-5).map(function (album, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: idx,
           className: "home-album"
@@ -1713,7 +1715,7 @@ function (_React$Component) {
           className: "home-album-title"
         }, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "home-album-artist"
-        }, "by ".concat(album.artist)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, "by ".concat(album.user)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "home-album-description"
         }, album.description)));
       }) : ""));
@@ -1745,7 +1747,14 @@ __webpack_require__.r(__webpack_exports__);
 
 const mapStateToProps = (state) => {
 	const currentUser = state.entities.users[state.session.id];
-	const homeAlbums = Object.values(state.entities.albums);
+	const ids = [1, 70, 104, 124, 155, 244, 306, 325, 329];
+	const homeAlbums = [];
+
+	ids.forEach((id) => {
+		if(!!state.entities.albums[id]) {
+			homeAlbums.push(state.entities.albums[id]);
+		}
+	});
 	
 	return { currentUser, homeAlbums };
 };
@@ -3338,7 +3347,7 @@ const fetchHomeAlbums = () => {
 		method: "GET",
 		url: "api/albums",
 		data: {
-			num: 10,
+			num: 8,
 		}
 	});
 };
