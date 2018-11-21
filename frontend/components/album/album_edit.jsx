@@ -145,9 +145,9 @@ class AlbumEdit extends React.Component {
 							className={`${this.props.formClass}-input`}
 						/>
 					</div>
-					<h3 className={`${this.props.formClass}-title track-edit-title`}>Album Tracks</h3>
-					<div className={`${this.props.formClass}-divider`}></div>
-					{tracks}
+					{/* <h3 className={`${this.props.formClass}-title track-edit-title`}>Album Tracks</h3>
+					TODO: ADD TRACK EDIT CONTAINERS
+					<div className={`${this.props.formClass}-divider`}></div> */}
 					<div className={`${this.props.formClass}-buttons`}>
 						<input
 							type="submit"

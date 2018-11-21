@@ -886,11 +886,7 @@ function (_React$Component) {
         rows: "10",
         onChange: this.update("description"),
         className: "".concat(this.props.formClass, "-input")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "".concat(this.props.formClass, "-title track-edit-title")
-      }, "Album Tracks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(this.props.formClass, "-divider")
-      }), tracks, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-buttons")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
