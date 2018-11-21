@@ -10,7 +10,9 @@ class Homepage extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.fetchHomeAlbums();
+		if(this.props.homeAlbums < 9) {
+			this.props.fetchHomeAlbums();
+		}
 	}
 
 	render() {
@@ -23,29 +25,29 @@ class Homepage extends React.Component {
 							className="home-large"
 							style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498149_0)"}}
 							>
-							<p>{this.props.homeAlbums[0].artist}</p>
+							<p>{this.props.homeAlbums[0].user}</p>
 						</div>
 					</Link>
 					<ul className="home-small">
-						<Link to={`users/${this.props.homeAlbums[8].user_id}`}>
+						<Link to={`users/${this.props.homeAlbums[1].user_id}`}>
 							<li
 								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498598_170.jpg)"}}
 							>
-								<p>{this.props.homeAlbums[8].artist}</p>
+								<p>{this.props.homeAlbums[1].user}</p>
 							</li>
 						</Link>
-						<Link to={`users/${this.props.homeAlbums[7].user_id}`}>
+						<Link to={`users/${this.props.homeAlbums[2].user_id}`}>
 							<li
 								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014497570_170.jpg)"}}
 							>
-								<p>{this.props.homeAlbums[7].artist}</p>
+								<p>{this.props.homeAlbums[2].user}</p>
 							</li>
 						</Link>
-						<Link to={`users/${this.props.homeAlbums[9].user_id}`}>
+						<Link to={`users/${this.props.homeAlbums[3].user_id}`}>
 							<li
 								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014504111_170.jpg)"}}
 							>
-								<p>{this.props.homeAlbums[9].artist}</p>
+								<p>{this.props.homeAlbums[3].user}</p>
 							</li>
 						</Link>
 					</ul>
@@ -54,8 +56,8 @@ class Homepage extends React.Component {
 					<h3>NEW AND NOTABLE ALBUMS</h3>
 				</div>
 				<div className="featured-albums">
-					{this.props.homeAlbums.length > 5 ?
-					this.props.homeAlbums.slice(2, 7).map((album, idx) => {
+					{this.props.homeAlbums.length > 4 ?
+					this.props.homeAlbums.slice(-5).map((album, idx) => {
 						return (
 						<div key={idx} className="home-album">
 							<Link 
@@ -68,7 +70,7 @@ class Homepage extends React.Component {
 								{album.title}
 							</p>
 							<p className="home-album-artist">
-								{`by ${album.artist}`}
+								{`by ${album.user}`}
 							</p>
 							<p className="home-album-description">
 								{album.description}

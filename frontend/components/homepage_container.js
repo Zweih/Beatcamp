@@ -4,7 +4,14 @@ import { fetchHomeAlbums } from "../actions/album_actions";
 
 const mapStateToProps = (state) => {
 	const currentUser = state.entities.users[state.session.id];
-	const homeAlbums = Object.values(state.entities.albums);
+	const ids = [1, 70, 104, 124, 155, 244, 306, 325, 329];
+	const homeAlbums = [];
+
+	ids.forEach((id) => {
+		if(!!state.entities.albums[id]) {
+			homeAlbums.push(state.entities.albums[id]);
+		}
+	});
 	
 	return { currentUser, homeAlbums };
 };
