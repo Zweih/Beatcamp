@@ -1689,27 +1689,26 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "https://f4.bcbits.com/img/0014504111_170.jpg"
       }))))) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "featured-albums-divider"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "NEW AND NOTABLE ALBUMS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums"
       }, this.props.homeAlbums.length > 5 ? this.props.homeAlbums.slice(2, 7).map(function (album, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: idx + "a",
+          key: idx,
           className: "home-album"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          key: idx + "b",
           to: "/users/".concat(album.user_id, "/albums/").concat(album.id)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: idx + "c",
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "home-album-cover"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          key: idx + "d",
           src: album.cover_url
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: idx + "e",
-          className: "home-album-artist"
-        }, album.artist), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: idx + "f",
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "home-album-title"
-        }, album.title)));
+        }, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "home-album-artist"
+        }, "by ".concat(album.artist)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "home-album-description"
+        }, album.description)));
       }) : ""));
     }
   }]);

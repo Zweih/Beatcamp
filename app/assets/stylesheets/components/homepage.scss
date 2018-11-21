@@ -15,7 +15,7 @@
 
 .home-large {
 	width: 971.61px;
-	border-right: 2px solid white;
+	border-right: 2px solid #eef2f3;;
 }
 
 .home-large img {
@@ -40,7 +40,7 @@
 	padding: 0px;
 	margin: 0px;
 	height: 162.89px;
-	border-bottom: 2px solid white;
+	border-bottom: 2px solid #eef2f3;;
 }
 
 .home-small img {
@@ -56,18 +56,33 @@
 	-ms-filter: brightness(130%);
 }
 
+.featured-albums-divider {
+	margin-top: 50px;
+	margin-bottom: 10px;
+	width: 100%;
+	max-width: 1106px;
+}
+
+.featured-albums-divider h3 {
+	font-size: 14px;
+	color: #408ea3;
+	align-self: flex-start;
+	margin-left: 10px;
+}
+
 .featured-albums {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 50px;
 	list-style: none;
 	width: 100%;
 	max-width: 1106px;
 }
 
 .home-album {
-	text-align: center;
 	margin-bottom: 100px;
+	height: 206px;
+	padding: 13px 18px 13px 10px;
+	background: #fff;
 }
 
 .home-album > a {
@@ -83,13 +98,17 @@
 	height: 200px;
 }
 
-.home-album-artist {
-	font-size: 12px;
-	color: gray;
+.home-album-title, .home-album-artist {
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 18px;
 }
 
-.home-album-title {
+.home-album-description {
+	font-family: Georgia, Times, serif;
 	font-size: 13px;
+	font-weight: 400;
+	line-height: 18px;
 }
 
 a:link, a:visited {
