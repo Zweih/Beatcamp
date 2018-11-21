@@ -563,7 +563,9 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var trackListings = this.props.albumTracks.map(function (track, idx) {
+      var trackListings = this.props.albumTracks.filter(function (track) {
+        return !!track;
+      }).map(function (track, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {

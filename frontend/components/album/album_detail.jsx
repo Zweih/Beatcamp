@@ -45,7 +45,9 @@ class AlbumDetail extends React.Component {
 	}
 
 	render() {
-		const trackListings = this.props.albumTracks.map((track, idx) => {
+		const trackListings = this.props.albumTracks.filter((track) => {
+			return !!track;
+		}).map((track, idx) => {
 			return (
 				<li key={idx}>
 					<span onClick={() => {
