@@ -36,7 +36,7 @@ class Api::AlbumsController < ApplicationController
 		num = params[:num].to_i
 		
 		if num
-			@albums = Album.first(num)
+			@albums = Album.find([1, 70, 104, 124, 155, 244, 306, 325, 329])
 		else 
 			@albums = Album.all
 		end
