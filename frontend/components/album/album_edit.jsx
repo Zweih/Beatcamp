@@ -123,7 +123,7 @@ class AlbumEdit extends React.Component {
 					</div>
 					<div className={`${this.props.formClass}-item`}>
 						<label className={`${this.props.formClass}-label`}>
-							New cover image
+							New cover URL
 						</label>
 						<input
 							type="text"

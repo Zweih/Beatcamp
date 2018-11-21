@@ -870,7 +870,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
-      }, "New cover image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "New cover URL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.cover_url,
         onChange: this.update("cover_url"),
