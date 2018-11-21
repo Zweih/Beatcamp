@@ -3,21 +3,21 @@ import {
 	Link
 } from "react-router-dom";
 
-const AlbumItem = ({ className, userAlbum, pageUserId }) => {
+const AlbumItem = ({ className, album, pageUserId }) => {
 	return (
 		<div>
 			{
-				userAlbum ?
+				album ?
 					<Link
 						className={`album-item ${className}`}
-						to={`/users/${pageUserId}/albums/${userAlbum.id}`}
+						to={`/users/${pageUserId}/albums/${album.id}`}
 					>
 						<img 
 							className="album-item-cover"
-							src={userAlbum.cover_url}
+							src={album.cover_url}
 						/>
 					<p className="album-item-label">
-						{userAlbum.title}
+						{album.title}
 					</p>
 				</Link>
 				: ""

@@ -10,9 +10,9 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const pageUserId = parseInt(ownProps.match.params.userId);
 	const pageUser = selectUser(state.entities, pageUserId);
-	const userAlbums = selectAlbums(state.entities, pageUser);
+	const albums = selectAlbums(state.entities, pageUser);
 	
-	return { currentUser, pageUser, pageUserId, userAlbums };
+	return { currentUser, pageUser, pageUserId, albums };
 };
 
 const mapDispatchToProps = (dispatch) => {

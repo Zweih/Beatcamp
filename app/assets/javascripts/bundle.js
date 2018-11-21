@@ -592,24 +592,24 @@ function (_React$Component) {
           className: "track-title"
         }, track.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null));
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.userAlbum ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "user-album-detail"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.album ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-detail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-album-col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "user-album-title"
-      }, this.props.userAlbum.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "user-album-artist"
+        className: "album-title"
+      }, this.props.album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "album-artist"
       }, "by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "user-album-artist-link",
+        className: "album-artist-link",
         to: "/users/".concat(this.props.pageUserId)
-      }, this.props.userAlbum.user)), this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/users/".concat(this.props.currentUser.id, "/albums/").concat(this.props.userAlbum.id, "/edit")
+      }, this.props.album.user)), this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/users/".concat(this.props.currentUser.id, "/albums/").concat(this.props.album.id, "/edit")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Edit Album")) : "", this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "audio-player"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         trackIds: this.props.albumTrackIds,
-        album: this.props.userAlbum,
+        album: this.props.album,
         cTrackNum: this.state.cTrackNum,
         playing: this.state.playing,
         handleTrackPlay: this.handleTrackPlay,
@@ -625,14 +625,14 @@ function (_React$Component) {
       }, "Includes unlimited streaming via the free Beatcamp web-app.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "track-listings"
       }, trackListings ? trackListings : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "user-album-desc"
-      }, this.props.userAlbum.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-desc"
+      }, this.props.album.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-album-col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: this.props.userAlbum.cover_url
+        href: this.props.album.cover_url
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "user-album-cover",
-        src: this.props.userAlbum.cover_url
+        className: "album-cover",
+        src: this.props.album.cover_url
       })))) : "");
     }
   }]);
@@ -666,16 +666,16 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const albumId = ownProps.match.params.albumId;
 	const pageUserId = parseInt(ownProps.match.params.userId);
-	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectAlbum"])(state.entities, albumId);
+	const album = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectAlbum"])(state.entities, albumId);
 
-	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+	const albumTrackIds = album.track_ids.sort((a, b) => {
 		return a - b;
 	});
 
 	const albumTracks = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectAlbumTracks"])(state.entities, albumTrackIds);
 
 	return {
-		userAlbum,
+		album,
 		albumId,
 		pageUserId,
 		currentUser,
@@ -767,11 +767,11 @@ function (_React$Component) {
         disabled: true
       });
       var album = {};
-      Object.keys(this.props.userAlbum).forEach(function (key) {
+      Object.keys(this.props.album).forEach(function (key) {
         if (_this2.state[key] && _this2.state[key].length > 0) {
           album[key] = _this2.state[key];
         } else {
-          album[key] = _this2.props.userAlbum[key];
+          album[key] = _this2.props.album[key];
         }
       });
       this.props.processForm(album, this.props.currentUser);
@@ -823,11 +823,11 @@ function (_React$Component) {
         });
       }
 
-      var userAlbum = this.props.userAlbum;
+      var album = this.props.album;
       var currentUser = this.props.currentUser;
       var albumUserId = this.props.albumUserId;
 
-      if (userAlbum.userId && userAlbum.userId !== currentUser.id || userAlbum.userId && userAlbum.userId !== albumUserId || albumUserId !== currentUser.id) {
+      if (album.userId && album.userId !== currentUser.id || album.userId && album.userId !== albumUserId || albumUserId !== currentUser.id) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
           to: "/"
         });
@@ -862,7 +862,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-label")
       }, "New title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: this.props.userAlbum.title,
+        placeholder: this.props.album.title,
         value: this.state.title,
         onChange: this.update("title"),
         className: "".concat(this.props.formClass, "-input")
@@ -881,7 +881,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-label")
       }, "New description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         value: this.state.description,
-        placeholder: this.props.userAlbum.description,
+        placeholder: this.props.album.description,
         cols: "40",
         rows: "10",
         onChange: this.update("description"),
@@ -927,12 +927,12 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const albumUserId = parseInt(ownProps.match.params.userId);
 	const albumId = parseInt(ownProps.match.params.albumId);
-	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAlbum"])(state.entities, albumId);
+	const album = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAlbum"])(state.entities, albumId);
 	const errors = state.errors.album;
 	const formType = "Edit Album";
 	const formClass = "a-edit";
 	
-	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+	const albumTrackIds = album.track_ids.sort((a, b) => {
 		return a - b;
 	});
 
@@ -943,7 +943,7 @@ const mapStateToProps = (state, ownProps) => {
 		formType,
 		formClass,
 		currentUser,
-		userAlbum,
+		album,
 		albumId,
 		albumUserId,
 		albumTracks,
@@ -982,17 +982,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var AlbumItem = function AlbumItem(_ref) {
   var className = _ref.className,
-      userAlbum = _ref.userAlbum,
+      album = _ref.album,
       pageUserId = _ref.pageUserId;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, userAlbum ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, album ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "album-item ".concat(className),
-    to: "/users/".concat(pageUserId, "/albums/").concat(userAlbum.id)
+    to: "/users/".concat(pageUserId, "/albums/").concat(album.id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "album-item-cover",
-    src: userAlbum.cover_url
+    src: album.cover_url
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "album-item-label"
-  }, userAlbum.title)) : "");
+  }, album.title)) : "");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AlbumItem);
@@ -1015,23 +1015,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AlbumItemList = function AlbumItemList(_ref) {
-  var userAlbums = _ref.userAlbums,
+  var albums = _ref.albums,
       pageUserId = _ref.pageUserId;
 
-  var userAlbumItems = function userAlbumItems() {
-    return userAlbums.map(function (userAlbum, idx) {
+  var albumItems = function albumItems() {
+    return albums.map(function (album, idx) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
         className: idx % 2 === 0 ? "leftmost-album" : "",
         key: idx,
-        userAlbum: userAlbum,
+        album: album,
         pageUserId: pageUserId
       });
     });
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "user-album-items"
-  }, userAlbumItems());
+    className: "album-items"
+  }, albumItems());
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AlbumItemList);
@@ -2522,7 +2522,7 @@ function (_React$Component) {
         path: "/users/".concat(this.props.pageUserId),
         render: function render(props) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
-            userAlbums: _this.props.userAlbums,
+            albums: _this.props.albums,
             pageUserId: _this.props.pageUserId
           }));
         }
@@ -2547,7 +2547,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "user-button"
       }, "Edit Profile")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        userAlbums: this.props.userAlbums,
+        albums: this.props.albums,
         pageUserId: this.props.pageUserId
       }))));
     }
@@ -2582,9 +2582,9 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const pageUserId = parseInt(ownProps.match.params.userId);
 	const pageUser = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUser"])(state.entities, pageUserId);
-	const userAlbums = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAlbums"])(state.entities, pageUser);
+	const albums = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAlbums"])(state.entities, pageUser);
 	
-	return { currentUser, pageUser, pageUserId, userAlbums };
+	return { currentUser, pageUser, pageUserId, albums };
 };
 
 const mapDispatchToProps = (dispatch) => {

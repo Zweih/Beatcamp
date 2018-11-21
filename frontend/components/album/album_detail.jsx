@@ -79,18 +79,18 @@ class AlbumDetail extends React.Component {
 		return (
 			<div>
 				{
-					this.props.userAlbum ?
-					<div className="user-album-detail">
+					this.props.album ?
+					<div className="album-detail">
 						<div className="left-album-col">
-							<h1 className="user-album-title">
-								{this.props.userAlbum.title}
+							<h1 className="album-title">
+								{this.props.album.title}
 							</h1>
 							
-							<p className="user-album-artist">
-								by <Link className="user-album-artist-link" to={`/users/${this.props.pageUserId}`}>{this.props.userAlbum.user}</Link>
+							<p className="album-artist">
+								by <Link className="album-artist-link" to={`/users/${this.props.pageUserId}`}>{this.props.album.user}</Link>
 							</p>
 							{ this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ?
-								<Link to={`/users/${this.props.currentUser.id}/albums/${this.props.userAlbum.id}/edit`}>
+								<Link to={`/users/${this.props.currentUser.id}/albums/${this.props.album.id}/edit`}>
 									<button>
 										Edit Album
 									</button>
@@ -101,7 +101,7 @@ class AlbumDetail extends React.Component {
 									<div className="audio-player">
 										<AudioPlayerContainer
 											trackIds={this.props.albumTrackIds}
-											album={this.props.userAlbum}
+											album={this.props.album}
 											cTrackNum={this.state.cTrackNum}
 											playing={this.state.playing}
 											handleTrackPlay={this.handleTrackPlay}
@@ -123,15 +123,15 @@ class AlbumDetail extends React.Component {
 							<ul className="track-listings">
 								{trackListings ? trackListings : ""}
 							</ul>
-							<p className="user-album-desc">
-								{this.props.userAlbum.description}
+							<p className="album-desc">
+								{this.props.album.description}
 							</p>
 						</div>
 						<div className="right-album-col">
-							<a href={this.props.userAlbum.cover_url}>
+							<a href={this.props.album.cover_url}>
 								<img 
-									className="user-album-cover"
-									src={this.props.userAlbum.cover_url}
+									className="album-cover"
+									src={this.props.album.cover_url}
 								/>
 							</a>
 						</div>

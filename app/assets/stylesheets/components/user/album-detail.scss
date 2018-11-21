@@ -1,35 +1,35 @@
-.user-album-detail {
+.album-detail {
 	display: flex;
 	width: 788px;
 	justify-content: space-between;
 }
 
-.user-album-title {
+.album-title {
 	font-size: 28px;
 	font-weight: 400;
 }
 
-.user-album-desc {
+.album-desc {
 	font-size: 12px;
 	font-weight: 400;
 	margin-top: 24px;
 }
 
-.user-album-artist {
+.album-artist {
 	font-size: 14px;
 	font-weight: 400;
 	margin: 0.7em 0 0.3em 0;
 }
 
-.user-album-artist-link,
-.user-album-artist-link:visited {
+.album-artist-link,
+.album-artist-link:visited {
 	font-size: 14px;
 	font-weight: 400;
 	text-decoration: none;
 	color: #0687F5 !important;
 }
 
-.user-album-artist-link:hover {
+.album-artist-link:hover {
 	text-decoration: underline;
 }
 
@@ -44,7 +44,7 @@
 	flex-direction: column;
 }
 
-.user-album-cover {
+.album-cover {
 	width: 350px;
 	height: 350px;
 }

@@ -37,7 +37,7 @@ class UserProfile extends React.Component {
 								render={props => (
 									<AlbumItemList
 										{...props}
-										userAlbums={this.props.userAlbums}
+										albums={this.props.albums}
 										pageUserId={this.props.pageUserId}
 									/>
 								)}
@@ -67,7 +67,7 @@ class UserProfile extends React.Component {
 						: ""}
 						<h3>discography</h3>
 							<AlbumItemList
-								userAlbums={this.props.userAlbums}
+								albums={this.props.albums}
 								pageUserId={this.props.pageUserId}
 							/>
 					</section>

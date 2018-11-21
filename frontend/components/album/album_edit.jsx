@@ -22,11 +22,11 @@ class AlbumEdit extends React.Component {
 		this.setState({disabled: true});
 		const album = {};
 
-		Object.keys(this.props.userAlbum).forEach((key) => {
+		Object.keys(this.props.album).forEach((key) => {
 			if(this.state[key] && this.state[key].length > 0) {
 				album[key] = this.state[key];
 			} else {
-				album[key] = this.props.userAlbum[key];
+				album[key] = this.props.album[key];
 			}
 		});
 		
@@ -70,12 +70,12 @@ class AlbumEdit extends React.Component {
 			);
 		}
 
-		const userAlbum = this.props.userAlbum;
+		const album = this.props.album;
 		const currentUser = this.props.currentUser;
 		const albumUserId = this.props.albumUserId;
 
-		if((userAlbum.userId && userAlbum.userId !== currentUser.id) ||
-		(userAlbum.userId && userAlbum.userId !== albumUserId)||
+		if((album.userId && album.userId !== currentUser.id) ||
+		(album.userId && album.userId !== albumUserId)||
 		albumUserId !== currentUser.id) {
 			return (
 				<Redirect to={`/`}/>
@@ -115,7 +115,7 @@ class AlbumEdit extends React.Component {
 						</label>
 						<input
 							type="text"
-							placeholder={this.props.userAlbum.title}
+							placeholder={this.props.album.title}
 							value={this.state.title}
 							onChange={this.update("title")}
 							className={`${this.props.formClass}-input`}
@@ -138,7 +138,7 @@ class AlbumEdit extends React.Component {
 						</label>
 						<textarea
 							value={this.state.description}
-							placeholder={this.props.userAlbum.description}
+							placeholder={this.props.album.description}
 							cols="40"
 							rows="10"
 							onChange={this.update("description")}

@@ -1,14 +1,14 @@
 import React from "react";
 import AlbumItem from "./album_item";
 
-const AlbumItemList = ({ userAlbums, pageUserId }) => {
-	const userAlbumItems = () => {
-		return userAlbums.map( (userAlbum, idx) => {
+const AlbumItemList = ({ albums, pageUserId }) => {
+	const albumItems = () => {
+		return albums.map( (album, idx) => {
 			return (
 				<AlbumItem
 					className={idx % 2 === 0 ? "leftmost-album" : ""}
 					key={idx}
-					userAlbum={userAlbum}
+					album={album}
 					pageUserId={pageUserId}
 				/>
 			);
@@ -16,8 +16,8 @@ const AlbumItemList = ({ userAlbums, pageUserId }) => {
 	};
 
 	return (
-		<div className="user-album-items">
-			{userAlbumItems()}
+		<div className="album-items">
+			{albumItems()}
 		</div>
 	);
 };

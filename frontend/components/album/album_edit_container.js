@@ -11,12 +11,12 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const albumUserId = parseInt(ownProps.match.params.userId);
 	const albumId = parseInt(ownProps.match.params.albumId);
-	const userAlbum = selectAlbum(state.entities, albumId);
+	const album = selectAlbum(state.entities, albumId);
 	const errors = state.errors.album;
 	const formType = "Edit Album";
 	const formClass = "a-edit";
 	
-	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+	const albumTrackIds = album.track_ids.sort((a, b) => {
 		return a - b;
 	});
 
@@ -27,7 +27,7 @@ const mapStateToProps = (state, ownProps) => {
 		formType,
 		formClass,
 		currentUser,
-		userAlbum,
+		album,
 		albumId,
 		albumUserId,
 		albumTracks,

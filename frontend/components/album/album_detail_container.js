@@ -7,16 +7,16 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const albumId = ownProps.match.params.albumId;
 	const pageUserId = parseInt(ownProps.match.params.userId);
-	const userAlbum = selectAlbum(state.entities, albumId);
+	const album = selectAlbum(state.entities, albumId);
 
-	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+	const albumTrackIds = album.track_ids.sort((a, b) => {
 		return a - b;
 	});
 
 	const albumTracks = selectAlbumTracks(state.entities, albumTrackIds);
 
 	return {
-		userAlbum,
+		album,
 		albumId,
 		pageUserId,
 		currentUser,
