@@ -605,8 +605,8 @@ function (_React$Component) {
       }, "by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "album-artist-link",
         to: "/users/".concat(this.props.pageUserId)
-      }, this.props.album.user)), this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/users/".concat(this.props.currentUser.id, "/albums/").concat(this.props.album.id, "/edit")
+      }, this.props.album.user)), !!this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/users/".concat(this.props.currentUser.id, "/albums/").concat(this.props.albumId, "/edit")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Edit Album")) : "", this.props.albumTracks.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "audio-player"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_audio_player_audio_player_container__WEBPACK_IMPORTED_MODULE_2__["default"], {

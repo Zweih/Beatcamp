@@ -91,8 +91,8 @@ class AlbumDetail extends React.Component {
 							<p className="album-artist">
 								by <Link className="album-artist-link" to={`/users/${this.props.pageUserId}`}>{this.props.album.user}</Link>
 							</p>
-							{ this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ?
-								<Link to={`/users/${this.props.currentUser.id}/albums/${this.props.album.id}/edit`}>
+							{ !!this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ?
+								<Link to={`/users/${this.props.currentUser.id}/albums/${this.props.albumId}/edit`}>
 									<button>
 										Edit Album
 									</button>
