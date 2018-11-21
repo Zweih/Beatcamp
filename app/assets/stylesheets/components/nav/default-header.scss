@@ -1,28 +1,56 @@
 #header-wrapper {
+	// width: 100%;
+	// height: 105px;
+	// margin: 0;
+	// padding: 0;
+	// background: transparent;
+	// top: 0;
+	// left: 0;
+	// border-bottom: 1px solid #bebebe;
+	// display: flex;
+	// direction: column;
+	// justify-content: center;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-left: 10px;
 	margin-right: 10px;
+	height: 106px;
 }
 
 .main-header {
+	// display: flex;
+	// overflow: hidden;
+	// background-color: #FFFFFF;
+	// flex-direction: row;
+	// justify-content: space-between;
+	// padding-bottom: 22px;
+	// width: 1106px;
+	// width: 100%;
+	// height: 100px;
+	// display: flex;
+	// justify-content: space-between;
+	// align-items: center;
+	// margin-top: 10px;
 	width: 100%;
 	max-width: 1106px;
-	height: 100px;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	margin-top: 10px;
+	align-items: flex-start;
+	height: 100%;
 }
 
 .left-header, .right-header {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly;
+	height: 100%;
 }
 
 .left-header {
+	// width: 636px;
 	width: 100%;
+	// padding-left: 195px;
 }
 
 .right-header {
@@ -79,7 +107,7 @@
 }
 
 .login-signup {
-	margin-top: 15px;
+	// margin-top: 15px;
 }
 
 .header-links li {
@@ -103,7 +131,7 @@
 
 .header-links {
 	align-items: center;
-	height: 25px;
+	// height: 25px;
 }
 
 .header-links li {
