@@ -9,7 +9,7 @@ json.albums do
     json.user @user.username
     json.cover_url album.cover_url
     json.description album.description
-		json.userId album.user_id
+		json.user_id album.user_id
 		json.track_ids album.track_ids
   end
 end
