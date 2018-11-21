@@ -11,6 +11,7 @@ class UserAlbumEdit extends React.Component {
 			disabled: false,
 			success: false,
 			unauthorized: false,
+			tracks: null,
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -29,7 +30,6 @@ class UserAlbumEdit extends React.Component {
 			}
 		});
 		
-		console.log("album", album);
 		this.props.processForm(album, this.props.currentUser);
 	}
 
@@ -82,6 +82,29 @@ class UserAlbumEdit extends React.Component {
 			);
 		}
 
+		const tracks = this.props.albumTracks.map((track, idx) => {
+			return (
+				<div
+					key={"track" + idx}
+					className="edit-track-items"
+				>
+					<h3>Track {idx + 1}</h3>
+					<div className={`${this.props.formClass}-item`}>
+						<label className={`${this.props.formClass}-label`}>
+							Title
+						</label>
+						<input
+							type="text"
+							placeholder={track.title}
+							value={this.state.cover_url}
+							onChange={this.update("cover_url")}
+							className={`${this.props.formClass}-input`}
+						/>
+					</div>
+				</div>
+			);
+		});
+
 		return (
 			<div className={`session-form, ${this.props.formClass}`}>
 				<form onSubmit={this.handleSubmit} className="session-form-box">
@@ -102,7 +125,7 @@ class UserAlbumEdit extends React.Component {
 					</div>
 					<div className={`${this.props.formClass}-item`}>
 						<label className={`${this.props.formClass}-label`}>
-							New cover URL
+							New cover image
 						</label>
 						<input
 							type="text"
@@ -124,6 +147,9 @@ class UserAlbumEdit extends React.Component {
 							className={`${this.props.formClass}-input`}
 						/>
 					</div>
+					<h3 className={`${this.props.formClass}-title track-edit-title`}>Album Tracks</h3>
+					<div className={`${this.props.formClass}-divider`}></div>
+					{tracks}
 					<div className={`${this.props.formClass}-buttons`}>
 						<input
 							type="submit"

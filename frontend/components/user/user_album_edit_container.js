@@ -5,7 +5,7 @@ import {
 	fetchAlbum,
 	updateAlbum } from "../../actions/album_actions";
 
-import { selectUserAlbum } from "../../reducers/selectors";
+import { selectUserAlbum, selectAlbumTracks } from "../../reducers/selectors";
 
 const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
@@ -13,8 +13,14 @@ const mapStateToProps = (state, ownProps) => {
 	const albumId = parseInt(ownProps.match.params.albumId);
 	const userAlbum = selectUserAlbum(state.entities, albumId);
 	const errors = state.errors.album;
-	const formType = "Album Edit";
+	const formType = "Edit Album";
 	const formClass = "a-edit";
+	
+	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+		return a - b;
+	});
+
+	const albumTracks = selectAlbumTracks(state.entities, albumTrackIds);
 
 	return {
 		errors,
@@ -24,6 +30,7 @@ const mapStateToProps = (state, ownProps) => {
 		userAlbum,
 		albumId,
 		albumUserId,
+		albumTracks,
 	};
 };
 

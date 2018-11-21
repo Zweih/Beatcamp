@@ -2124,7 +2124,8 @@ function (_React$Component) {
       description: "",
       disabled: false,
       success: false,
-      unauthorized: false
+      unauthorized: false,
+      tracks: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -2148,7 +2149,6 @@ function (_React$Component) {
           album[key] = _this2.props.userAlbum[key];
         }
       });
-      console.log("album", album);
       this.props.processForm(album, this.props.currentUser);
     }
   }, {
@@ -2190,6 +2190,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       if (this.state.success) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
           to: "/users/".concat(this.props.albumUserId, "/albums/").concat(this.props.albumId)
@@ -2206,6 +2208,22 @@ function (_React$Component) {
         });
       }
 
+      var tracks = this.props.albumTracks.map(function (track, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "track" + idx,
+          className: "edit-track-items"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Track ", idx + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "".concat(_this4.props.formClass, "-item")
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "".concat(_this4.props.formClass, "-label")
+        }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          placeholder: track.title,
+          value: _this4.state.cover_url,
+          onChange: _this4.update("cover_url"),
+          className: "".concat(_this4.props.formClass, "-input")
+        })));
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-form, ".concat(this.props.formClass)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -2229,7 +2247,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
-      }, "New cover URL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "New cover image"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.cover_url,
         onChange: this.update("cover_url"),
@@ -2245,7 +2263,11 @@ function (_React$Component) {
         rows: "10",
         onChange: this.update("description"),
         className: "".concat(this.props.formClass, "-input")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "".concat(this.props.formClass, "-title track-edit-title")
+      }, "Album Tracks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-divider")
+      }), tracks, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-buttons")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
@@ -2288,8 +2310,14 @@ const mapStateToProps = (state, ownProps) => {
 	const albumId = parseInt(ownProps.match.params.albumId);
 	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUserAlbum"])(state.entities, albumId);
 	const errors = state.errors.album;
-	const formType = "Album Edit";
+	const formType = "Edit Album";
 	const formClass = "a-edit";
+	
+	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
+		return a - b;
+	});
+
+	const albumTracks = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAlbumTracks"])(state.entities, albumTrackIds);
 
 	return {
 		errors,
@@ -2299,6 +2327,7 @@ const mapStateToProps = (state, ownProps) => {
 		userAlbum,
 		albumId,
 		albumUserId,
+		albumTracks,
 	};
 };
 

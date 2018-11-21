@@ -76,3 +76,15 @@ textarea.a-edit-input {
 	color: rgb(129, 130, 133);
 	font-weight: 400;
 }
+
+.track-edit-title {
+	margin-top: 40px;
+}
+
+.edit-track-items {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
