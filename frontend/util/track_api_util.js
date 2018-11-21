@@ -21,3 +21,15 @@ export const fetchTrack = (trackId) => {
 		url: `api/tracks/${trackId}`,
 	});
 };
+
+export const updateTrack = (track, album, user) => {
+	return $.ajax({
+		method: "PATCH",
+		url: `api/albums/${album.id}`,
+		data: {
+			track,
+			album,
+			user,
+		},
+	});
+};

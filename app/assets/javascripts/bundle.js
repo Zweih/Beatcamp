@@ -3318,8 +3318,8 @@ const updateAlbum = (album, user) => {
 		method: "PATCH",
 		url: `api/albums/${album.id}`,
 		data: {
-			user,
 			album,
+			user,
 		},
 	});
 };
@@ -3484,7 +3484,7 @@ const logout = () => {
 /*!*****************************************!*\
   !*** ./frontend/util/track_api_util.js ***!
   \*****************************************/
-/*! exports provided: createTrack, fetchTracks, fetchTrack */
+/*! exports provided: createTrack, fetchTracks, fetchTrack, updateTrack */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3492,6 +3492,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTrack", function() { return createTrack; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTracks", function() { return fetchTracks; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTrack", function() { return fetchTrack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateTrack", function() { return updateTrack; });
 const createTrack = (track) => {
 	return $.ajax({
 		method: "POST",
@@ -3513,6 +3514,18 @@ const fetchTrack = (trackId) => {
 	return $.ajax({
 		method: "GET",
 		url: `api/tracks/${trackId}`,
+	});
+};
+
+const updateTrack = (track, album, user) => {
+	return $.ajax({
+		method: "PATCH",
+		url: `api/albums/${album.id}`,
+		data: {
+			track,
+			album,
+			user,
+		},
 	});
 };
 
