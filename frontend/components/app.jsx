@@ -13,7 +13,7 @@ import LoginFormContainer from "./session_form/login_form_container";
 import BrowseNavContainer from "./nav/browse_nav_container";
 import UserProfileContainer from "./user/user_profile_container";
 import UserProfileEditContainer from "./user/user_profile_edit_container";
-import AlbumEditContainer from "./user/album_edit_container";
+import AlbumEditContainer from "./album/album_edit_container";
 import HomepageContainer from "./homepage_container";
 import ParkingPage from "./parking_page";
 

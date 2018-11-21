@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 import UserHeader from "./user_header";
-import AlbumItemList from "./album_item_list";
-import AlbumDetailContainer from "./album_detail_container";
+import AlbumItemList from "../album/album_item_list";
+import AlbumDetailContainer from "../album/album_detail_container";
 
 class UserProfile extends React.Component {
 	constructor(props) {
