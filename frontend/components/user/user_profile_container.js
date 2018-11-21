@@ -3,14 +3,14 @@ import UserProfile from "./user_profile";
 import { fetchUser } from "../../actions/session_actions";
 import { 
 	selectUser,
-	selectUserAlbums
+	selectAlbums
  } from "../../reducers/selectors";
 
 const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const pageUserId = parseInt(ownProps.match.params.userId);
 	const pageUser = selectUser(state.entities, pageUserId);
-	const userAlbums = selectUserAlbums(state.entities, pageUser);
+	const userAlbums = selectAlbums(state.entities, pageUser);
 	
 	return { currentUser, pageUser, pageUserId, userAlbums };
 };

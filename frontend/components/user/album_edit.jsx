@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, Redirect } from "react-router-dom";
 
-class UserAlbumEdit extends React.Component {
+class AlbumEdit extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -96,8 +96,6 @@ class UserAlbumEdit extends React.Component {
 						<input
 							type="text"
 							placeholder={track.title}
-							value={this.state.cover_url}
-							onChange={this.update("cover_url")}
 							className={`${this.props.formClass}-input`}
 						/>
 					</div>
@@ -164,4 +162,4 @@ class UserAlbumEdit extends React.Component {
 	}
 }
 
-export default withRouter(UserAlbumEdit);
+export default withRouter(AlbumEdit);

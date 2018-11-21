@@ -485,7 +485,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nav_browse_nav_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav/browse_nav_container */ "./frontend/components/nav/browse_nav_container.js");
 /* harmony import */ var _user_user_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user/user_profile_container */ "./frontend/components/user/user_profile_container.js");
 /* harmony import */ var _user_user_profile_edit_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user/user_profile_edit_container */ "./frontend/components/user/user_profile_edit_container.js");
-/* harmony import */ var _user_user_album_edit_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user/user_album_edit_container */ "./frontend/components/user/user_album_edit_container.js");
+/* harmony import */ var _user_album_edit_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user/album_edit_container */ "./frontend/components/user/album_edit_container.js");
 /* harmony import */ var _homepage_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./homepage_container */ "./frontend/components/homepage_container.js");
 /* harmony import */ var _parking_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./parking_page */ "./frontend/components/parking_page.jsx");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -532,7 +532,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
     path: "/users/:userId/albums/:albumId/edit",
-    component: _user_user_album_edit_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _user_album_edit_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/users/:userId",
     render: function render(props) {
@@ -1841,10 +1841,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/user/user_album_detail.jsx":
-/*!********************************************************!*\
-  !*** ./frontend/components/user/user_album_detail.jsx ***!
-  \********************************************************/
+/***/ "./frontend/components/user/album_detail.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/user/album_detail.jsx ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1876,17 +1876,17 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
-var UserAlbumDetail =
+var AlbumDetail =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(UserAlbumDetail, _React$Component);
+  _inherits(AlbumDetail, _React$Component);
 
-  function UserAlbumDetail(props) {
+  function AlbumDetail(props) {
     var _this;
 
-    _classCallCheck(this, UserAlbumDetail);
+    _classCallCheck(this, AlbumDetail);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserAlbumDetail).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumDetail).call(this, props));
     _this.handleTrackChange = _this.handleTrackChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleTrackPlay = _this.handleTrackPlay.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
@@ -1897,7 +1897,7 @@ function (_React$Component) {
     return _this;
   }
 
-  _createClass(UserAlbumDetail, [{
+  _createClass(AlbumDetail, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAlbum(this.props.albumId);
@@ -2012,17 +2012,17 @@ function (_React$Component) {
     }
   }]);
 
-  return UserAlbumDetail;
+  return AlbumDetail;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(UserAlbumDetail));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(AlbumDetail));
 
 /***/ }),
 
-/***/ "./frontend/components/user/user_album_detail_container.js":
-/*!*****************************************************************!*\
-  !*** ./frontend/components/user/user_album_detail_container.js ***!
-  \*****************************************************************/
+/***/ "./frontend/components/user/album_detail_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/user/album_detail_container.js ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2031,7 +2031,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
 /* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/album_actions */ "./frontend/actions/album_actions.js");
-/* harmony import */ var _user_album_detail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user_album_detail */ "./frontend/components/user/user_album_detail.jsx");
+/* harmony import */ var _album_detail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./album_detail */ "./frontend/components/user/album_detail.jsx");
 
 
 
@@ -2041,7 +2041,7 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const albumId = ownProps.match.params.albumId;
 	const pageUserId = parseInt(ownProps.match.params.userId);
-	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectUserAlbum"])(state.entities, albumId);
+	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectAlbum"])(state.entities, albumId);
 
 	const albumTrackIds = userAlbum.track_ids.sort((a, b) => {
 		return a - b;
@@ -2068,14 +2068,14 @@ const mapDispatchToProps = (dispatch) => {
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
 	mapStateToProps,
 	mapDispatchToProps
-)(_user_album_detail__WEBPACK_IMPORTED_MODULE_3__["default"]));
+)(_album_detail__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
-/***/ "./frontend/components/user/user_album_edit.jsx":
-/*!******************************************************!*\
-  !*** ./frontend/components/user/user_album_edit.jsx ***!
-  \******************************************************/
+/***/ "./frontend/components/user/album_edit.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/user/album_edit.jsx ***!
+  \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2107,17 +2107,17 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
-var UserAlbumEdit =
+var AlbumEdit =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(UserAlbumEdit, _React$Component);
+  _inherits(AlbumEdit, _React$Component);
 
-  function UserAlbumEdit(props) {
+  function AlbumEdit(props) {
     var _this;
 
-    _classCallCheck(this, UserAlbumEdit);
+    _classCallCheck(this, AlbumEdit);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserAlbumEdit).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumEdit).call(this, props));
     _this.state = {
       cover_url: "",
       title: "",
@@ -2131,7 +2131,7 @@ function (_React$Component) {
     return _this;
   }
 
-  _createClass(UserAlbumEdit, [{
+  _createClass(AlbumEdit, [{
     key: "handleSubmit",
     value: function handleSubmit(element) {
       var _this2 = this;
@@ -2219,8 +2219,6 @@ function (_React$Component) {
         }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           placeholder: track.title,
-          value: _this4.state.cover_url,
-          onChange: _this4.update("cover_url"),
           className: "".concat(_this4.props.formClass, "-input")
         })));
       });
@@ -2278,24 +2276,24 @@ function (_React$Component) {
     }
   }]);
 
-  return UserAlbumEdit;
+  return AlbumEdit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(UserAlbumEdit));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(AlbumEdit));
 
 /***/ }),
 
-/***/ "./frontend/components/user/user_album_edit_container.js":
-/*!***************************************************************!*\
-  !*** ./frontend/components/user/user_album_edit_container.js ***!
-  \***************************************************************/
+/***/ "./frontend/components/user/album_edit_container.js":
+/*!**********************************************************!*\
+  !*** ./frontend/components/user/album_edit_container.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _user_album_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_album_edit */ "./frontend/components/user/user_album_edit.jsx");
+/* harmony import */ var _album_edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./album_edit */ "./frontend/components/user/album_edit.jsx");
 /* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/album_actions */ "./frontend/actions/album_actions.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
 
@@ -2308,7 +2306,7 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const albumUserId = parseInt(ownProps.match.params.userId);
 	const albumId = parseInt(ownProps.match.params.albumId);
-	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUserAlbum"])(state.entities, albumId);
+	const userAlbum = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAlbum"])(state.entities, albumId);
 	const errors = state.errors.album;
 	const formType = "Edit Album";
 	const formClass = "a-edit";
@@ -2342,14 +2340,14 @@ const mapDispatchToProps = (dispatch) => {
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(
 	mapStateToProps,
 	mapDispatchToProps
-)(_user_album_edit__WEBPACK_IMPORTED_MODULE_1__["default"]));
+)(_album_edit__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
-/***/ "./frontend/components/user/user_album_item.jsx":
-/*!******************************************************!*\
-  !*** ./frontend/components/user/user_album_item.jsx ***!
-  \******************************************************/
+/***/ "./frontend/components/user/album_item.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/user/album_item.jsx ***!
+  \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2361,7 +2359,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var UserAlbumItem = function UserAlbumItem(_ref) {
+var AlbumItem = function AlbumItem(_ref) {
   var className = _ref.className,
       userAlbum = _ref.userAlbum,
       pageUserId = _ref.pageUserId;
@@ -2376,14 +2374,14 @@ var UserAlbumItem = function UserAlbumItem(_ref) {
   }, userAlbum.title)) : "");
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (UserAlbumItem);
+/* harmony default export */ __webpack_exports__["default"] = (AlbumItem);
 
 /***/ }),
 
-/***/ "./frontend/components/user/user_album_item_list.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/user/user_album_item_list.jsx ***!
-  \***********************************************************/
+/***/ "./frontend/components/user/album_item_list.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/user/album_item_list.jsx ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2391,17 +2389,17 @@ var UserAlbumItem = function UserAlbumItem(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _user_album_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user_album_item */ "./frontend/components/user/user_album_item.jsx");
+/* harmony import */ var _album_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./album_item */ "./frontend/components/user/album_item.jsx");
 
 
 
-var UserAlbumItemList = function UserAlbumItemList(_ref) {
+var AlbumItemList = function AlbumItemList(_ref) {
   var userAlbums = _ref.userAlbums,
       pageUserId = _ref.pageUserId;
 
   var userAlbumItems = function userAlbumItems() {
     return userAlbums.map(function (userAlbum, idx) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_album_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
         className: idx % 2 === 0 ? "leftmost-album" : "",
         key: idx,
         userAlbum: userAlbum,
@@ -2415,7 +2413,7 @@ var UserAlbumItemList = function UserAlbumItemList(_ref) {
   }, userAlbumItems());
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (UserAlbumItemList);
+/* harmony default export */ __webpack_exports__["default"] = (AlbumItemList);
 
 /***/ }),
 
@@ -2459,8 +2457,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _user_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_header */ "./frontend/components/user/user_header.jsx");
-/* harmony import */ var _user_album_item_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user_album_item_list */ "./frontend/components/user/user_album_item_list.jsx");
-/* harmony import */ var _user_album_detail_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user_album_detail_container */ "./frontend/components/user/user_album_detail_container.js");
+/* harmony import */ var _album_item_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./album_item_list */ "./frontend/components/user/album_item_list.jsx");
+/* harmony import */ var _album_detail_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./album_detail_container */ "./frontend/components/user/album_detail_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -2527,14 +2525,14 @@ function (_React$Component) {
         exact: true,
         path: "/users/".concat(this.props.pageUserId),
         render: function render(props) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
             userAlbums: _this.props.userAlbums,
             pageUserId: _this.props.pageUserId
           }));
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/users/:userId/albums/:albumId",
-        component: _user_album_detail_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+        component: _album_detail_container__WEBPACK_IMPORTED_MODULE_4__["default"]
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "user-sidebar"
       }, this.props.pageUser.avatar_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2552,7 +2550,7 @@ function (_React$Component) {
         to: "/users/".concat(this.props.currentUser.id, "/edit")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "user-button"
-      }, "Edit Profile")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "Edit Profile")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         userAlbums: this.props.userAlbums,
         pageUserId: this.props.pageUserId
       }))));
@@ -2588,7 +2586,7 @@ const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const pageUserId = parseInt(ownProps.match.params.userId);
 	const pageUser = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUser"])(state.entities, pageUserId);
-	const userAlbums = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectUserAlbums"])(state.entities, pageUser);
+	const userAlbums = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAlbums"])(state.entities, pageUser);
 	
 	return { currentUser, pageUser, pageUserId, userAlbums };
 };
@@ -3053,16 +3051,16 @@ var RootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! exports provided: selectUserAlbums, selectAlbumTracks, selectUserAlbum, selectUser */
+/*! exports provided: selectAlbums, selectAlbumTracks, selectAlbum, selectUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectUserAlbums", function() { return selectUserAlbums; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAlbums", function() { return selectAlbums; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAlbumTracks", function() { return selectAlbumTracks; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectUserAlbum", function() { return selectUserAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAlbum", function() { return selectAlbum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectUser", function() { return selectUser; });
-const selectUserAlbums = (entities, user) => {
+const selectAlbums = (entities, user) => {
 	return user.album_ids.map(albumId => entities.albums[albumId]);
 };
 
@@ -3070,7 +3068,7 @@ const selectAlbumTracks = (entities, trackIds) => {
 	return trackIds.map(trackId => entities.tracks[trackId]);
 };
 
-const selectUserAlbum = (entities, albumId) => {
+const selectAlbum = (entities, albumId) => {
 	return entities.albums[albumId] || { track_ids: [] };
 };
 

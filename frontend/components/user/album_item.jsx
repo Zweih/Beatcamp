@@ -3,7 +3,7 @@ import {
 	Link
 } from "react-router-dom";
 
-const UserAlbumItem = ({ className, userAlbum, pageUserId }) => {
+const AlbumItem = ({ className, userAlbum, pageUserId }) => {
 	return (
 		<div>
 			{
@@ -26,4 +26,4 @@ const UserAlbumItem = ({ className, userAlbum, pageUserId }) => {
 	);
 };
 
-export default UserAlbumItem;
+export default AlbumItem;

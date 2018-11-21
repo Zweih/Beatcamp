@@ -1,17 +1,17 @@
 import { connect } from "react-redux";
-import UserAlbumEdit from "./user_album_edit";
+import AlbumEdit from "./album_edit";
 import { 
 	clearAlbumErrors,
 	fetchAlbum,
 	updateAlbum } from "../../actions/album_actions";
 
-import { selectUserAlbum, selectAlbumTracks } from "../../reducers/selectors";
+import { selectAlbum, selectAlbumTracks } from "../../reducers/selectors";
 
 const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.entities.users[state.session.id];
 	const albumUserId = parseInt(ownProps.match.params.userId);
 	const albumId = parseInt(ownProps.match.params.albumId);
-	const userAlbum = selectUserAlbum(state.entities, albumId);
+	const userAlbum = selectAlbum(state.entities, albumId);
 	const errors = state.errors.album;
 	const formType = "Edit Album";
 	const formClass = "a-edit";
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(UserAlbumEdit);
+)(AlbumEdit);

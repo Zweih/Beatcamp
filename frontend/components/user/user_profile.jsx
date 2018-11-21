@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 import UserHeader from "./user_header";
-import UserAlbumItemList from "./user_album_item_list";
-import UserAlbumDetailContainer from "./user_album_detail_container";
+import AlbumItemList from "./album_item_list";
+import AlbumDetailContainer from "./album_detail_container";
 
 class UserProfile extends React.Component {
 	constructor(props) {
@@ -35,7 +35,7 @@ class UserProfile extends React.Component {
 							<Route
 								exact path={`/users/${this.props.pageUserId}`}
 								render={props => (
-									<UserAlbumItemList
+									<AlbumItemList
 										{...props}
 										userAlbums={this.props.userAlbums}
 										pageUserId={this.props.pageUserId}
@@ -44,7 +44,7 @@ class UserProfile extends React.Component {
 							/>
 							<Route
 								path={`/users/:userId/albums/:albumId`}
-								component={UserAlbumDetailContainer}
+								component={AlbumDetailContainer}
 							/>
 						</Switch>
 					</div>
@@ -66,7 +66,7 @@ class UserProfile extends React.Component {
 							</Link>
 						: ""}
 						<h3>discography</h3>
-							<UserAlbumItemList
+							<AlbumItemList
 								userAlbums={this.props.userAlbums}
 								pageUserId={this.props.pageUserId}
 							/>

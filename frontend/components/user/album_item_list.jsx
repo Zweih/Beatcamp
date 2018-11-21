@@ -1,11 +1,11 @@
 import React from "react";
-import UserAlbumItem from "./user_album_item";
+import AlbumItem from "./album_item";
 
-const UserAlbumItemList = ({ userAlbums, pageUserId }) => {
+const AlbumItemList = ({ userAlbums, pageUserId }) => {
 	const userAlbumItems = () => {
 		return userAlbums.map( (userAlbum, idx) => {
 			return (
-				<UserAlbumItem
+				<AlbumItem
 					className={idx % 2 === 0 ? "leftmost-album" : ""}
 					key={idx}
 					userAlbum={userAlbum}
@@ -22,4 +22,4 @@ const UserAlbumItemList = ({ userAlbums, pageUserId }) => {
 	);
 };
 
-export default UserAlbumItemList;
+export default AlbumItemList;

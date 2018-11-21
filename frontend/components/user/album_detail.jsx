@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import AudioPlayerContainer from "../audio_player/audio_player_container";
 
-class UserAlbumDetail extends React.Component {
+class AlbumDetail extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleTrackChange = this.handleTrackChange.bind(this);
@@ -144,4 +144,4 @@ class UserAlbumDetail extends React.Component {
 	}
 }
 
-export default withRouter(UserAlbumDetail);
+export default withRouter(AlbumDetail);

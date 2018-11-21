@@ -13,7 +13,7 @@ import LoginFormContainer from "./session_form/login_form_container";
 import BrowseNavContainer from "./nav/browse_nav_container";
 import UserProfileContainer from "./user/user_profile_container";
 import UserProfileEditContainer from "./user/user_profile_edit_container";
-import UserAlbumEditContainer from "./user/user_album_edit_container";
+import AlbumEditContainer from "./user/album_edit_container";
 import HomepageContainer from "./homepage_container";
 import ParkingPage from "./parking_page";
 
@@ -31,7 +31,7 @@ const App = () => (
 					<Switch>
 						<Route exact path="/" component={HomepageContainer} />
 						<ProtectedRoute exact path="/users/:userId/edit" component={UserProfileEditContainer} />
-						<ProtectedRoute exact path="/users/:userId/albums/:albumId/edit" component={UserAlbumEditContainer} />
+						<ProtectedRoute exact path="/users/:userId/albums/:albumId/edit" component={AlbumEditContainer} />
 						<Route path="/users/:userId" render={(props) => (
 							<UserProfileContainer key={props.match.params.userId} {...props} />)
 						} />
