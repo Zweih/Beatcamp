@@ -58,7 +58,7 @@ class UserProfile extends React.Component {
 						<p className="user-bio">
 							{this.props.pageUser.bio}
 						</p>
-						 { this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ?
+						 { !!this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ?
 							<Link to={`/users/${this.props.currentUser.id}/edit`}>
 								<button className="user-button">
 									Edit Profile

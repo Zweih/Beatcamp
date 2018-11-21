@@ -2544,7 +2544,7 @@ function (_React$Component) {
         className: "user-location"
       }, this.props.pageUser.location)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-bio"
-      }, this.props.pageUser.bio), this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, this.props.pageUser.bio), !!this.props.currentUser && this.props.currentUser.id === this.props.pageUserId ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/users/".concat(this.props.currentUser.id, "/edit")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "user-button"
