@@ -59,9 +59,11 @@
 .featured-albums {
 	display: flex;
 	justify-content: space-between;
-	width: 1106px;
+	// width: 1106px;
 	margin-top: 50px;
 	list-style: none;
+	width: 100%;
+	max-width: 1106px;
 }
 
 .home-album {
