@@ -20,8 +20,8 @@ export const updateAlbum = (album, user) => {
 		method: "PATCH",
 		url: `api/albums/${album.id}`,
 		data: {
-			user,
 			album,
+			user,
 		},
 	});
 };
