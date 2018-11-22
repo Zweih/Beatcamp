@@ -49,8 +49,11 @@ class UserProfile extends React.Component {
 						</Switch>
 					</div>
 					<section className="user-sidebar">
-						{ this.props.pageUser.avatar_url ? <img className="user-avatar" src={this.props.pageUser.avatar_url}
-						/> : "" }
+						{this.props.pageUser.avatar_url ? 
+							<Link to={`/users/${this.props.pageUserId}`}>
+								<img className="user-avatar" src={this.props.pageUser.avatar_url}/>
+							</Link>
+						: ""}
 						<p className="user-title-location">
 							<span className="user-title">{this.props.pageUser.username}</span>
 							<span className="user-location">{this.props.pageUser.location}</span>

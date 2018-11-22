@@ -2558,10 +2558,12 @@ function (_React$Component) {
         component: _album_album_detail_container__WEBPACK_IMPORTED_MODULE_4__["default"]
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "user-sidebar"
-      }, this.props.pageUser.avatar_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, this.props.pageUser.avatar_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/users/".concat(this.props.pageUserId)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "user-avatar",
         src: this.props.pageUser.avatar_url
-      }) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      })) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-title-location"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "user-title"
