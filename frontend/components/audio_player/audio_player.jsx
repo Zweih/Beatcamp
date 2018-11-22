@@ -191,7 +191,7 @@ class AudioPlayer extends React.Component {
 										type="range"
 										value={this.state.progress ? this.state.progress : 0}
 										onChange={this.handleDragSlider}
-										min="1"
+										min="0"
 										max="250"
 										className={`progress-slider ${this.state.loading ? "no-click" : ""}`}
 									/>
