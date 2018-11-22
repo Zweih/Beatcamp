@@ -1711,13 +1711,15 @@ function (_React$Component) {
           className: "home-album-cover"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: album.cover_url
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/users/".concat(album.user_id, "/albums/").concat(album.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "home-album-title"
         }, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "home-album-artist"
-        }, "by ".concat(album.user)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, "by ".concat(album.user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "home-album-description"
-        }, album.description)));
+        }, album.description));
       }) : ""));
     }
   }]);

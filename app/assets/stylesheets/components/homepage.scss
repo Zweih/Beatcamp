@@ -110,9 +110,14 @@
 
 .home-album {
 	margin-bottom: 100px;
-	height: 206px;
+	margin-left: 1.7179023508%;
 	padding: 13px 18px 13px 10px;
 	background: #fff;
+	padding-bottom: 35px;
+}
+
+.home-album:first-child {
+	margin-left: 0;
 }
 
 .home-album > a {
@@ -132,6 +137,11 @@
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 18px;
+	color: #000;
+}
+
+.home-album a:hover {
+	text-decoration: underline;
 }
 
 .home-album-description {

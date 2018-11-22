@@ -60,22 +60,22 @@ class Homepage extends React.Component {
 					this.props.homeAlbums.slice(-5).map((album, idx) => {
 						return (
 						<div key={idx} className="home-album">
-							<Link 
-								to={`/users/${album.user_id}/albums/${album.id}`}
-							>
-							<div className="home-album-cover">
-								<img src={album.cover_url}/>
-							</div>
-							<p className="home-album-title">
-								{album.title}
-							</p>
-							<p className="home-album-artist">
-								{`by ${album.user}`}
-							</p>
+							<Link to={`/users/${album.user_id}/albums/${album.id}`}>
+								<div className="home-album-cover">
+									<img src={album.cover_url}/>
+								</div>
+							</Link>
+							<Link to={`/users/${album.user_id}/albums/${album.id}`}>
+								<p className="home-album-title">
+									{album.title}
+								</p>
+								<p className="home-album-artist">
+									{`by ${album.user}`}
+								</p>
+							</Link>
 							<p className="home-album-description">
 								{album.description}
 							</p>
-							</Link>
 						</div>
 						);
 					}) : ""}
