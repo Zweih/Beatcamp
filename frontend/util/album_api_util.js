@@ -26,7 +26,6 @@ export const updateAlbum = (album, user) => {
 	});
 };
 
-
 export const fetchHomeAlbums = () => {
 	return $.ajax({
 		method: "GET",

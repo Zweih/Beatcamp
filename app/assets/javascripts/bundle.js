@@ -3341,7 +3341,6 @@ const updateAlbum = (album, user) => {
 	});
 };
 
-
 const fetchHomeAlbums = () => {
 	return $.ajax({
 		method: "GET",
