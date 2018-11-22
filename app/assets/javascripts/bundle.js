@@ -1659,7 +1659,7 @@ function (_React$Component) {
   _createClass(Homepage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.homeAlbums < 9) {
+      if (this.props.homeAlbums.length < 9) {
         this.props.fetchHomeAlbums();
       }
     }

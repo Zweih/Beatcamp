@@ -10,7 +10,7 @@ class Homepage extends React.Component {
 	}
 
 	componentDidMount() {
-		if(this.props.homeAlbums < 9) {
+		if(this.props.homeAlbums.length < 9) {
 			this.props.fetchHomeAlbums();
 		}
 	}
