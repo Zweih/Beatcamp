@@ -65,17 +65,19 @@ class Homepage extends React.Component {
 									<img src={album.cover_url}/>
 								</div>
 							</Link>
-							<Link to={`/users/${album.user_id}/albums/${album.id}`}>
-								<p className="home-album-title">
-									{album.title}
+							<div className="home-album-bottom">
+								<Link to={`/users/${album.user_id}/albums/${album.id}`}>
+									<p className="home-album-title">
+										{album.title}
+									</p>
+									<p className="home-album-artist">
+										{`by ${album.user}`}
+									</p>
+								</Link>
+								<p className="home-album-description">
+									{album.description}
 								</p>
-								<p className="home-album-artist">
-									{`by ${album.user}`}
-								</p>
-							</Link>
-							<p className="home-album-description">
-								{album.description}
-							</p>
+							</div>
 						</div>
 						);
 					}) : ""}
