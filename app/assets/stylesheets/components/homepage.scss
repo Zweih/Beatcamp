@@ -81,10 +81,6 @@
 	text-shadow: 2px 2px black;
 }
 
-// .home-small li:hover {
-// 	opacity: 0;
-// }
-
 .featured-artists-divider,
 .featured-albums-divider {
 	margin-top: 50px;
@@ -107,9 +103,9 @@
 
 .featured-albums-divider h3 {
 	font-size: 14px;
+	font-weight: 900;
 	color: #408ea3;
 	align-self: flex-start;
-	margin-left: 10px;
 }
 
 .featured-albums {
