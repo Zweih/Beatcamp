@@ -18,13 +18,18 @@ class Homepage extends React.Component {
 	render() {
 		return (
 			<div className="content-container">
+				<div className="featured-artists-divider">
+					<h3>FEATURED ARTISTS</h3>
+				</div>
 				{this.props.homeAlbums.length > 5 ? 
 				<div className="home-main">
 					<Link to={`users/${this.props.homeAlbums[0].user_id}`}>
 						<div
 							className="home-large"
 							style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498149_0)"}}
-							>
+						>
+							<div className="home-overlay"></div>
+							<div className="home-overlay-hover"></div>
 							<p>{this.props.homeAlbums[0].user}</p>
 						</div>
 					</Link>
@@ -33,6 +38,8 @@ class Homepage extends React.Component {
 							<li
 								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498598_170.jpg)"}}
 							>
+								<div className="home-overlay"></div>
+								<div className="home-overlay-hover"></div>
 								<p>{this.props.homeAlbums[1].user}</p>
 							</li>
 						</Link>
@@ -40,6 +47,8 @@ class Homepage extends React.Component {
 							<li
 								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014497570_170.jpg)"}}
 							>
+								<div className="home-overlay"></div>
+								<div className="home-overlay-hover"></div>
 								<p>{this.props.homeAlbums[2].user}</p>
 							</li>
 						</Link>
@@ -47,6 +56,8 @@ class Homepage extends React.Component {
 							<li
 								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014504111_170.jpg)"}}
 							>
+								<div className="home-overlay"></div>
+								<div className="home-overlay-hover"></div>
 								<p>{this.props.homeAlbums[3].user}</p>
 							</li>
 						</Link>

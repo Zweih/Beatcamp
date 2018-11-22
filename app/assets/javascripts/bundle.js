@@ -1674,7 +1674,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-container"
-      }, this.props.homeAlbums.length > 5 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-artists-divider"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "FEATURED ARTISTS")), this.props.homeAlbums.length > 5 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "users/".concat(this.props.homeAlbums[0].user_id)
@@ -1683,7 +1685,11 @@ function (_React$Component) {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014498149_0)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[0].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay-hover"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[0].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "home-small"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "users/".concat(this.props.homeAlbums[1].user_id)
@@ -1691,19 +1697,31 @@ function (_React$Component) {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014498598_170.jpg)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[1].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay-hover"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[1].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "users/".concat(this.props.homeAlbums[2].user_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014497570_170.jpg)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[2].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay-hover"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[2].user))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "users/".concat(this.props.homeAlbums[3].user_id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         style: {
           backgroundImage: "url(https://f4.bcbits.com/img/0014504111_170.jpg)"
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[3].user))))) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-overlay-hover"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.homeAlbums[3].user))))) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums-divider"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "NEW AND NOTABLE ALBUMS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums"
