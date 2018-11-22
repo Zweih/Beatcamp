@@ -108,7 +108,6 @@
 
 .progress-container {
 	width: 250px;
-	margin-top: 1px;
 	margin-right: 10px;
 }
 
@@ -119,6 +118,7 @@
 	height: 8px;
 	border: 1px solid darkgray;
 	background-color: #fefefe;
+	margin: 0;
 	outline: none;
 }
 
