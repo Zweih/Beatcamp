@@ -111,7 +111,7 @@
 .home-album {
 	margin-bottom: 100px;
 	margin-left: 1.7179023508%;
-	padding: 13px 18px 13px 10px;
+	width: 200px;
 	background: #fff;
 	padding-bottom: 35px;
 }
@@ -134,14 +134,23 @@
 }
 
 .home-album-title, .home-album-artist {
-	font-size: 14px;
+	font-size: 13px;
+	text-decoration: none;
 	font-weight: 700;
 	line-height: 18px;
 	color: #000;
 }
 
+.home-album a {
+	text-decoration: none;
+}
+
 .home-album a:hover {
 	text-decoration: underline;
+}
+
+.home-album-bottom {
+	padding: 0 10px;
 }
 
 .home-album-description {
