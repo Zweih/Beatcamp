@@ -3347,7 +3347,7 @@ const fetchHomeAlbums = () => {
 		method: "GET",
 		url: "api/albums",
 		data: {
-			num: 8,
+			home: true,
 		}
 	});
 };

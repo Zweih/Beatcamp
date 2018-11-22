@@ -33,9 +33,7 @@ class Api::AlbumsController < ApplicationController
 	end
 
 	def index
-		num = params[:num].to_i
-		
-		if num
+		if params[:home]
 			@albums = Album.find([1, 70, 104, 124, 155, 244, 306, 325, 329])
 		else 
 			@albums = Album.all
