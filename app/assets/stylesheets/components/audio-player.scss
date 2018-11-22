@@ -1,6 +1,6 @@
 .inline-player .next,
 .inline-player .prev {
-	background:transparent url(https://s3.amazonaws.com/beatcamp-pro/nextprev.png) no-repeat 0 0;
+	background: transparent url(https://s3.amazonaws.com/beatcamp-pro/nextprev.png) no-repeat 0 0;
 	background-size: 40px 12px;
 	cursor: pointer;
 	width: 20px;
@@ -33,7 +33,7 @@
 
 .inline-player .play-pause:after {
 	cursor: pointer;
-	content:'';
+	content: '';
 	display: block;
 	width: 0;
 	height: 0;
@@ -46,12 +46,12 @@
 
 .inline-player .play-pause.playing:after {
 	cursor: pointer;
-	content:'';
-	border:0;
-	border-left:7px solid #2d2d2d;
-	border-right:7px solid #2d2d2d;
-	height:22px;
-	width:4px;
+	content: '';
+	border: c0;
+	border-left: 7px solid #2d2d2d;
+	border-right: 7px solid #2d2d2d;
+	height: 22px;
+	width: 4px;
 	margin: 14px auto;
 }
 
@@ -84,7 +84,6 @@
 	display: flex;
 	flex-direction: row;
 }
-
 
 .song-title {
 	color: #363636;
@@ -145,6 +144,6 @@
 }
 
 .progress-slider::-moz-range-track {
-	background:transparent;
-	border:0px;
+	background: transparent;
+	border: 0px;
 }
