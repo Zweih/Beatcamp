@@ -54,6 +54,11 @@ class AudioPlayer extends React.Component {
 			}
 		};
 	}
+
+	componentWillUnmount() {
+		clearInterval(this.seekWait);
+		clearInterval(this.currentTimeInterval);
+	}
 	
 	static getDerivedStateFromProps(nextProps, prevState) {
 		if(nextProps.album.id !== prevState.album.id) {

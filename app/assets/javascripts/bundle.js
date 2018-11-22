@@ -1229,6 +1229,12 @@ function (_React$Component) {
       };
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.seekWait);
+      clearInterval(this.currentTimeInterval);
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, _) {
       if (this.props.playing !== prevProps.playing && this.audio) {
@@ -1344,7 +1350,7 @@ function (_React$Component) {
         type: "range",
         value: this.state.progress ? this.state.progress : 0,
         onChange: this.handleDragSlider,
-        min: "1",
+        min: "0",
         max: "250",
         className: "progress-slider ".concat(this.state.loading ? "no-click" : "")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
