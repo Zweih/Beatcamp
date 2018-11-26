@@ -60,7 +60,7 @@ class User < ApplicationRecord
 		begin
 			# filesize validation, < 10MB
 			size = 0
-			
+
 			begin
 				file = open(url, :progress_proc => lambda { |content_length|
 					if content_length > 10485760
@@ -93,7 +93,6 @@ class User < ApplicationRecord
 				return ["Invalid file type: image must be .png, .jpg, or .png", "422"]
 			end
 
-			FileMagic.close
 			self.avatar.purge
 			self.avatar.attach(io: file, filename: "temp.#{file.content_type_parse.first.split("/").last}", content_type: file.content_type_parse.first)
 
