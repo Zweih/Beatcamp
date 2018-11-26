@@ -1581,7 +1581,7 @@ var LeftGreeting = function LeftGreeting(_ref) {
     }, "Hi ", currentUser.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       className: "header-link",
       to: "/users/".concat(currentUser.id)
-    }, "collection")));
+    }, "my profile")));
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
