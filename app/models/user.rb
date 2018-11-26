@@ -60,7 +60,13 @@ class User < ApplicationRecord
 		begin
 			file = open(url)
 			tmp_file = Tempfile.new
-			File.binwrite(tmp_file, IO.binread(file))
+
+			begin
+				File.binwrite(tmp_file, IO.binread(file))
+			rescue
+				tmp_file.write(file.read)
+			end
+			
 			fm = FileMagic.new
 			type = fm.file(tmp_file.path, true)
 			tmp_file.unlink
@@ -69,6 +75,7 @@ class User < ApplicationRecord
 				return ["Invalid file type: image must be .png, .jpg, or .png", "422"]
 			end
 
+			FileMagic.purge
 			self.avatar.purge
 			self.avatar.attach(io: file, filename: "temp.#{file.content_type_parse.first.split("/").last}", content_type: file.content_type_parse.first)
 
