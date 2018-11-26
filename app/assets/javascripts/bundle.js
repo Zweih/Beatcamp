@@ -854,15 +854,40 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "session-form-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-info-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-small-img"
+      }, this.state.cover_url.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.cover_url
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.props.album.cover_url
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-title-artist"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "album-title"
+      }, !this.state.title ? this.props.album.title : this.state.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "album-artist"
+      }, "by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.currentUser.username)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-buttons")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        disabled: this.state.disabled,
+        value: this.props.formType,
+        className: "button"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-info")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "".concat(this.props.formClass, "-title")
-      }, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(this.props.formClass, "-divider")
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Leave field blank to keep the same.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
-      }, "New title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: this.props.album.title,
         value: this.state.title,
@@ -872,7 +897,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
-      }, "New cover URL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Cover URL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.cover_url,
         onChange: this.update("cover_url"),
@@ -881,21 +906,14 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
-      }, "New description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         value: this.state.description,
         placeholder: this.props.album.description,
         cols: "40",
         rows: "10",
         onChange: this.update("description"),
         className: "".concat(this.props.formClass, "-input")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(this.props.formClass, "-buttons")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        disabled: this.state.disabled,
-        value: this.props.formType,
-        className: "button"
-      }))));
+      })))));
     }
   }]);
 
