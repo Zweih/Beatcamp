@@ -18,7 +18,11 @@ class Api::UsersController < ApplicationController
 		
 		if @user
 			unless params[:user][:avatar_url].blank?
-				@user.attach_avatar(params[:user][:avatar_url])
+				avatar_errors = @user.attach_avatar!(params[:user][:avatar_url])
+
+				if avatar_errors
+					return render json: [avatar_errors[0]], status: avatar_errors[1]
+				end
 			end
 
 			if @user.update_attributes(update_params)

@@ -1,4 +1,6 @@
 require 'open-uri'
+require 'ruby-filemagic'
+require 'tempfile'
 
 class User < ApplicationRecord
 	attr_reader :password
@@ -51,11 +53,34 @@ class User < ApplicationRecord
 	def avatar_url
 		self.avatar.attached? ? self.avatar.service_url : nil
 	end
-
-	def attach_avatar(url)
+	
+	def attach_avatar!(url)
 		url = URI.parse(url)
-		file = open(url)
-		self.avatar.purge
-		self.avatar.attach(io: file, filename: "temp.#{file.content_type_parse.first.split("/").last}", content_type: file.content_type_parse.first)
+
+		begin
+			file = open(url)
+			tmp_file = Tempfile.new
+			File.binwrite(tmp_file, IO.binread(file))
+			fm = FileMagic.new
+			type = fm.file(tmp_file.path, true)
+			tmp_file.unlink
+
+			unless ["png", "jpg", "jpeg"].include?(type.downcase)
+				return ["Invalid file type: image must be .png, .jpg, or .png", "422"]
+			end
+
+			self.avatar.purge
+			self.avatar.attach(io: file, filename: "temp.#{file.content_type_parse.first.split("/").last}", content_type: file.content_type_parse.first)
+
+			return nil
+		rescue OpenURI::HTTPError => error
+			response = error.io
+			
+			puts "OpenURI HTTPError: "
+			puts response.status
+			puts response.string
+
+			return ["Invalid image URL", response.status[0]]
+		end
 	end
 end
