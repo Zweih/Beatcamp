@@ -58,24 +58,42 @@ class User < ApplicationRecord
 		url = URI.parse(url)
 
 		begin
-			file = open(url)
+			# filesize validation, < 10MB
+			size = 0
+			
+			begin
+				file = open(url, :progress_proc => lambda { |content_length|
+					if content_length > 10485760
+						raise StandardError.new("Invalid file size")
+					end
+				})
+			rescue
+				return ["Invalid file size: image must be less than 10MB", "422"]
+			end
+
+			# header validation
+			unless ["image/png", "image/jpg", "image/jpeg"].include?(file.content_type.downcase)
+				return ["Invalid file type: image must be .png, .jpg, or .png", "422"]
+			end
+			
 			tmp_file = Tempfile.new
+			fm = FileMagic.new
 
 			begin
 				File.binwrite(tmp_file, IO.binread(file))
 			rescue
 				tmp_file.write(file.read)
 			end
-			
-			fm = FileMagic.new
+
 			type = fm.file(tmp_file.path, true)
 			tmp_file.unlink
 
+			# file validation
 			unless ["png", "jpg", "jpeg"].include?(type.downcase)
 				return ["Invalid file type: image must be .png, .jpg, or .png", "422"]
 			end
 
-			FileMagic.purge
+			FileMagic.close
 			self.avatar.purge
 			self.avatar.attach(io: file, filename: "temp.#{file.content_type_parse.first.split("/").last}", content_type: file.content_type_parse.first)
 
