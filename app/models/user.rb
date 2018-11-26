@@ -59,11 +59,9 @@ class User < ApplicationRecord
 
 		begin
 			# filesize validation, < 10MB
-			size = 0
-
 			begin
-				file = open(url, :progress_proc => lambda { |content_length|
-					if content_length > 10485760
+				file = open(url, :progress_proc => lambda { |size|
+					if size > 10485760
 						raise StandardError.new("Invalid file size")
 					end
 				})
