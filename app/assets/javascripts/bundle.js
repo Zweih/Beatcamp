@@ -116,90 +116,90 @@ const REMOVE_ALBUM_ERRORS = "REMOVE_ALBUM_ERRORS";
 // Normal Action Creators
 
 const receiveAlbum = (payload) => {
-  return {
-    type: RECEIVE_ALBUM,
+	return {
+		type: RECEIVE_ALBUM,
 		album: payload.album,
 		tracks: payload.tracks,
-  }
+	}
 };
 
 
 const receiveAlbums = (albums) => {
-  return {
-    type: RECEIVE_ALBUMS,
-    albums,
-  };
+	return {
+		type: RECEIVE_ALBUMS,
+		albums,
+	};
 };
 
 const receiveAlbumErrors = (errors) => {
-  return {
-    type: RECEIVE_ALBUM_ERRORS,
-    errors,
-  };
+	return {
+		type: RECEIVE_ALBUM_ERRORS,
+		errors,
+	};
 };
 
 const removeAlbumErrors = () => {
-  return {
-    type: REMOVE_ALBUM_ERRORS,
-  };
+	return {
+		type: REMOVE_ALBUM_ERRORS,
+	};
 };
 
 // Thunk Action Creators
 
 const createAlbum = (album) => {
-  return (dispatch) => {
-    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["createAlbum"](album).then( (album) => {
-      return dispatch(receiveAlbum(album));
-    }, (errors) => {
-      return dispatch(receiveAlbumErrors(errors.responseJSON));
-    });
-  }
+	return (dispatch) => {
+		return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["createAlbum"](album).then( (album) => {
+			return dispatch(receiveAlbum(album));
+		}, (errors) => {
+			return dispatch(receiveAlbumErrors(errors.responseJSON));
+		});
+	}
 };
 
 const updateAlbum = (album, user) => {
-  return (dispatch) => {
-    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAlbum"](album, user).then( (album) => {
-      return dispatch(receiveAlbum(album));
-    }, (errors) => {
-      return dispatch(receiveAlbumErrors(errors.responseJSON));
-    });
-  }
+	return (dispatch) => {
+		return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["updateAlbum"](album, user).then( (album) => {
+			return dispatch(receiveAlbum(album));
+		}, (errors) => {
+			return dispatch(receiveAlbumErrors(errors.responseJSON));
+		});
+	}
 };
 
 const fetchAlbum = (albumId) => {
-  return (dispatch) => {
-    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAlbum"](albumId).then( (album) => {
-      return dispatch(receiveAlbum(album));
-    }), (errors) => {
-      return dispatch(receiveAlbumErrors(errors.responseJSON));
-    };
-  }
+	return (dispatch) => {
+		return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAlbum"](albumId).then( (album) => {
+			return dispatch(receiveAlbum(album));
+		}), (errors) => {
+			return dispatch(receiveAlbumErrors(errors.responseJSON));
+		};
+	}
 }
 
 const fetchAlbums = () => {
-  return (dispatch) => {
-    return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAlbums"]().then( (albums) => {
-      return dispatch(receiveAlbums(albums));
-    }), (errors) => {
-      return dispatch(receiveAlbumErrors(errors.responseJSON));
-    }
-  }
+	return (dispatch) => {
+		return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAlbums"]().then( (albums) => {
+			return dispatch(receiveAlbums(albums));
+		}), (errors) => {
+			return dispatch(receiveAlbumErrors(errors.responseJSON));
+		}
+	}
 }
 
 const fetchHomeAlbums = () => {
-  return (dispatch) => {
-  return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchHomeAlbums"]().then( (albums) => {
-    return dispatch(receiveAlbums(albums));
-  }), (errors) => {
-    return dispatch(receiveAlbumErrors(errors.responseJSON));
-    }
-  }
+	return (dispatch) => {
+	return _util_album_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchHomeAlbums"]().then( (albums) => {
+		return dispatch(receiveAlbums(albums));
+	}), (errors) => {
+		return dispatch(receiveAlbumErrors(errors.responseJSON));
+		}
+	}
 }
 
 const clearAlbumErrors = () => {
-  return (dispatch) => {
-    return dispatch(removeAlbumErrors());
-  };
+	return (dispatch) => {
+		return dispatch(removeAlbumErrors());
+	};
 };
 
 /***/ }),
