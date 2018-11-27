@@ -73,7 +73,7 @@ class Homepage extends React.Component {
 						<div key={idx} className="home-album">
 							<Link to={`/users/${album.user_id}/albums/${album.id}`}>
 								<div className="home-album-cover">
-									<img src={album.cover_url}/>
+									<img src={album.med_cover_url}/>
 								</div>
 							</Link>
 							<div className="home-album-bottom">

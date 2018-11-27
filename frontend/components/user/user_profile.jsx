@@ -39,6 +39,7 @@ class UserProfile extends React.Component {
 										{...props}
 										albums={this.props.albums}
 										pageUserId={this.props.pageUserId}
+										mini={false}
 									/>
 								)}
 							/>
@@ -72,6 +73,7 @@ class UserProfile extends React.Component {
 							<AlbumItemList
 								albums={this.props.albums}
 								pageUserId={this.props.pageUserId}
+								mini={true}
 							/>
 					</section>
 				</div>
