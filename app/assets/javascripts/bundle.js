@@ -1005,13 +1005,14 @@ __webpack_require__.r(__webpack_exports__);
 var AlbumItem = function AlbumItem(_ref) {
   var className = _ref.className,
       album = _ref.album,
-      pageUserId = _ref.pageUserId;
+      pageUserId = _ref.pageUserId,
+      mini = _ref.mini;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, album ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "album-item ".concat(className),
     to: "/users/".concat(pageUserId, "/albums/").concat(album.id)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "album-item-cover",
-    src: album.cover_url
+    src: mini ? album.mini_cover_url : album.cover_url
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "album-item-label"
   }, album.title)) : "");
@@ -1038,7 +1039,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var AlbumItemList = function AlbumItemList(_ref) {
   var albums = _ref.albums,
-      pageUserId = _ref.pageUserId;
+      pageUserId = _ref.pageUserId,
+      mini = _ref.mini;
 
   var albumItems = function albumItems() {
     return albums.map(function (album, idx) {
@@ -1046,7 +1048,8 @@ var AlbumItemList = function AlbumItemList(_ref) {
         className: idx % 2 === 0 ? "leftmost-album" : "",
         key: idx,
         album: album,
-        pageUserId: pageUserId
+        pageUserId: pageUserId,
+        mini: mini
       });
     });
   };
@@ -1597,7 +1600,7 @@ var LeftGreeting = function LeftGreeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "user-greeting"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: currentUser.avatar_url
+      src: currentUser.mini_avatar_url
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "header-link username"
     }, "Hi ", currentUser.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1756,7 +1759,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "home-album-cover"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: album.cover_url
+          src: album.med_cover_url
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "home-album-bottom"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -2590,7 +2593,8 @@ function (_React$Component) {
         render: function render(props) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, props, {
             albums: _this.props.albums,
-            pageUserId: _this.props.pageUserId
+            pageUserId: _this.props.pageUserId,
+            mini: false
           }));
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -2617,7 +2621,8 @@ function (_React$Component) {
         className: "user-button"
       }, "Edit Profile")) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "discography"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_album_album_item_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
         albums: this.props.albums,
-        pageUserId: this.props.pageUserId
+        pageUserId: this.props.pageUserId,
+        mini: true
       }))));
     }
   }]);

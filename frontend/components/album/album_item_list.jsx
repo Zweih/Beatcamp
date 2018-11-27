@@ -1,7 +1,7 @@
 import React from "react";
 import AlbumItem from "./album_item";
 
-const AlbumItemList = ({ albums, pageUserId }) => {
+const AlbumItemList = ({ albums, pageUserId, mini }) => {
 	const albumItems = () => {
 		return albums.map( (album, idx) => {
 			return (
@@ -10,6 +10,7 @@ const AlbumItemList = ({ albums, pageUserId }) => {
 					key={idx}
 					album={album}
 					pageUserId={pageUserId}
+					mini={mini}
 				/>
 			);
 		});

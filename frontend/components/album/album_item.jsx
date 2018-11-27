@@ -3,7 +3,7 @@ import {
 	Link
 } from "react-router-dom";
 
-const AlbumItem = ({ className, album, pageUserId }) => {
+const AlbumItem = ({ className, album, pageUserId, mini }) => {
 	return (
 		<div>
 			{
@@ -14,7 +14,7 @@ const AlbumItem = ({ className, album, pageUserId }) => {
 					>
 						<img 
 							className="album-item-cover"
-							src={album.cover_url}
+							src={mini ? album.mini_cover_url : album.cover_url}
 						/>
 					<p className="album-item-label">
 						{album.title}
