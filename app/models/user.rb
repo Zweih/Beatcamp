@@ -51,6 +51,14 @@ class User < ApplicationRecord
 	end
 
 	def avatar_url
+		self.avatar.attached? ? self.avatar.variant(resize: '120x120').processed.service_url : nil
+	end
+
+	def mini_avatar_url
+		self.avatar.attached? ? self.avatar.variant(resize: '25x25').processed.service_url : nil
+	end
+
+	def full_avatar_url
 		self.avatar.attached? ? self.avatar.service_url : nil
 	end
 	

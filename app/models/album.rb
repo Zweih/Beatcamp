@@ -12,6 +12,18 @@ class Album < ApplicationRecord
 	belongs_to :user
 
 	def cover_url
+		self.cover.attached? ? self.cover.variant(resize: '350x350').processed.service_url : nil
+	end
+
+	def mini_cover_url
+		self.cover.attached? ? self.cover.variant(resize: '120x120').processed.service_url : nil
+	end
+
+	def med_cover_url
+		self.cover.attached? ? self.cover.variant(resize: '200x200').processed.service_url : nil
+	end
+
+	def full_cover_url
 		self.cover.attached? ? self.cover.service_url : nil
 	end
 
