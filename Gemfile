@@ -64,6 +64,7 @@ group :development do
   gem 'pry-rails'
   gem 'rails-erd'
   gem 'pp_sql'
+	gem 'meta_request'
 end
 
 group :test do
