@@ -21,7 +21,7 @@ class Homepage extends React.Component {
 				<div className="featured-artists-divider">
 					<h3>FEATURED ARTISTS</h3>
 				</div>
-				{this.props.homeAlbums.length > 5 ? 
+				{this.props.homeAlbums.length > 4 ? 
 				<div className="home-main">
 					<Link to={`users/${this.props.homeAlbums[0].user_id}`}>
 						<div
