@@ -1701,7 +1701,7 @@ function (_React$Component) {
         className: "content-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-artists-divider"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "FEATURED ARTISTS")), this.props.homeAlbums.length > 5 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "FEATURED ARTISTS")), this.props.homeAlbums.length > 4 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "users/".concat(this.props.homeAlbums[0].user_id)
