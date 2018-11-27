@@ -1594,7 +1594,9 @@ var LeftGreeting = function LeftGreeting(_ref) {
   var loggedIn = function loggedIn() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "header-links"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "user-greeting"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: currentUser.avatar_url
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "header-link username"

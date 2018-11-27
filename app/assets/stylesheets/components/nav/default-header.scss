@@ -72,6 +72,7 @@
 	background: transparent;
 	border: none;
 	padding: 3px 5px 3px 7px;
+	cursor: pointer;
 }
 
 .header-links, .login-signup ul {
@@ -120,6 +121,11 @@
 	font-size: 16px;
 	text-align: center;
 	text-decoration: none;
+	cursor: pointer;
+}
+
+.user-greeting, .user-greeting p {
+	cursor: default;
 }
 
 p.header-link.username {

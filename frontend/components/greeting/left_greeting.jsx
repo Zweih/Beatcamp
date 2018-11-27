@@ -10,7 +10,7 @@ const LeftGreeting = ({ currentUser }) => {
 
 	const loggedIn = () => (
 		<ul className="header-links">
-			<li>
+			<li className="user-greeting">
 				<img src={currentUser.avatar_url}></img>
 				<p className="header-link username">Hi {currentUser.username}</p>
 			</li>
