@@ -47,7 +47,7 @@ gem 'aws-sdk-s3'
 gem 'faker'
 gem 'open_uri_redirections'
 gem 'taglib-ruby'
-gem'ruby-filemagic'
+gem 'ruby-filemagic'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
