@@ -3,7 +3,6 @@ json.album do
 	json.cover_url @album.cover_url
 	json.mini_cover_url @album.mini_cover_url
 	json.user @album.user.username
-	json.track_ids @album.track_ids
 end
 
 json.tracks do
