@@ -5,7 +5,7 @@ end
 json.albums do
 	json.array! @user.albums do |album|
 		json.partial! "api/albums/album", album: album
-		json.user album.user.username
+		json.user @user.username
 		json.cover_url album.cover_url
 		json.mini_cover_url album.mini_cover_url
 	end
