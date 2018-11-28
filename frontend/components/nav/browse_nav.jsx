@@ -74,7 +74,7 @@ class BrowseNav extends React.Component {
 											className="search-submit"
 											type="submit"
 										>
-											<i className="fas fa-search fa-lg"></i>
+											<img src="https://s3.amazonaws.com/beatcamp-pro/search-solid.svg" />
 										</button>
 									</Link>
 									</span>

@@ -59,9 +59,14 @@ class AlbumDetail extends React.Component {
 						this.handleTrackChange(idx);
 					}}
 						className="track-play">
-						<i 
-						className={`fa ${this.state.playing && this.state.cTrackNum === idx ? "fa-pause" : "fa-play"}`}
-						aria-hidden="true"></i>
+						<img 
+							hidden={!this.state.playing || this.state.cTrackNum !== idx}
+							src="https://s3.amazonaws.com/beatcamp-pro/pause-solid.svg"
+						/>
+						<img 
+							hidden={this.state.playing && this.state.cTrackNum === idx}
+							src="https://s3.amazonaws.com/beatcamp-pro/play-solid.svg"
+						/>
 					</span>
 					<span
 						className="track-info"
@@ -73,6 +78,8 @@ class AlbumDetail extends React.Component {
 					</span>
 					<p
 					>
+												{this.state.playing && this.state.cTrackNum !== idx}
+
 					</p>
 				</li>
 			);

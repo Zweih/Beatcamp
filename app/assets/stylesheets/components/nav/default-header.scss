@@ -61,18 +61,25 @@
 }
 
 .search-submit-span {
-	padding-top: 4px;
-	padding-right: 2px;
 	border: solid 1px #bebebe;
 	border-left: none;
 	border-radius: 0px 3px 3px 0px;
 }
 
+.search-submit-span a {
+	padding: 0 !important;
+}
+
 .search-submit {
 	background: transparent;
 	border: none;
-	padding: 3px 5px 3px 7px;
+	// padding: 3px 5px 3px 7px;
 	cursor: pointer;
+}
+
+.search-submit img {
+	width: 16px;
+	margin-top: 5px;
 }
 
 .header-links, .login-signup ul {

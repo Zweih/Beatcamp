@@ -579,9 +579,12 @@ function (_React$Component) {
             _this2.handleTrackChange(idx);
           },
           className: "track-play"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa ".concat(_this2.state.playing && _this2.state.cTrackNum === idx ? "fa-pause" : "fa-play"),
-          "aria-hidden": "true"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          hidden: !_this2.state.playing || _this2.state.cTrackNum !== idx,
+          src: "https://s3.amazonaws.com/beatcamp-pro/pause-solid.svg"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          hidden: _this2.state.playing && _this2.state.cTrackNum === idx,
+          src: "https://s3.amazonaws.com/beatcamp-pro/play-solid.svg"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "track-info",
           onClick: function onClick() {
@@ -592,7 +595,7 @@ function (_React$Component) {
           className: "track-num"
         }, idx + 1, ". "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "track-title"
-        }, track.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null));
+        }, track.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, _this2.state.playing && _this2.state.cTrackNum !== idx));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.album ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-detail"
@@ -1928,8 +1931,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-submit",
         type: "submit"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-search fa-lg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://s3.amazonaws.com/beatcamp-pro/search-solid.svg"
       }))))))), this.props.currentUser ? this.loggedIn() : this.notLoggedIn())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
         exact: true,
         path: "/login",
@@ -2066,8 +2069,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-submit",
         type: "submit"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-search fa-lg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://s3.amazonaws.com/beatcamp-pro/search-solid.svg"
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
         exact: true,
         path: "/login",
