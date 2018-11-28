@@ -18,11 +18,10 @@ const tracksReducer = (state = {}, action) => {
 	const tracks = {}
 
 	switch (action.type) {
-		case RECEIVE_USER: 
-			return merge({}, state, action.tracks);
+		case RECEIVE_USER:
 		case RECEIVE_ALBUM:
 			Object.values(action.tracks).forEach( (track) => { 
-				return tracks[track.id] = track;
+				tracks[track.id] = track;
 			});
 
 			return merge({}, state, tracks);

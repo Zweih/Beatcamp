@@ -4,28 +4,17 @@ end
 
 json.albums do
 	json.array! @user.albums do |album|
-		json.id album.id
-		json.title album.title
-		json.user @user.username
+		json.partial! "api/albums/album", album: album
+		json.user album.user.username
 		json.cover_url album.cover_url
 		json.mini_cover_url album.mini_cover_url
-		json.mini_cover_url album.med_cover_url
-		json.description album.description
-		json.user_id album.user_id
-		json.track_ids album.track_ids
-  end
+	end
 end
 
-tracks = @user.tracks
-tracks = tracks.each_with_object({}) do |track, hash| 
-	hash[track.id] = {
-		id: track.id,
-		title: track.title,
-		audio_url: track.audio_url,
-		list_num: track.list_num,
-		albumId: track.album_id,
-		length: track.length
-	}
+json.tracks do
+	json.array! @user.tracks do |track|
+		json.id track.id
+		json.title track.title
+		json.length track.length
+	end
 end
-
-json.tracks tracks

@@ -19,7 +19,7 @@ const albumsReducer = (state = {}, action) => {
 			const albums = {};
 
 			Object.values(action.albums).forEach( (album) => {
-				return albums[album.id] = album;
+				albums[album.id] = album;
 			});
 
 			return merge({}, state, albums);

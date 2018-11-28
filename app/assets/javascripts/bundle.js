@@ -246,7 +246,7 @@ const receiveCurrentUser = (payload) => {
     type: RECEIVE_CURRENT_USER,
     user: payload.user,
 		albums: payload.albums,
-		tracks: payload.tracks
+		tracks: payload.tracks,
   };
 };
 
@@ -3069,7 +3069,7 @@ const albumsReducer = (state = {}, action) => {
 			const albums = {};
 
 			Object.values(action.albums).forEach( (album) => {
-				return albums[album.id] = album;
+				albums[album.id] = album;
 			});
 
 			return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, albums);
@@ -3318,11 +3318,10 @@ const tracksReducer = (state = {}, action) => {
 	const tracks = {}
 
 	switch (action.type) {
-		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]: 
-			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, action.tracks);
+		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]:
 		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
 			Object.values(action.tracks).forEach( (track) => { 
-				return tracks[track.id] = track;
+				tracks[track.id] = track;
 			});
 
 			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, tracks);
