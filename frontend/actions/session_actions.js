@@ -15,7 +15,7 @@ const receiveCurrentUser = (payload) => {
     type: RECEIVE_CURRENT_USER,
     user: payload.user,
 		albums: payload.albums,
-		tracks: payload.tracks
+		tracks: payload.tracks,
   };
 };
 
