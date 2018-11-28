@@ -16,32 +16,47 @@ import UserProfileEditContainer from "./user/user_profile_edit_container";
 import AlbumEditContainer from "./album/album_edit_container";
 import HomepageContainer from "./homepage_container";
 import ParkingPage from "./parking_page";
+import ReactGA from "react-ga";
 
-const App = () => (
-	<div>
-		<HashRouter>
+ReactGA.initialize("UA-130018974-1");
+
+class App extends React.Component {
+	componentDidMount() {
+		ReactGA.pageview(window.location.hash);
+	}
+
+	componentDidUpdate() {
+		ReactGA.pageview(window.location.hash);
+	}
+
+	render() {
+		return (
 			<div>
-				<Switch>
-					<AuthRoute exact path="/login" component={LoginNav} />
-					<Route exact path="/" component={DefaultNavContainer} />
-					<Route exact path="/signup" component={DefaultNavContainer} />
-					<Route path="/" component={BrowseNavContainer} />
-				</Switch>
-				<section className="content-section">
-					<Switch>
-						<Route exact path="/" component={HomepageContainer} />
-						<ProtectedRoute exact path="/users/:userId/edit" component={UserProfileEditContainer} />
-						<ProtectedRoute exact path="/users/:userId/albums/:albumId/edit" component={AlbumEditContainer} />
-						<Route path="/users/:userId" render={(props) => (
-							<UserProfileContainer key={props.match.params.userId} {...props} />)
-						} />
-						<AuthRoute exact path="/login" component={LoginFormContainer} />
-						<Route exact path="/discover" component={ParkingPage} />
-					</Switch>
-				</section>
+				<HashRouter>
+					<div>
+						<Switch>
+							<AuthRoute exact path="/login" component={LoginNav} />
+							<Route exact path="/" component={DefaultNavContainer} />
+							<Route exact path="/signup" component={DefaultNavContainer} />
+							<Route path="/" component={BrowseNavContainer} />
+						</Switch>
+						<section className="content-section">
+							<Switch>
+								<Route exact path="/" component={HomepageContainer} />
+								<ProtectedRoute exact path="/users/:userId/edit" component={UserProfileEditContainer} />
+								<ProtectedRoute exact path="/users/:userId/albums/:albumId/edit" component={AlbumEditContainer} />
+								<Route path="/users/:userId" render={(props) => (
+									<UserProfileContainer key={props.match.params.userId} {...props} />)
+								} />
+								<AuthRoute exact path="/login" component={LoginFormContainer} />
+								<Route exact path="/discover" component={ParkingPage} />
+							</Switch>
+						</section>
+					</div>
+				</HashRouter>
 			</div>
-		</HashRouter>
-	</div>
-);
+		);	
+	}
+}
 
 export default App;
