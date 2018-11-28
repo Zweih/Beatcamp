@@ -9,7 +9,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag asset_path('bc_favicon.ico'), :rel => 'icon', :type =>  'image/png' %>
-		<%= stylesheet_link_tag 'application', media: 'all'%>
 		<%= javascript_include_tag 'application'%>
   </head>
 
@@ -17,3 +16,4 @@
     <%= yield %>
   </body>
 </html>
+<%= stylesheet_link_tag 'application', media: 'all'%>
