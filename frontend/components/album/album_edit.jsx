@@ -137,7 +137,7 @@ class AlbumEdit extends React.Component {
 					<div className="album-left">
 						<div className="album-info-box">
 							<div className="album-small-img">
-								<img src={this.validURL(this.state.cover_url) ? this.state.cover_url : this.props.album.cover_url}/>
+								<img src={this.state.file_url ? this.state.file_url : (this.validURL(this.state.cover_url) ? this.state.cover_url : this.props.album.cover_url)}/>
 							</div>
 							<div className="album-title-artist">
 								<p className="album-title">
