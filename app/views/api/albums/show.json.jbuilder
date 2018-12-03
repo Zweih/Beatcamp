@@ -16,7 +16,7 @@ json.tracks do
 			json.title track.title
 			json.list_num track.list_num
 			json.album_id track.album_id
-			json.audio_url track.audio
+			json.audio_url track.audio_url
 			json.length track.length
 		end
 	end
