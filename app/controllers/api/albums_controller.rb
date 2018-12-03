@@ -14,8 +14,8 @@ class Api::AlbumsController < ApplicationController
 		@album = Album.find_by(id: params[:id])
 
 		if @album
-			if @album.user_id != params[:user][:id]
-				unless params[:album][:cover_url].blank?
+			if @album.user_id == params[:user][:id].to_i
+				if !params[:album][:cover] && !params[:album][:cover_url].blank?
 					@album.attach_cover(params[:album][:cover_url])
 				end
 				
@@ -50,10 +50,10 @@ class Api::AlbumsController < ApplicationController
 	private
 
 	def album_params
-		params.require(:album).permit(:title, :description, :user_id)
+		params.require(:album).permit(:title, :description, :user_id, :cover)
 	end
 
 	def update_params
-		params.require(:album).permit(:title, :description, :user_id)
+		params.require(:album).permit(:title, :description, :user_id, :cover)
 	end
 end
