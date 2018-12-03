@@ -162,6 +162,7 @@ class AlbumEdit extends React.Component {
 							<h3 className={`${this.props.formClass}-title`}>{this.props.formType}</h3>
 							{this.renderErrors()}
 							<h1>Leave field blank to keep the same.</h1>
+							<h1>Upload via file has priority over URL upload.</h1>
 						</div>
 						<div className={`${this.props.formClass}-item`}>
 							<label className={`${this.props.formClass}-label`}>
@@ -199,24 +200,22 @@ class AlbumEdit extends React.Component {
 								className={`${this.props.formClass}-input`}
 							/>
 						</div>
-						<div className={`${this.props.formClass}-item`}>
-							<div className={`${this.props.formClass}-item update-album-image`}>
-								{this.state.file_url ? <img src={this.state.file_url}/> : <div className="album-image-placeholder">
-									<input
-										type="file"
-										name="file"
-										id="file"
-										onChange={this.updateFile}
-									/>
-									<label htmlFor="file">Upload Album Art</label>
-									<p className={"update-album-image-hint"}>
-										200 x 200 pixels minimum
-									</p>
-									<p className={"update-album-image-hint"}>
-										(bigger is better)
-									</p>
-								</div>}
-							</div>
+						<div className={`${this.props.formClass}-item update-album-image`}>
+							{this.state.file_url ? <img src={this.state.file_url}/> : <div className="album-image-placeholder">
+								<input
+									type="file"
+									name="file"
+									id="file"
+									onChange={this.updateFile}
+								/>
+								<label htmlFor="file">Upload Album Art</label>
+								<p className={"update-album-image-hint"}>
+									200 x 200 pixels minimum
+								</p>
+								<p className={"update-album-image-hint"}>
+									(bigger is better)
+								</p>
+							</div>}
 						</div>
 						{/* <h3 className={`${this.props.formClass}-title track-edit-title`}>Album Tracks</h3>
 						TODO: ADD TRACK EDIT CONTAINERS

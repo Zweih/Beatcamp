@@ -899,7 +899,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-small-img"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.validURL(this.state.cover_url) ? this.state.cover_url : this.props.album.cover_url
+        src: this.state.file_url ? this.state.file_url : this.validURL(this.state.cover_url) ? this.state.cover_url : this.props.album.cover_url
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-title-artist"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -919,7 +919,7 @@ function (_React$Component) {
         className: "".concat(this.props.formClass, "-info")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "".concat(this.props.formClass, "-title")
-      }, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Leave field blank to keep the same.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.formType), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Leave field blank to keep the same."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Upload via file has priority over URL upload.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "".concat(this.props.formClass, "-label")
@@ -950,8 +950,6 @@ function (_React$Component) {
         onChange: this.update("description"),
         className: "".concat(this.props.formClass, "-input")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(this.props.formClass, "-item")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(this.props.formClass, "-item update-album-image")
       }, this.state.file_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.file_url
@@ -968,7 +966,7 @@ function (_React$Component) {
         className: "update-album-image-hint"
       }, "200 x 200 pixels minimum"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "update-album-image-hint"
-      }, "(bigger is better)")))))));
+      }, "(bigger is better)"))))));
     }
   }]);
 
