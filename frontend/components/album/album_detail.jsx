@@ -78,7 +78,7 @@ class AlbumDetail extends React.Component {
 					</span>
 					<p
 					>
-												{this.state.playing && this.state.cTrackNum !== idx}
+						{this.state.playing && this.state.cTrackNum !== idx}
 
 					</p>
 				</li>
