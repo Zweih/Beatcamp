@@ -157,3 +157,44 @@ textarea.a-edit-input {
 	font-size: 11px;
 	color:  #363636;
 }
+
+.album-image-placeholder label {
+	font-size: 18px;
+	color: #0687f5;
+	cursor: pointer;
+	outline: none;
+	text-align: center;
+	bottom: 140px;
+}
+
+.album-image-placeholder input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.update-album-image-hint {
+	bottom: 125px;
+	color: #999;
+	font-size: 12px;
+}
+
+.update-album-image > img,
+.album-image-placeholder {
+	width: 210px;
+	height: 210px;
+}
+
+.album-image-placeholder {
+	border: 1px dotted lightgrey;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.update-album-image {
+	align-items: center;
+	justify-content: center;
+}
