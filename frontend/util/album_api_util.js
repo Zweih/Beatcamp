@@ -15,14 +15,14 @@ export const fetchAlbums = () => {
 	});
 };
 
-export const updateAlbum = (album, user) => {
+export const updateAlbum = (albumForm) => {
 	return $.ajax({
 		method: "PATCH",
-		url: `api/albums/${album.id}`,
-		data: {
-			album,
-			user,
-		},
+		url: `api/albums/${albumForm.get("album[id]")}`,
+		processData: false,
+		contentType: false,
+		dataType: 'json',
+		data: albumForm,
 	});
 };
 

@@ -36,7 +36,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		processForm: (album, user) => dispatch(updateAlbum(album, user)),
+		processForm: (formData) => dispatch(updateAlbum(formData)),
 		fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId)),
 		clearAlbumErrors: () => dispatch(clearAlbumErrors()),
 	};

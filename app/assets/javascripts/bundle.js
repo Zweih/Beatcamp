@@ -754,12 +754,14 @@ function (_React$Component) {
       cover_url: "",
       title: "",
       description: "",
+      id: _this.props.albumId,
       disabled: false,
       success: false,
       unauthorized: false,
       tracks: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.updateFile = _this.updateFile.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -773,15 +775,15 @@ function (_React$Component) {
       this.setState({
         disabled: true
       });
-      var album = {};
-      Object.keys(this.props.album).forEach(function (key) {
-        if (_this2.state[key] && _this2.state[key].length > 0) {
-          album[key] = _this2.state[key];
-        } else {
-          album[key] = _this2.props.album[key];
+      var formData = new FormData();
+      var fields = ["title", "description", "id", "cover_url", "cover"];
+      fields.forEach(function (key) {
+        if (_this2.state[key]) {
+          formData.append("album[".concat(key, "]"), _this2.state[key]);
         }
       });
-      this.props.processForm(album, this.props.currentUser);
+      formData.append("user[id]", this.props.currentUser.id);
+      this.props.processForm(formData);
     }
   }, {
     key: "update",
@@ -793,6 +795,25 @@ function (_React$Component) {
           disabled: false
         }, field, element.target.value));
       };
+    }
+  }, {
+    key: "updateFile",
+    value: function updateFile(e) {
+      var _this4 = this;
+
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        return _this4.setState({
+          file_url: fileReader.result,
+          cover: file
+        });
+      };
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
     }
   }, {
     key: "renderErrors",
@@ -820,9 +841,21 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "validURL",
+    value: function validURL(str) {
+      var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+
+      return pattern.test(str);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (this.state.success) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
@@ -845,13 +878,13 @@ function (_React$Component) {
           key: "track" + idx,
           className: "edit-track-items"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Track ", idx + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "".concat(_this4.props.formClass, "-item")
+          className: "".concat(_this5.props.formClass, "-item")
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          className: "".concat(_this4.props.formClass, "-label")
+          className: "".concat(_this5.props.formClass, "-label")
         }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           placeholder: track.title,
-          className: "".concat(_this4.props.formClass, "-input")
+          className: "".concat(_this5.props.formClass, "-input")
         })));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -865,10 +898,8 @@ function (_React$Component) {
         className: "album-info-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-small-img"
-      }, this.state.cover_url.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.cover_url
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.album.cover_url
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.validURL(this.state.cover_url) ? this.state.cover_url : this.props.album.cover_url
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-title-artist"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -918,7 +949,26 @@ function (_React$Component) {
         rows: "10",
         onChange: this.update("description"),
         className: "".concat(this.props.formClass, "-input")
-      })))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-item")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(this.props.formClass, "-item update-album-image")
+      }, this.state.file_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.file_url
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-image-placeholder"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        name: "file",
+        id: "file",
+        onChange: this.updateFile
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "file"
+      }, "Upload Album Art"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "update-album-image-hint"
+      }, "200 x 200 pixels minimum"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "update-album-image-hint"
+      }, "(bigger is better)")))))));
     }
   }]);
 
@@ -977,7 +1027,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		processForm: (album, user) => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["updateAlbum"])(album, user)),
+		processForm: (formData) => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["updateAlbum"])(formData)),
 		fetchAlbum: (albumId) => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAlbum"])(albumId)),
 		clearAlbumErrors: () => dispatch(Object(_actions_album_actions__WEBPACK_IMPORTED_MODULE_2__["clearAlbumErrors"])()),
 	};
@@ -3431,14 +3481,14 @@ const fetchAlbums = () => {
 	});
 };
 
-const updateAlbum = (album, user) => {
+const updateAlbum = (albumForm) => {
 	return $.ajax({
 		method: "PATCH",
-		url: `api/albums/${album.id}`,
-		data: {
-			album,
-			user,
-		},
+		url: `api/albums/${albumForm.get("album[id]")}`,
+		processData: false,
+		contentType: false,
+		dataType: 'json',
+		data: albumForm,
 	});
 };
 
