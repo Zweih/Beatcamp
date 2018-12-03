@@ -3315,18 +3315,12 @@ __webpack_require__.r(__webpack_exports__);
 
 const tracksReducer = (state = {}, action) => {
 	Object.freeze(state);
-	const tracks = {}
 
 	switch (action.type) {
+		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_TRACK"]:
+		return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, { [action.track.id]: action.track });
 		case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]:
 		case _actions_album_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALBUM"]:
-			Object.values(action.tracks).forEach( (track) => { 
-				tracks[track.id] = track;
-			});
-
-			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, tracks);
-		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_TRACK"]:
-			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, { [action.track.id]: action.track });
 		case _actions_track_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ALL_TRACKS"]:
 			return lodash_merge__WEBPACK_IMPORTED_MODULE_3___default()({}, state, action.tracks);
 		default:
