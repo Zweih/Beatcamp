@@ -12,6 +12,11 @@ json.albums do
 	@user.albums.each do |album|
 		json.set! album.id do
 			json.partial! "api/albums/album", album: album
+			json.id album.id
+			json.title album.title
+			json.description album.description
+			json.user_id album.user_id
+			json.track_ids album.track_ids
 			json.user @user.username
 			json.cover_url album.cover_url
 			json.mini_cover_url album.mini_cover_url
