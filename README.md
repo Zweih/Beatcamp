@@ -1,7 +1,7 @@
 # Beatcamp 
 
 ## Summary
-[Beatcamp](https://www.beatcamp.live "Beatcamp Live Site") is a single-page, RESTful web application for music sharing created with Ruby on Rails and React-Redux.
+[Beatcamp](https://www.beatcamp.live "Beatcamp Live Site") is a single-page RESTful web application for music sharing created with Ruby on Rails and React-Redux.
 
 * **Features**
   * Sign up, log in, and log out
