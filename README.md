@@ -1,6 +1,5 @@
 # Beatcamp 
 
-## Summary
 [Beatcamp](https://www.beatcamp.live "Beatcamp Live Site") is a single-page RESTful web application for music sharing created with Ruby on Rails and React-Redux.
 
 * **Features**
@@ -9,8 +8,7 @@
   * Upload music files and images
   * Responsive music player
 
-## Technologies
-#### Back End
+## Back End Technologies
 * [Ruby on Rails](https://rubyonrails.org/)
 * [Amazon S3](https://aws.amazon.com/s3/) as a CDN for mutable uploaded user files (images and music)
 * [Amazon CloudFront](https://aws.amazon.com/cloudfront/) as a CDN for static content (JS and CSS)
@@ -21,7 +19,7 @@
 * [ImageMagick](https://imagemagick.org/script/index.php) for efficiently resizing images for different use cases, reducing download sizes
 * RESTful API for use with AJAX requests
 
-#### Front End
+## Front End Technologies
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
 * [BCrypt](https://github.com/codahale/bcrypt-ruby) (authorization)
