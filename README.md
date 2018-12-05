@@ -1,10 +1,29 @@
 # Beatcamp 
-## (work in progress)
 
-This is a Bandcamp inspired single-page web application for sharing music built with a **React / Redux** frontend and a **Ruby on Rails** backend. It stores user files on an **Amazon Web Services S3 bucket** for quick secure content delivery. It also uses a **PostgreSQL** database for storing relational data.
+## Summary
+[Beatcamp](https://www.beatcamp.live "Beatcamp Live Site") is a single-page, RESTful web application for music sharing created with Ruby on Rails and React-Redux.
 
-### Roadmap for upcoming features:
-[x] - inline seamless audio player \
-[ ] - user follows \
-[ ] - music purchasing \
-[ ] - dynamic instant search
+* **Features**
+  * Sign up, log in, and log out
+  * Create and edit albums
+  * Upload music files and images
+  * Responsive music player
+
+## Technologies
+#### Back End
+* [Ruby on Rails](https://rubyonrails.org/)
+* [Amazon S3](https://aws.amazon.com/s3/) as a CDN for mutable uploaded user files (images and music)
+* [Amazon CloudFront](https://aws.amazon.com/cloudfront/) as a CDN for static content (JS and CSS)
+* [PostgreSQL](https://www.postgresql.org/) (database)
+* Deployed on a [Heroku](https://www.heroku.com/) cloud server
+* [TagLib](https://taglib.org/) for detecting metadata from user uploaded music
+* Custom modified Heroku [buildpack](https://github.com/Zweih/taglib-buildpack) for TagLib
+* [ImageMagick](https://imagemagick.org/script/index.php) for efficiently resizing images for different use cases, reducing download sizes
+* RESTful API for use with AJAX requests
+
+#### Front End
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [BCrypt](https://github.com/codahale/bcrypt-ruby) (authorization)
+* [AJAX](https://api.jquery.com/jquery.ajax/) for communication with RESTful JSON API
+* [Webpack](https://webpack.js.org/) for JS minification
