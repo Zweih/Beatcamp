@@ -27,3 +27,4 @@
 * [BCrypt](https://github.com/codahale/bcrypt-ruby) (authorization)
 * [AJAX](https://api.jquery.com/jquery.ajax/) for communication with RESTful JSON API
 * [Webpack](https://webpack.js.org/) for JS minification
+* [Google Analytics](https://marketingplatform.google.com/about/analytics/) for collecting and analyzing user behavior metadata
