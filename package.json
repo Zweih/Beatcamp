@@ -15,7 +15,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
-    "lodash.merge": "^4.6.1",
+    "lodash.merge": "^4.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-ga": "^2.5.6",
