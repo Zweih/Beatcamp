@@ -26,7 +26,7 @@ class Homepage extends React.Component {
 					<Link to={`users/${this.props.homeAlbums[0].user_id}`}>
 						<div
 							className="home-large"
-							style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498149_0)"}}
+							style={{ backgroundImage: "url(https://f4.bcbits.com/img/0019689627_170.jpg)"}}
 						>
 							<div className="home-overlay"></div>
 							<div className="home-overlay-hover"></div>
@@ -36,7 +36,7 @@ class Homepage extends React.Component {
 					<ul className="home-small">
 						<Link to={`users/${this.props.homeAlbums[1].user_id}`}>
 							<li
-								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014498598_170.jpg)"}}
+								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0019712793_170.jpg)"}}
 							>
 								<div className="home-overlay"></div>
 								<div className="home-overlay-hover"></div>
@@ -45,7 +45,7 @@ class Homepage extends React.Component {
 						</Link>
 						<Link to={`users/${this.props.homeAlbums[2].user_id}`}>
 							<li
-								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0014497570_170.jpg)"}}
+								style={{ backgroundImage: "url(https://f4.bcbits.com/img/0019716300_170.jpg)"}}
 							>
 								<div className="home-overlay"></div>
 								<div className="home-overlay-hover"></div>
